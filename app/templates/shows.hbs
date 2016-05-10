@@ -1,4 +1,8 @@
-{{create-show newShow=model
-    create=(action "createShow")
-    add=(action "addChar")}}
-{{newShow}}
+<ul>
+  {{#each model as |show|}}
+    <li>
+      {{#link-to 'shows.show-detail' show.name}}{{show.name}}{{/link-to}}
+    </li>
+  {{/each}}
+</ul>
+{{outlet}}

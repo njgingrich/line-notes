@@ -1,3 +1,9 @@
+<h2>Show: {{model.name}}</h2>
+<ul>
+{{#each model.characters as |char|}}
+  <li>{{char.name}}</li>
+{{/each}}
+</ul>
 {{create-show class="show-detail"
     newShow=model
     create=(action "createShow")

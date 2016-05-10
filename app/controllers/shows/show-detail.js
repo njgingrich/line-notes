@@ -1,6 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  show: Ember.computed.alias('model'),
+
   actions: {
     createShow(name) {
       console.log("creating new show: " + name);
@@ -16,6 +18,8 @@ export default Ember.Controller.extend({
         name: name
       });
       char1.save();
+      this.get('show.characters').pushObject(char1);
+      this.get('show').save();
     }
   }
 });

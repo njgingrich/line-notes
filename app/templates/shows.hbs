@@ -1,8 +1,16 @@
+{{#link-to 'shows'}}Root{{/link-to}}
 <ul>
   {{#each model as |show|}}
     <li>
       {{#link-to 'shows.show-detail' show.name}}{{show.name}}{{/link-to}}
+      <button {{action "deleteShow" show}}>X</button>
     </li>
   {{/each}}
 </ul>
+{{create-show class="show-detail"
+    newShow=newShow
+    create=(action "createShow")
+    add=(action "addChar")}}
+    {{create-character show=newShow add=(action "addChar")}}
+{{/create-show}}
 {{outlet}}

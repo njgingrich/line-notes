@@ -4,10 +4,10 @@ export default Ember.Component.extend({
   name: '',
 
   actions: {
-    createChar(name) {
+    addChar(name) {
       let n = name;
       this.set('name', '');
-      this.attrs.addChar(n);
+      this.attrs.add(name);
     }
   }
 });

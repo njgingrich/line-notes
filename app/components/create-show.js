@@ -8,8 +8,8 @@ export default Ember.Component.extend({
       this.attrs.create(name);
     },
 
-    addChar(name) {
-      this.attrs.add(name);
+    addChar(name, show) {
+      this.attrs.add(name, newShow);
     }
   }
 });

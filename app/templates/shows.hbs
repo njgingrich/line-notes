@@ -8,9 +8,8 @@
   {{/each}}
 </ul>
 {{#create-show class="show-detail"
-    newShow=newShow
     create=(action "createShow")
     add=(action "addChar")}}
-    {{create-character show=newShow add=(action "addChar")}}
+    {{!create-character show=newShow add=(action "addChar")}}
 {{/create-show}}
 {{outlet}}

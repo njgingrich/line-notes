@@ -14,8 +14,6 @@ export default Ember.Controller.extend({
       show.save();
     },
     addNote(char, page, line, note, error) {
-      console.log('note: ' + note);
-      console.log('char: ' + char);
       let newNote = this.store.createRecord('line-note', {
         page: page,
         line: line,
@@ -25,6 +23,12 @@ export default Ember.Controller.extend({
       });
       newNote.set('character', char);
       newNote.save();
+      char.save();
+    },
+    deleteNote(note, char) {
+      console.log('deleting ' + note.get('id') + ' from character ' + char.get('name'));
+      note.deleteRecord();
+      note.save();
       char.save();
     }
   }

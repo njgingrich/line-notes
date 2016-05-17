@@ -8,7 +8,7 @@ export default Ember.Component.extend({
 
   actions: {
     addNote() {
-      this.attrs.create(this.get('page'), this.get('line'), 
+      this.attrs.create(this.get('page'), this.get('line'),
                         this.get('note'), this.get('error'));
       this.set('page', '');
       this.set('line', '');

@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   show: Ember.computed.alias('model'),
+  notify: Ember.inject.service('notify'),
 
   actions: {
     addChar(show, name) {
@@ -12,6 +13,7 @@ export default Ember.Controller.extend({
       char1.save();
       show.get('characters').pushObject(char1);
       show.save();
+      this.get('notify').success('Added new character!');
     },
     addNote(char, page, line, note, error) {
       let newNote = this.store.createRecord('line-note', {
@@ -24,6 +26,7 @@ export default Ember.Controller.extend({
       newNote.set('character', char);
       newNote.save();
       char.save();
+      this.get('notify').success('Added new note!');
     },
     deleteNote(char, note) {
       console.log('deleting ' + note.get('id') + ' from character ' + char.get('name'));

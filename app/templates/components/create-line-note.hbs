@@ -1,1 +1,5 @@
-{{yield}}
+<form>
+    {{input value=name placeholder="Name"}}
+    <button {{action "addNote" name}}>Create</button>
+    {{yield}}
+</form>

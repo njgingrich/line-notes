@@ -4,4 +4,6 @@
   <li>{{char.name}}</li>
 {{/each}}
 </ul>
-{{create-character class="create-char" show=model add=(action "addChar" model)}}
+{{#create-character class="create-char" show=model add=(action "addChar" model)}}
+  {{create-line-note}}
+{{/create-character}}

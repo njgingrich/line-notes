@@ -24,15 +24,13 @@ export default Ember.Controller.extend({
           console.log('char: ' + character);
           character.deleteRecord();
           character.save();
-        })
+        });
       });
 
       // TODO: delete each character's line notes
 
       show.deleteRecord();
       show.save();
-
-
       this.transitionToRoute('shows');
     }
   }

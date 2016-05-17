@@ -21,7 +21,8 @@
           <td>{{note.line}}</td>
           <td>{{note.note}}</td>
           <td>{{note.error}}</td>
-          <td><button {{action "deleteNote" note char}}>X</button></td>
+          <td><button type="button" class="btn btn-danger"
+                      {{action "deleteNote" note char}}>X</button></td>
         </tr>
         {{/each}}
       </tbody>

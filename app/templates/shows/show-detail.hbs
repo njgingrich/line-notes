@@ -1,4 +1,4 @@
-<h2>Show: {{model.name}}</h2>
+<h2>{{model.name}}<button class="btn btn-danger" {{action "deleteShow" show}}>X</button></h2>
 <ul>
 {{#each model.characters as |char|}}
   <li>

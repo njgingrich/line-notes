@@ -25,7 +25,7 @@ export default Ember.Controller.extend({
       newNote.save();
       char.save();
     },
-    deleteNote(note, char) {
+    deleteNote(char, note) {
       console.log('deleting ' + note.get('id') + ' from character ' + char.get('name'));
       note.deleteRecord();
       note.save();

@@ -3,30 +3,8 @@
 {{#each model.characters as |char|}}
   <li>
     {{char.name}}
-    {{create-line-note addNote=(action "addNote" char)}}
-    <table>
-      <thead>
-        <tr>
-          <th>Page</th>
-          <th>Line</th>
-          <th>Note</th>
-          <th>Error</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        {{#each char.notes as |note|}}
-        <tr>
-          <td>{{note.page}}</td>
-          <td>{{note.line}}</td>
-          <td>{{note.note}}</td>
-          <td>{{note.error}}</td>
-          <td><button type="button" class="btn btn-danger"
-                      {{action "deleteNote" note char}}>X</button></td>
-        </tr>
-        {{/each}}
-      </tbody>
-    </table>
+    {{create-line-note create=(action "addNote" char)}}
+    {{notes-list notes=char.notes delete=(action "deleteNote" char)}}
   </li>
 {{/each}}
 </ul>

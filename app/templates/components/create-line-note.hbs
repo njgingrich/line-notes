@@ -3,6 +3,6 @@
     {{input value=line placeholder="Line"}}
     {{input value=note placeholder="Note"}}
     {{input value=error placeholder="Error"}}
-    <button {{action (action addNote page line note error)}}>Create</button>
+    <button {{action "addNote"}}>Create</button>
     {{yield}}
 </form>

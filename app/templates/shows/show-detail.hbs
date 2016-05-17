@@ -1,9 +1,30 @@
 <h2>Show: {{model.name}}</h2>
 <ul>
 {{#each model.characters as |char|}}
-  <li>{{char.name}}</li>
+  <li>
+    {{char.name}}
+    {{create-line-note addNote=(action "addNote" char)}}
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Line</th>
+          <th>Note</th>
+          <th>Error</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each char.notes as |note|}}
+        <tr>
+          <td>{{note.page}}</td>
+          <td>{{note.line}}</td>
+          <td>{{note.note}}</td>
+          <td>{{note.error}}</td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </li>
 {{/each}}
 </ul>
-{{#create-character class="create-char" show=model add=(action "addChar" model)}}
-  {{create-line-note}}
-{{/create-character}}
+{{create-character class="create-char" show=model add=(action "addChar" model)}}

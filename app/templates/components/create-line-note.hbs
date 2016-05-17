@@ -1,5 +1,8 @@
 <form>
-    {{input value=name placeholder="Name"}}
-    <button {{action "addNote" name}}>Create</button>
+    {{input value=page placeholder="Page"}}
+    {{input value=line placeholder="Line"}}
+    {{input value=note placeholder="Note"}}
+    {{input value=error placeholder="Error"}}
+    <button {{action (action addNote page line note error)}}>Create</button>
     {{yield}}
 </form>

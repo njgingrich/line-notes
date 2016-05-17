@@ -7,7 +7,7 @@ export default Ember.Component.extend({
     addChar(name) {
       let n = name;
       this.set('name', '');
-      this.attrs.add(name);
+      this.attrs.add(n);
     }
   }
 });

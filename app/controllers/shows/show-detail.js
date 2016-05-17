@@ -12,6 +12,20 @@ export default Ember.Controller.extend({
       char1.save();
       show.get('characters').pushObject(char1);
       show.save();
+    },
+    addNote(char, page, line, note, error) {
+      console.log('note: ' + note);
+      console.log('char: ' + char);
+      let newNote = this.store.createRecord('line-note', {
+        page: page,
+        line: line,
+        note: note,
+        error: error,
+        date: new Date()
+      });
+      newNote.set('character', char);
+      newNote.save();
+      char.save();
     }
   }
 });

@@ -7,5 +7,6 @@ export default Model.extend({
   page: attr('number'),
   line: attr('string'),
   note: attr('string'),
+  error: attr('number'),
   date: attr('date')
 });

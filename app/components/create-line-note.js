@@ -29,8 +29,6 @@ export default Ember.Component.extend(Validations, {
     this._super(...arguments);
   },
 
-
-
   actions: {
     addNote() {
       this.attrs.create(this.get('page'), this.get('line'),

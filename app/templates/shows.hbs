@@ -1,22 +1,24 @@
-<nav class="nav nav-tabs">
-  <li class="nav-item">
-    {{#link-to 'shows' class="nav-link"}}Root{{/link-to}}
-  </li>
-  {{#each model as |show|}}
-    {{#link-to 'shows.show-detail' show.name tagName="li"}}
-      <a href={{view.href}} class="nav-item">{{show.name}}</a>
-    {{/link-to}}
-  {{/each}}
-  <li>
-    <a class="nav-item" {{action "openAddShowModal"}}>+</a>
-  </li>
+<nav>
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      {{#link-to 'shows' class="nav-link"}}Root{{/link-to}}
+    </li>
+    {{#each model as |show|}}
+      {{#link-to 'shows.show-detail' show.name tagName="li"}}
+        <a href={{view.href}} class="nav-item">{{show.name}}</a>
+      {{/link-to}}
+    {{/each}}
+    <li>
+      <a class="nav-item" {{action "openAddShowModal"}}>+</a>
+    </li>
+  </ul>
 </nav>
 {{outlet}}
 {{#if openModal}}
   {{#bs-modal title="Add New Show" body=false footer=false}}
     {{#bs-modal-body}}
       {{#bs-form action=(action "createShow" name) model=this}}
-        {{bs-form-element controlType="text" label="Show Name" property="name"}}
+        {{bs-form-element controlType="text" label="Show Name" property="name" autofocus=true}}
       {{/bs-form}}
     {{/bs-modal-body}}
     {{bs-modal-footer closeTitle="Cancel" submitTitle="Add"}}

@@ -1,11 +1,10 @@
 <h2>{{model.name}}<button class="btn btn-danger" {{action "deleteShow" show}}>X</button></h2>
 <ul>
 {{#each model.characters as |char|}}
-  <li>
-    {{char.name}}
+    <h3><u>{{char.name}}</u></h3>
     {{create-line-note create=(action "addNote" char)}}
-    {{notes-list notes=char.notes delete=(action "deleteNote" char)}}
-  </li>
+    {{notes-list notes=char.notes delete=(action "deleteNote" char)
+                 class="table table-striped"}}
 {{/each}}
 </ul>
 {{create-character class="create-char" show=model add=(action "addChar" model)}}

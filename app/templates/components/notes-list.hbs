@@ -1,19 +1,19 @@
 <thead>
   <tr>
-    <th>Page</th>
-    <th>Line</th>
-    <th>Note</th>
-    <th>Error</th>
+    <th class="col-sm-1">Page</th>
+    <th class="col-sm-4">Line</th>
+    <th class="col-sm-4">Note</th>
+    <th class="col-sm-3">Error</th>
     <th></th>
   </tr>
 </thead>
 <tbody>
   {{#each notes as |note|}}
   <tr>
-    <td>{{note.page}}</td>
-    <td>{{note.line}}</td>
-    <td>{{note.note}}</td>
-    <td>{{note.error}}</td>
+    <td class="col-sm-1">{{note.page}}</td>
+    <td class="col-sm-4">{{note.line}}</td>
+    <td class="col-sm-4">{{note.note}}</td>
+    <td class="col-sm-3">{{note.error}}</td>
     <td><button type="button" class="btn btn-danger"
                 {{action (action delete note)}}>X</button></td>
   </tr>

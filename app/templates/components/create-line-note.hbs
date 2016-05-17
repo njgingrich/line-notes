@@ -1,8 +1,9 @@
 <form>
-    {{input value=page placeholder="Page"}}
-    {{input value=line placeholder="Line"}}
-    {{input value=note placeholder="Note"}}
-    {{input value=error placeholder="Error"}}
-    <button {{action "addNote"}}>Create</button>
-    {{yield}}
+  {{#bs-form class="form-inline"}}
+    {{bs-input size=3 value=page placeholder="Page"}}
+    {{bs-input size=50 value=line placeholder="Line"}}
+    {{bs-input size=30 value=note placeholder="Note"}}
+    {{bs-input size=3 value=error placeholder="Error"}}
+    {{#bs-button action="addNote" type="success"}}Create{{/bs-button}}
+  {{/bs-form}}
 </form>

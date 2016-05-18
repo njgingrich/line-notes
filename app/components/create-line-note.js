@@ -10,6 +10,7 @@ const Validations = buildValidations({
       gt: 0 })
   ],
   line: validator('presence', true),
+  note: validator('substring'),
   error: [
     validator('presence', true),
     validator('number', {

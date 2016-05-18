@@ -9,15 +9,8 @@ export default Ember.Controller.extend({
     openAddCharModal() {
       this.set('openModal', true);
     },
-    addChar(show, name) {
-      console.log("adding char " + name + " to show " + show);
-      let char1 = this.store.createRecord('character', {
-        name: name
-      });
-      char1.save();
-      show.get('characters').pushObject(char1);
-      show.save();
-      this.get('notify').success('Added new character!');
+    resetModal() {
+      this.set('name', '');
       this.set('openModal', false);
     },
     addNote(char, page, line, note, error) {
@@ -43,18 +36,44 @@ export default Ember.Controller.extend({
       note.save();
       char.save();
     },
+    deleteAllNotes(char) {
+      char.get('notes').forEach((note) => {
+        Ember.run.once(this, () => {
+          this.send('deleteNote', char, note);
+        })
+      })
+    },
+    addChar(show, name) {
+      console.log("adding char " + name + " to show " + show);
+      let char1 = this.store.createRecord('character', {
+        name: name
+      });
+      char1.save();
+      show.get('characters').pushObject(char1);
+      show.save();
+      this.get('notify').success('Added new character!');
+
+      // reset the modal
+      this.set('name', '');
+      this.set('openModal', false);
+    },
+    deleteChar(show, char) {
+      console.log('deleting char ' + char.get('name') + ' from show ' + show.get('name'));
+      // first delete their notes
+      this.send('deleteAllNotes', char);
+      char.deleteRecord();
+      char.save();
+      // update the show
+      show.save();
+    },
     deleteShow(show) {
       console.log('deleting show ' + show.get('name'));
       // delete its characters
       show.get('characters').forEach((character) => {
         Ember.run.once(this, () => {
-          console.log('char: ' + character);
-          character.deleteRecord();
-          character.save();
+          this.send('deleteChar', show, character);
         });
       });
-
-      // TODO: delete each character's line notes
 
       show.deleteRecord();
       show.save();

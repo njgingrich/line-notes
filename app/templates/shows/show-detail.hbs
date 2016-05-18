@@ -1,12 +1,15 @@
 <div>
-  <h2>{{model.name}}</h2>
-  <button class="btn btn-danger" {{action "deleteShow" show}}>X</button>
-  <button class="btn btn-success" {{action "openAddCharModal"}}>+</button>
+  <p class="lead">
+    {{model.name}}
+    <button class="btn btn-sm btn-danger" {{action "deleteShow" show}}>X</button>
+    <button class="btn btn-sm btn-success" {{action "openAddCharModal"}}>+</button>
+  </p>
 </div>
 
 <ul>
 {{#each model.characters as |char|}}
-    <h3><u>{{char.name}}</u></h3>
+    <u class="lead">{{char.name}}</u>
+    <button class="btn btn-danger btn-sm" {{action "deleteChar" model char}}>X</button>
     {{create-line-note create=(action "addNote" char)}}
     {{date-sorted-notes-list char=char notes=char.notes
                              delete=(action "deleteNote" char)
@@ -15,7 +18,7 @@
 {{/each}}
 </ul>
 {{#if openModal}}
-  {{#bs-modal title="Add New Character" body=false footer=false}}
+  {{#bs-modal title="Add New Character" body=false footer=false closeAction="resetModal"}}
     {{#bs-modal-body}}
       {{#bs-form action=(action "addChar" model name) model=this}}
         {{bs-form-element controlType="text" label="Character Name" property="name" autofocus=true}}

@@ -5,17 +5,11 @@
     <th class="col-sm-4">Note</th>
     <th class="col-sm-3">Error</th>
     <th></th>
+    <th></th>
   </tr>
 </thead>
 <tbody>
   {{#each notes as |note|}}
-  <tr>
-    <td class="col-sm-1">{{note.page}}</td>
-    <td class="col-sm-4">{{note.line}}</td>
-    <td class="col-sm-4">{{note.note}}</td>
-    <td class="col-sm-3">{{note.error}}</td>
-    <td><button type="button" class="btn btn-danger"
-                {{action (action delete note)}}>X</button></td>
-  </tr>
+    {{note-detail note=note edit=attrs.edit delete=attrs.delete}}
   {{/each}}
 </tbody>

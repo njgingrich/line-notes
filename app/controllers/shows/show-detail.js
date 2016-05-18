@@ -28,6 +28,10 @@ export default Ember.Controller.extend({
       char.save();
       this.get('notify').success('Added new note!');
     },
+    editNote(note) {
+      console.log('editing note ' + note);
+      note.save();
+    },
     deleteNote(char, note) {
       console.log('deleting ' + note.get('id') + ' from character ' + char.get('name'));
       note.deleteRecord();

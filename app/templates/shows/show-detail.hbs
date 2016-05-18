@@ -5,6 +5,7 @@
     {{create-line-note create=(action "addNote" char)}}
     {{date-sorted-notes-list char=char notes=char.notes
                              delete=(action "deleteNote" char)
+                             edit=(action "editNote")
                              class="table table-striped"}}
 {{/each}}
 </ul>

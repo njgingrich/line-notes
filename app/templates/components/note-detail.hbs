@@ -12,13 +12,6 @@
     {{{richTextLine}}}
   {{/if}}
 </td>
-<!--td class="col-sm-4">
-  {{#if isEditing}}
-    {{bs-input size=30 value=note.note}}
-  {{else}}
-    {{note.note}}
-  {{/if}}
-</td-->
 <td class="col-sm-3">
   {{#bs-button-group type="radio" value=note.error}}
     {{#bs-button disabled=(and (not-eq 1 note.error) (not isEditing))

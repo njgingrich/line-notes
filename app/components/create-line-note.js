@@ -36,7 +36,7 @@ export default Ember.Component.extend(Validations, {
       this.set('page', '');
       this.set('line', '');
       this.set('note', '');
-      this.set('error', '');
+      this.set('error', 0);
     }
   }
 });

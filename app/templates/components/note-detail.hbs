@@ -39,5 +39,5 @@
   {{edit-btn isEditing=isEditing submit=(action "editNote")}}
 </td>
 <td>
-  <button type="button" class="btn btn-danger" {{action (action delete note)}}>X</button>
+  {{#bs-button type="danger" class="btn-sm" action=(action delete note)}}X{{/bs-button}}
 </td>

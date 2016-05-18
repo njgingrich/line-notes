@@ -5,8 +5,8 @@
     <u class="lead">{{char.name}}</u>
   {{/if}}
   {{edit-btn isEditing=isEditing submit=(action editChar)}}
+  {{#bs-button type="danger" class="btn-sm" action=(action deleteChar)}}X{{/bs-button}}
 </p>
-<button class="btn btn-danger btn-sm" {{action (action deleteChar)}}>X</button>
 {{create-line-note create=attrs.create}}
 {{date-sorted-notes-list char=char notes=char.notes
                          delete=attrs.deleteNote

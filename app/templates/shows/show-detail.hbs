@@ -1,8 +1,8 @@
 <div>
   <p class="lead">
     {{model.name}}
-    <button class="btn btn-sm btn-danger" {{action "deleteShow" show}}>X</button>
-    <button class="btn btn-sm btn-success" {{action "openAddCharModal"}}>+</button>
+    {{#bs-button type="danger" class="btn-sm" action="deleteShow" value=show}}X{{/bs-button}}
+    {{#bs-button type="success" class="btn-sm" action="openAddCharModal"}}+{{/bs-button}}
   </p>
 </div>
 

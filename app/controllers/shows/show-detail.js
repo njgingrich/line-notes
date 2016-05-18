@@ -3,8 +3,12 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   show: Ember.computed.alias('model'),
   notify: Ember.inject.service('notify'),
+  openModal: false,
 
   actions: {
+    openAddCharModal() {
+      this.set('openModal', true);
+    },
     addChar(show, name) {
       console.log("adding char " + name + " to show " + show);
       let char1 = this.store.createRecord('character', {
@@ -14,6 +18,7 @@ export default Ember.Controller.extend({
       show.get('characters').pushObject(char1);
       show.save();
       this.get('notify').success('Added new character!');
+      this.set('openModal', false);
     },
     addNote(char, page, line, note, error) {
       let newNote = this.store.createRecord('line-note', {

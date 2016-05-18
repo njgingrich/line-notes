@@ -1,4 +1,9 @@
-<h2>{{model.name}}<button class="btn btn-danger" {{action "deleteShow" show}}>X</button></h2>
+<div>
+  <h2>{{model.name}}</h2>
+  <button class="btn btn-danger" {{action "deleteShow" show}}>X</button>
+  <button class="btn btn-success" {{action "openAddCharModal"}}>+</button>
+</div>
+
 <ul>
 {{#each model.characters as |char|}}
     <h3><u>{{char.name}}</u></h3>
@@ -9,4 +14,13 @@
                              class="table table-striped"}}
 {{/each}}
 </ul>
-{{create-character class="create-char" show=model add=(action "addChar" model)}}
+{{#if openModal}}
+  {{#bs-modal title="Add New Character" body=false footer=false}}
+    {{#bs-modal-body}}
+      {{#bs-form action=(action "addChar" model name) model=this}}
+        {{bs-form-element controlType="text" label="Character Name" property="name" autofocus=true}}
+      {{/bs-form}}
+    {{/bs-modal-body}}
+    {{bs-modal-footer closeTitle="Cancel" submitTitle="Add"}}
+  {{/bs-modal}}
+{{/if}}

@@ -40,8 +40,8 @@ export default Ember.Controller.extend({
       char.get('notes').forEach((note) => {
         Ember.run.once(this, () => {
           this.send('deleteNote', char, note);
-        })
-      })
+        });
+      });
     },
     addChar(show, name) {
       console.log("adding char " + name + " to show " + show);

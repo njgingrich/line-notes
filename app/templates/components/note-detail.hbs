@@ -1,11 +1,23 @@
 <td class="col-sm-1">
-  {{bs-input size=3 value=note.page disabled=(not isEditing)}}
+  {{#if isEditing}}
+    {{bs-input size=3 value=note.page}}
+  {{else}}
+    {{note.page}}
+  {{/if}}
 </td>
 <td class="col-sm-4">
-  {{bs-input size=50 value=note.line disabled=(not isEditing)}}
+  {{#if isEditing}}
+    {{bs-input size=50 value=note.line}}
+  {{else}}
+    {{note.line}}
+  {{/if}}
 </td>
 <td class="col-sm-4">
-  {{bs-input size=30 value=note.note disabled=(not isEditing)}}
+  {{#if isEditing}}
+    {{bs-input size=30 value=note.note}}
+  {{else}}
+    {{note.note}}
+  {{/if}}
 </td>
 <td class="col-sm-3">
   {{#bs-button-group type="radio" value=note.error}}

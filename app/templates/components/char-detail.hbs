@@ -1,0 +1,17 @@
+<p>
+  {{#if isEditing}}
+    {{input size=20 value=char.name}}
+  {{else}}
+    <u class="lead">{{char.name}}</u>
+  {{/if}}
+  <button type="button" class={{buttonType}}
+                        {{action "editChar"}}>
+    {{#if isEditing}}Save{{else}}Edit{{/if}}
+  </button>
+</p>
+<button class="btn btn-danger btn-sm" {{action (action deleteChar)}}>X</button>
+{{create-line-note create=attrs.create}}
+{{date-sorted-notes-list char=char notes=char.notes
+                         delete=attrs.deleteNote
+                         edit=attrs.editNote
+                         class="table table-striped"}}

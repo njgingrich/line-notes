@@ -66,6 +66,11 @@ export default Ember.Controller.extend({
       // update the show
       show.save();
     },
+    editChar(char) {
+      if (!this.get('isEditing')) {
+        char.save();
+      }
+    },
     deleteShow(show) {
       console.log('deleting show ' + show.get('name'));
       // delete its characters

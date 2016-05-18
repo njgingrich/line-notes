@@ -8,13 +8,12 @@
 
 <ul>
 {{#each model.characters as |char|}}
-    <u class="lead">{{char.name}}</u>
-    <button class="btn btn-danger btn-sm" {{action "deleteChar" model char}}>X</button>
-    {{create-line-note create=(action "addNote" char)}}
-    {{date-sorted-notes-list char=char notes=char.notes
-                             delete=(action "deleteNote" char)
-                             edit=(action "editNote")
-                             class="table table-striped"}}
+  {{char-detail char=char
+      create=(action "addNote" char)
+      deleteChar=(action "deleteChar" model char)
+      deleteNote=(action "deleteNote" char)
+      editChar=(action "editChar" char)
+      editNote=(action "editNote")}}
 {{/each}}
 </ul>
 {{#if openModal}}

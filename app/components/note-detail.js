@@ -11,6 +11,7 @@ export default Ember.Component.extend({
     }
     return '';
   }),
+  errorTypes: Ember.inject.service('error-types'),
 
   actions: {
     editNote() {

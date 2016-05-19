@@ -29,6 +29,7 @@ export default Ember.Component.extend(Validations, {
     let error = '';
     this._super(...arguments);
   },
+  errorTypes: Ember.inject.service(),
 
   actions: {
     addNote() {

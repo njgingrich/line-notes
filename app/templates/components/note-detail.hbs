@@ -12,7 +12,7 @@
     {{{richTextLine}}}
   {{/if}}
 </td>
-<td class="col-sm-3">
+<!--td class="col-sm-3">
   {{#bs-button-group type="radio" value=note.error}}
     {{#bs-button disabled=(and (not-eq 1 note.error) (not isEditing))
                  active=(eq 1 note.error) value=1}}1{{/bs-button}}
@@ -27,6 +27,15 @@
     {{#bs-button disabled=(and (not-eq 6 note.error) (not isEditing))
                  active=(eq 6 note.error) value=6}}6{{/bs-button}}
   {{/bs-button-group}}
+
+</td-->
+<td class="col-sm-3">
+  {{#each errorTypes.errors as |err index|}}
+    {{#bs-button disabled=(and (not-eq index note.error) (not isEditing))
+               active=(eq index note.error) value=index}}
+      {{err}}
+    {{/bs-button}}
+  {{/each}}
 </td>
 <td class="col-sm-1">
   {{edit-btn isEditing=isEditing submit=(action "editNote")}}

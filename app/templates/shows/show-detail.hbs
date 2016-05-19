@@ -10,7 +10,8 @@
   <div class="col-md-2">
     {{#bs-button-group class="btn-group-vertical"}}
       {{#each sortedChars as |char|}}
-        {{#bs-button type="default" action="selectChar" value=char active=(eq activeChar char)}}
+        {{#bs-button type="default" action="selectChar"
+                     value=char active=(eq activeChar.name char.name)}}
           {{char.name}}
         {{/bs-button}}
       {{/each}}

@@ -6,16 +6,27 @@
   </p>
 </div>
 
-<ul>
-{{#each model.characters as |char|}}
-  {{char-detail char=char
-      create=(action "addNote" char)
-      deleteChar=(action "deleteChar" model char)
-      deleteNote=(action "deleteNote" char)
-      editChar=(action "editChar" char)
-      editNote=(action "editNote")}}
-{{/each}}
-</ul>
+<div class="row">
+  <div class="col-md-2">
+    {{#bs-button-group class="btn-group-vertical"}}
+      {{#each sortedChars as |char|}}
+        {{#bs-button type="default" action="selectChar" value=char}}
+          {{char.name}}
+        {{/bs-button}}
+      {{/each}}
+    {{/bs-button-group}}
+  </div>
+  <div class="col-md-10">
+    {{char-detail char=activeChar
+        create=(action "addNote" char)
+        deleteChar=(action "deleteChar" model char)
+        deleteNote=(action "deleteNote" char)
+        editChar=(action "editChar" char)
+        editNote=(action "editNote")}}
+  </div>
+</div>
+
+
 {{#if openModal}}
   {{#bs-modal title="Add New Character" body=false footer=false closeAction="resetModal"}}
     {{#bs-modal-body}}

@@ -4,6 +4,14 @@ export default Ember.Controller.extend({
   show: Ember.computed.alias('model'),
   notify: Ember.inject.service('notify'),
   openModal: false,
+  activeChar: Ember.computed('sortedChars.@each', function() {
+    let chars = this.get('sortedChars');
+    return chars[0];
+  }),
+  sortedChars: Ember.computed('model.characters', function() {
+    let sorted = this.get('model.characters');
+    return sorted.sortBy('name');
+  }),
 
   actions: {
     openAddCharModal() {
@@ -12,6 +20,9 @@ export default Ember.Controller.extend({
     resetModal() {
       this.set('name', '');
       this.set('openModal', false);
+    },
+    selectChar(char) {
+      this.set('activeChar', char);
     },
     addNote(char, page, line, note, error) {
       let newNote = this.store.createRecord('line-note', {

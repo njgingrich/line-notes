@@ -10,19 +10,21 @@
   <div class="col-md-2">
     {{#bs-button-group class="btn-group-vertical"}}
       {{#each sortedChars as |char|}}
-        {{#bs-button type="default" action="selectChar" value=char}}
+        {{#bs-button type="default" action="selectChar" value=char active=(eq activeChar char)}}
           {{char.name}}
         {{/bs-button}}
       {{/each}}
     {{/bs-button-group}}
   </div>
   <div class="col-md-10">
-    {{char-detail char=activeChar
-        create=(action "addNote" char)
-        deleteChar=(action "deleteChar" model char)
-        deleteNote=(action "deleteNote" char)
-        editChar=(action "editChar" char)
-        editNote=(action "editNote")}}
+    {{#if activeChar}}
+      {{char-detail char=activeChar
+          create=(action "addNote" char)
+          deleteChar=(action "deleteChar" model char)
+          deleteNote=(action "deleteNote" char)
+          editChar=(action "editChar" char)
+          editNote=(action "editNote")}}
+    {{/if}}
   </div>
 </div>
 

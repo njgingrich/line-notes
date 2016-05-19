@@ -4,10 +4,10 @@ export default Ember.Controller.extend({
   show: Ember.computed.alias('model'),
   notify: Ember.inject.service('notify'),
   openModal: false,
-  activeChar: Ember.computed('sortedChars.@each', function() {
+  activeChar: /*Ember.computed('sortedChars.@each', function() {
     let chars = this.get('sortedChars');
     return chars[0];
-  }),
+  }),*/null,
   sortedChars: Ember.computed('model.characters', function() {
     let sorted = this.get('model.characters');
     return sorted.sortBy('name');

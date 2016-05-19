@@ -4,7 +4,7 @@
       {{#link-to 'shows' class="nav-link"}}Root{{/link-to}}
     </li>
     {{#each model as |show|}}
-      {{#link-to 'shows.show-detail' show.name tagName="li"}}
+      {{#link-to 'shows.show-detail' show.id tagName="li"}}
         <a href={{view.href}} class="nav-item">{{show.name}}</a>
       {{/link-to}}
     {{/each}}

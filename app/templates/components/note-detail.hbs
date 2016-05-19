@@ -13,12 +13,14 @@
   {{/if}}
 </td>
 <td class="col-sm-3">
-  {{#each errorTypes.errors as |err index|}}
-    {{#bs-button disabled=(and (not-eq index note.error) (not isEditing))
-               active=(eq index note.error) value=index}}
-      {{err}}
-    {{/bs-button}}
-  {{/each}}
+  {{#bs-button-group type="radio" value=note.error}}
+    {{#each errorTypes.errors as |err index|}}
+      {{#bs-button disabled=(and (not-eq index note.error) (not isEditing))
+                   active=(eq index note.error) value=index}}
+        {{err}}
+      {{/bs-button}}
+    {{/each}}
+  {{/bs-button-group}}
 </td>
 <td class="col-sm-1">
   {{edit-btn isEditing=isEditing submit=(action "editNote")}}

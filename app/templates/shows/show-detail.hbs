@@ -21,9 +21,9 @@
     {{#if activeChar}}
       {{char-detail char=activeChar
           create=(action "addNote" activeChar)
-          deleteChar=(action "deleteChar" model char)
-          deleteNote=(action "deleteNote" char)
-          editChar=(action "editChar" char)
+          deleteChar=(action "deleteChar" model activeChar)
+          deleteNote=(action "deleteNote" activeChar)
+          editChar=(action "editChar" activeCharar)
           editNote=(action "editNote")}}
     {{/if}}
   </div>

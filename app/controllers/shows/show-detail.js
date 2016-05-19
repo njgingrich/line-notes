@@ -44,6 +44,7 @@ export default Ember.Controller.extend({
       note.deleteRecord();
       note.save();
       char.save();
+      this.get('notify').alert('Note deleted!');
     },
     deleteAllNotes(char) {
       char.get('notes').forEach((note) => {
@@ -74,6 +75,7 @@ export default Ember.Controller.extend({
       char.save();
       // update the show
       show.save();
+      this.get('notify').alert('Character deleted!');
     },
     editChar(char) {
       if (!this.get('isEditing')) {
@@ -92,6 +94,7 @@ export default Ember.Controller.extend({
       show.deleteRecord();
       show.save();
       this.transitionToRoute('shows');
+      this.get('notify').alert('Show deleted!');
     }
   }
 });

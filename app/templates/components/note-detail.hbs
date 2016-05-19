@@ -5,14 +5,14 @@
     {{note.page}}
   {{/if}}
 </td>
-<td class="col-sm-6">
+<td class="col-sm-5">
   {{#if isEditing}}
     {{bs-input size=50 value=note.line}}
   {{else}}
     {{{richTextLine}}}
   {{/if}}
 </td>
-<td class="col-sm-3">
+<td class="col-sm-4">
   {{#bs-button-group type="radio" value=note.error}}
     {{#each errorTypes.errors as |err index|}}
       {{#bs-button disabled=(and (not-eq index note.error) (not isEditing))

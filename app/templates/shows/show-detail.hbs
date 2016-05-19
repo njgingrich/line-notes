@@ -20,7 +20,7 @@
   <div class="col-md-10">
     {{#if activeChar}}
       {{char-detail char=activeChar
-          create=(action "addNote" char)
+          create=(action "addNote" activeChar)
           deleteChar=(action "deleteChar" model char)
           deleteNote=(action "deleteNote" char)
           editChar=(action "editChar" char)

@@ -30,6 +30,7 @@ export default Ember.Controller.extend({
         date: new Date()
       });
       newNote.set('character', char);
+      console.log('adding note ' + newNote);
       newNote.save();
       char.save();
       this.get('notify').success('Added new note!');

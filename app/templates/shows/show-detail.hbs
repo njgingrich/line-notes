@@ -8,14 +8,22 @@
 
 <div class="row">
   <div class="col-md-2">
-    {{#bs-button-group class="btn-group-vertical"}}
-      {{#each sortedChars as |char|}}
-        {{#bs-button type="default" action="selectChar"
-                     value=char active=(eq activeChar.name char.name)}}
-          {{char.name}}
-        {{/bs-button}}
-      {{/each}}
-    {{/bs-button-group}}
+    {{#paper-content class="md-whiteframe-z1"}}
+      {{#paper-list}}
+        {{#each sortedChars as |char|}}
+          {{#paper-item class=(concat "blah md-3-line"
+                          (if (eq activeChar.name char.name) " active"))
+                        param=char
+                        action="selectChar"}}
+            <div class="md-list-item-text">
+              <p>
+                {{char.name}}
+              </p>
+            </div>
+          {{/paper-item}}
+        {{/each}}
+      {{/paper-list}}
+    {{/paper-content}}
   </div>
   <div class="col-md-10">
     {{#if activeChar}}
@@ -23,7 +31,7 @@
           create=(action "addNote" activeChar)
           deleteChar=(action "deleteChar" model activeChar)
           deleteNote=(action "deleteNote" activeChar)
-          editChar=(action "editChar" activeCharar)
+          editChar=(action "editChar" activeChar)
           editNote=(action "editNote")}}
     {{/if}}
   </div>

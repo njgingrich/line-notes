@@ -1,14 +1,48 @@
-<p>
+<!--p>
   {{#if isEditing}}
-    {{input size=20 value=char.name}}
+    {{paper-input label="Name" size=20 value=char.name}}
   {{else}}
-    <u class="lead">{{char.name}}</u>
+    <h2>{{char.name}}</h2>
   {{/if}}
-  {{edit-btn isEditing=isEditing submit=(action editChar)}}
-  {{#bs-button type="danger" class="btn-sm" action=(action deleteChar)}}X{{/bs-button}}
-</p>
-{{create-line-note create=attrs.create}}
-{{date-sorted-notes-list char=char notes=char.notes
-                         delete=attrs.deleteNote
-                         edit=attrs.editNote
-                         class="table table-striped"}}
+  {{!edit-btn isEditing=isEditing submit=(action editChar)}}
+  {{#paper-button raised=true action="editChar" icon-button=true}}
+    {{paper-icon "edit" size="sm"}}
+  {{/paper-button}}
+  {{#paper-button raised=true action="deleteChar" icon-button=true}}
+    {{paper-icon "delete" size="sm"}}
+  {{/paper-button}}
+  {{!#bs-button type="danger" class="btn-sm" action=(action deleteChar)}}X{{!/bs-button}}
+</p-->
+
+
+{{#paper-card}}
+  {{#paper-card-content}}
+    {{#if isEditing}}
+      {{paper-input label="Name" size=20 value=char.name}}
+    {{else}}
+      <div>
+        <strong class="char-name">{{char.name}}</strong>
+        <span class="char-icons">
+          {{#paper-button raised=true primary=true center=false
+                          action="editChar" icon-button=true}}
+            {{paper-icon "edit" size="sm"}}
+          {{/paper-button}}
+          {{#paper-button raised=true warn=true
+                          action="deleteChar" icon-button=true}}
+            {{paper-icon "delete" size="sm"}}
+          {{/paper-button}}
+        </span>
+      </div>
+    {{/if}}
+    <p>
+      {{create-line-note create=attrs.create}}
+      {{date-sorted-notes-list char=char notes=char.notes
+                               delete=attrs.deleteNote
+                               edit=attrs.editNote
+                               class="table table-striped"}}
+    </p>
+  {{/paper-card-content}}
+  <div class="md-actions" layout="row" layout-align="end center">
+
+  </div>
+{{/paper-card}}

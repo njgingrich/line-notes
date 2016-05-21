@@ -11,7 +11,7 @@
     {{#paper-content class="md-whiteframe-z1"}}
       {{#paper-list}}
         {{#each sortedChars as |char|}}
-          {{#paper-item class=(concat "blah md-3-line"
+          {{#paper-item class=(concat "md-3-line"
                           (if (eq activeChar.name char.name) " active"))
                         param=char
                         action="selectChar"}}
@@ -20,6 +20,20 @@
                 {{char.name}}
               </p>
             </div>
+            {{#paper-menu as |menu|}}
+              {{#paper-button target=menu action="toggleMenu" icon-button=true}}
+                  {{paper-icon "more-vert" class="md-menu-origin"}}
+              {{/paper-button}}
+            {{else}}
+              {{#paper-menu-item action="editChar" param=char}}
+                {{paper-icon "edit" class="md-menu-align-target"}}
+                <span>Edit</span>
+              {{/paper-menu-item}}
+              {{#paper-menu-item action="deleteChar" param=char}}
+                {{paper-icon "delete" class="md-menu-align-target"}}
+                <span>Delete</span>
+              {{/paper-menu-item}}
+            {{/paper-menu}}
           {{/paper-item}}
         {{/each}}
       {{/paper-list}}
@@ -28,6 +42,7 @@
   <div class="col-md-10">
     {{#if activeChar}}
       {{char-detail char=activeChar
+          isEditing=isEditing
           create=(action "addNote" activeChar)
           deleteChar=(action "deleteChar" model activeChar)
           deleteNote=(action "deleteNote" activeChar)

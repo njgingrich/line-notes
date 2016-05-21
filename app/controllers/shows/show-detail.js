@@ -67,7 +67,8 @@ export default Ember.Controller.extend({
       this.set('name', '');
       this.set('openModal', false);
     },
-    deleteChar(show, char) {
+    deleteChar(char) {
+      let show = this.get('show');
       console.log('deleting char ' + char.get('name') + ' from show ' + show.get('name'));
       // first delete their notes
       this.send('deleteAllNotes', char);
@@ -78,6 +79,8 @@ export default Ember.Controller.extend({
       this.get('notify').alert('Character deleted!');
     },
     editChar(char) {
+      this.set('activeChar', char);
+      this.toggleProperty('isEditing');
       if (!this.get('isEditing')) {
         char.save();
       }

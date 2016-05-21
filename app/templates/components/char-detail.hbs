@@ -18,10 +18,10 @@
 {{#paper-card}}
   {{#paper-card-content}}
     {{#if isEditing}}
-      {{paper-input label="Name" size=20 value=char.name event-enter=(action editChar)}}
+      {{paper-input label="Name" size=20 value=char.2name event-enter=(action editChar)}}
     {{else}}
       <div>
-        <strong class="char-name">{{char.name}}</strong>
+        <strong class="md-display-1">{{char.name}}</strong>
       </div>
     {{/if}}
     <p>

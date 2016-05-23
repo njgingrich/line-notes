@@ -1,35 +1,34 @@
-<!--p>
-  {{#if isEditing}}
-    {{paper-input label="Name" size=20 value=char.name}}
-  {{else}}
-    <h2>{{char.name}}</h2>
-  {{/if}}
-  {{!edit-btn isEditing=isEditing submit=(action editChar)}}
-  {{#paper-button raised=true action="editChar" icon-button=true}}
-    {{paper-icon "edit" size="sm"}}
-  {{/paper-button}}
-  {{#paper-button raised=true action="deleteChar" icon-button=true}}
-    {{paper-icon "delete" size="sm"}}
-  {{/paper-button}}
-  {{!#bs-button type="danger" class="btn-sm" action=(action deleteChar)}}X{{!/bs-button}}
-</p-->
-
-
 {{#paper-card}}
-  {{#paper-card-content}}
-    {{#if isEditing}}
-      {{paper-input label="Name" size=20 value=char.2name event-enter=(action editChar)}}
-    {{else}}
-      <div>
+  {{#paper-card-title}}
+    {{#paper-card-title-text}}
+      {{#if isEditing}}
+        {{paper-input label="Name" size=20 value=char.2name event-enter=(action editChar)}}
+      {{else}}
         <strong class="md-display-1">{{char.name}}</strong>
-      </div>
-    {{/if}}
-    <p>
-      {{create-line-note create=attrs.create}}
-      {{date-sorted-notes-list char=char notes=char.notes
-                               delete=attrs.deleteNote
-                               edit=attrs.editNote
-                               class="table table-striped"}}
-    </p>
+      {{/if}}
+    {{/paper-card-title-text}}
+    {{#paper-button icon-button=true raised=true action="openAddNoteModal"}}
+      {{paper-icon icon="add"}}
+    {{/paper-button}}
+  {{/paper-card-title}}
+  {{#paper-card-content}}
+    {{date-sorted-notes-list char=char notes=char.notes
+        delete=attrs.deleteNote
+        edit=attrs.editNote
+        class="table table-striped"}}
+
   {{/paper-card-content}}
 {{/paper-card}}
+
+
+
+{{#if openModal}}
+  {{#bs-modal title="Add Line Note" body=false footer=false closeAction="resetModal"}}
+    {{#bs-modal-body}}
+      {{#bs-form action=(action create) model=this}}
+        {{create-line-note create=attrs.create}}
+      {{/bs-form}}
+    {{/bs-modal-body}}
+    {{bs-modal-footer closeTitle="Cancel" submitTitle="Add"}}
+  {{/bs-modal}}
+{{/if}}

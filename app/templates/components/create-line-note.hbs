@@ -1,16 +1,19 @@
-{{#bs-form class="form-inline"}}
-  {{bs-input size=3 value=page placeholder="Page"}}
-  {{bs-input size=50 value=line placeholder="Line"}}
-  {{bs-input size=30 value=note placeholder="Note"}}
-  {{#bs-button-group type="radio" value=error}}
-    {{#each errorTypes.errors as |err index|}}
-      {{#bs-button active=(eq index error) value=index}}
-        {{err}}
-      {{/bs-button}}
-    {{/each}}
-  {{/bs-button-group}}
-  <!--
-  {{#bs-button action="addNote" type="success"
-               disabled=(v-get this 'isInvalid')}}Create{{/bs-button}}
-             -->
-{{/bs-form}}
+{{#if open}}
+  {{#bs-modal title="Add Line Note" body=false footer=false closeAction=attrs.close}}
+    {{#bs-modal-body}}
+      {{#bs-form action=(action "addNote") class="form-inline"}}
+        {{bs-input size=3 value=page placeholder="Page"}}
+        {{bs-input size=50 value=line placeholder="Line"}}
+        {{bs-input size=30 value=note placeholder="Note"}}
+        {{#bs-button-group type="radio" value=error}}
+          {{#each errorTypes.errors as |err index|}}
+            {{#bs-button active=(eq index error) value=index}}
+              {{err}}
+            {{/bs-button}}
+          {{/each}}
+        {{/bs-button-group}}
+      {{/bs-form}}
+    {{/bs-modal-body}}
+    {{bs-modal-footer closeTitle="Cancel" submitTitle="Add"}}
+  {{/bs-modal}}
+{{/if}}

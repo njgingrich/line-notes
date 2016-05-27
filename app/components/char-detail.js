@@ -5,12 +5,8 @@ export default Ember.Component.extend({
   openModal: false,
 
   actions: {
-    openAddNoteModal() {
-      this.set('openModal', true);
-    },
-    resetModal() {
-      this.set('name', '');
-      this.set('openModal', false);
+    toggleAddNoteModal() {
+      this.toggleProperty('openModal');
     },
     editChar() {
       console.log("key press submit");

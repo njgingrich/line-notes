@@ -30,6 +30,7 @@ export default Ember.Component.extend(Validations, {
     this._super(...arguments);
   },
   errorTypes: Ember.inject.service(),
+  open: false,
 
   actions: {
     addNote() {
@@ -39,6 +40,7 @@ export default Ember.Component.extend(Validations, {
       this.set('line', '');
       this.set('note', '');
       this.set('error', 0);
+      this.attrs.close();
     }
   }
 });

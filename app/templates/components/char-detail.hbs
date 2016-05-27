@@ -7,7 +7,7 @@
         <strong class="md-display-1">{{char.name}}</strong>
       {{/if}}
     {{/paper-card-title-text}}
-    {{#paper-button icon-button=true raised=true action="openAddNoteModal"}}
+    {{#paper-button icon-button=true raised=true action="toggleAddNoteModal"}}
       {{paper-icon icon="add"}}
     {{/paper-button}}
   {{/paper-card-title}}
@@ -20,15 +20,6 @@
   {{/paper-card-content}}
 {{/paper-card}}
 
-
-
-{{#if openModal}}
-  {{#bs-modal title="Add Line Note" body=false footer=false closeAction="resetModal"}}
-    {{#bs-modal-body}}
-      {{#bs-form action=(action create) model=this}}
-        {{create-line-note create=attrs.create}}
-      {{/bs-form}}
-    {{/bs-modal-body}}
-    {{bs-modal-footer closeTitle="Cancel" submitTitle="Add"}}
-  {{/bs-modal}}
-{{/if}}
+{{create-line-note open=openModal
+                   create=attrs.create
+                   close=(action "toggleAddNoteModal")}}

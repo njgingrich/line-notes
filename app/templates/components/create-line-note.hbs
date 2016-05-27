@@ -3,7 +3,7 @@
     {{#bs-modal-body}}
       {{#bs-form action=(action "addNote")}}
         <div layout layout-sm="column">
-          {{paper-input type="text" attr-size=4 value=page label="Page"}}
+          {{paper-input type="text" attr-size=4 value=page label="Page" autofocus=true}}
           {{paper-input type="text" attr-size=60 value=line label="Line"}}
         </div>
         {{paper-input type="text" value=note label="Note"}}
@@ -14,8 +14,10 @@
       {{/bs-form}}
     {{/bs-modal-body}}
     {{#bs-modal-footer as |footer|}}
-     {{#paper-button raised=true}}Cancel{{/paper-button}}
-     {{#paper-button raised=true
+      {{#paper-button raised=true action=attrs.close}}
+        Cancel
+      {{/paper-button}}
+      {{#paper-button raised=true
                   type="primary"
                   disabled=(v-get this 'isInvalid')}}Add{{/paper-button}}
    {{/bs-modal-footer}}

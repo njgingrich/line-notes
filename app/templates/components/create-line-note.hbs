@@ -1,10 +1,10 @@
 {{#if open}}
   {{#bs-modal title="Add Line Note" body=false footer=false closeAction=attrs.close}}
     {{#bs-modal-body}}
-      {{#bs-form action=(action "addNote") class="form-inline"}}
-        {{bs-input size=3 value=page placeholder="Page"}}
-        {{bs-input size=50 value=line placeholder="Line"}}
-        {{bs-input size=30 value=note placeholder="Note"}}
+      {{#bs-form action=(action "addNote")}}
+        {{paper-input attr-size=3 value=page label="Page"}}
+        {{paper-input attr-size=50 value=line label="Line"}}
+        {{paper-input attr-size=30 value=note label="Note"}}
         {{#bs-button-group type="radio" value=error}}
           {{#each errorTypes.errors as |err index|}}
             {{#bs-button active=(eq index error) value=index}}

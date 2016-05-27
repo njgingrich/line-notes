@@ -6,6 +6,9 @@
         {{show.name}}
       {{/paper-button}}
     {{/each}}
+    {{#paper-button action=(action "openAddShowModal")}}
+      {{paper-icon "add"}}
+    {{/paper-button}}
   </div>
 {{/paper-toolbar}}
 {{outlet}}

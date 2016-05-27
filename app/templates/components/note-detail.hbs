@@ -1,30 +1,40 @@
 <td class="col-sm-1">
   {{#if isEditing}}
-    {{bs-input size=3 value=note.page}}
+    <div layout layout-sm="column">
+      {{paper-input attr-size=3 value=note.page}}
+    </div>
   {{else}}
     {{note.page}}
   {{/if}}
 </td>
-<td class="col-sm-5">
+<td class="col-sm-7">
   {{#if isEditing}}
-    {{bs-input size=50 value=note.line}}
+    <div layout layout-sm="column">
+      {{paper-input attr-size=50 value=note.line}}
+    </div>
   {{else}}
     {{{richTextLine}}}
   {{/if}}
 </td>
-<td class="col-sm-4">
-  {{#bs-button-group type="radio" value=note.error}}
-    {{#each errorTypes.errors as |err index|}}
-      {{#bs-button disabled=(and (not-eq index note.error) (not isEditing))
-                   active=(eq index note.error) value=index}}
-        {{err}}
-      {{/bs-button}}
-    {{/each}}
-  {{/bs-button-group}}
+<td class="col-sm-2">
+  {{#if isEditing}}
+    {{#paper-select placeholder="Error" model=note.error}}
+      {{#each errorTypes.errors as |err index|}}
+        {{#paper-option value=index}}
+          {{capitalize err}}
+        {{/paper-option}}
+      {{/each}}
+    {{/paper-select}}
+  {{else}}
+    {{error-str note.error}}
+  {{/if}}
+
 </td>
 <td class="col-sm-1">
-  {{edit-btn isEditing=isEditing submit=(action "editNote")}}
+  {{paper-switch checked=isEditing onChange="editNote" type="primary"}}
 </td>
 <td class="col-sm-1">
-  {{#bs-button type="danger" class="btn-sm" action=(action delete note)}}X{{/bs-button}}
+  {{#paper-button warn=true raised=true action=(action delete note) icon-button=true}}
+    {{paper-icon "delete"}}
+  {{/paper-button}}
 </td>

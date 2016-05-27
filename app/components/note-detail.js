@@ -19,6 +19,9 @@ export default Ember.Component.extend({
     return '';
   }),
   errorTypes: Ember.inject.service('error-types'),
+  testFunction(model) {
+    console.log("item callback");
+  },
 
   actions: {
     editNote() {

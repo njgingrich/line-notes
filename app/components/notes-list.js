@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   init() {
     this._super(...arguments);
-    this.sortedNotes = undefined;
+    this.sortedNotes = [];
   },
   didReceiveAttrs() {
     this._super(...arguments);

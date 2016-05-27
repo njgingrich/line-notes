@@ -26,7 +26,7 @@ export default Ember.Component.extend(Validations, {
     let page = '';
     let line = '';
     let note = '';
-    let error = 0;
+    let error = -1;
     this._super(...arguments);
   },
   errorTypes: Ember.inject.service(),
@@ -39,7 +39,7 @@ export default Ember.Component.extend(Validations, {
       this.set('page', '');
       this.set('line', '');
       this.set('note', '');
-      this.set('error', 0);
+      this.set('error', -1);
       this.attrs.close();
     }
   }

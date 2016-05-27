@@ -2,7 +2,7 @@
   {{#paper-card-title}}
     {{#paper-card-title-text}}
       {{#if isEditing}}
-        {{paper-input label="Name" size=20 value=char.2name event-enter=(action editChar)}}
+        {{paper-input label="Name" size=20 value=char.name event-enter=(action editChar)}}
       {{else}}
         <strong class="md-display-1">{{char.name}}</strong>
       {{/if}}

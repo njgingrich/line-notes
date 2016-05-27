@@ -1,3 +1,19 @@
+{{#light-table table as |t|}}
+  {{t.head}}
+
+  {{#t.body as |body|}}
+    {{#body.expanded-row as |row|}}
+      Test {{row.page}}
+    {{/body.expanded-row}}
+
+    {{#if table.isEmpty}}
+      {{#body.no-data}}
+        No data.
+      {{/body.no-data}}
+    {{/if}}
+  {{/t.body}}
+{{/light-table}}
+<!--
 <thead>
   <tr>
     <th class="col-sm-1">Page</th>
@@ -12,3 +28,4 @@
     {{note-detail note=note edit=attrs.edit delete=attrs.delete}}
   {{/each}}
 </tbody>
+-->

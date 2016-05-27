@@ -38,6 +38,7 @@
     "ember-cp-validations": "2.8.0",
     "ember-data": "^2.5.0",
     "ember-export-application-global": "^1.0.5",
+    "ember-light-table": "1.0.0-beta.3",
     "ember-load-initializers": "^0.5.1",
     "ember-localstorage-adapter": "1.0.0-rc.1",
     "ember-notify": "5.0.4",

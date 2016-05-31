@@ -9,5 +9,7 @@ export default Ember.Component.extend({
     this._super(...arguments);
     this.set('sortedNotes', this.get('notes').sortBy('page'));
   },
+  sortedNotes: null,
+  noNotes: Ember.computed.empty('sortedNotes'),
   tagName: 'table'
 });

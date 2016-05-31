@@ -1,14 +1,18 @@
-<thead>
-  <tr>
-    <th class="col-sm-1">Page</th>
-    <th class="col-sm-5">Line</th>
-    <th class="col-sm-4">Error</th>
-    <th class="col-sm-1"></th>
-    <th class="col-sm-1"></th>
-  </tr>
-</thead>
-<tbody>
-  {{#each sortedNotes as |note|}}
-    {{note-detail note=note edit=attrs.edit delete=attrs.delete}}
-  {{/each}}
-</tbody>
+{{#if noNotes}}
+  No notes found.
+{{else}}
+  <thead>
+    <tr>
+      <th class="col-sm-1">Page</th>
+      <th class="col-sm-5">Line</th>
+      <th class="col-sm-4">Error</th>
+      <th class="col-sm-1"></th>
+      <th class="col-sm-1"></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each sortedNotes as |note|}}
+      {{note-detail note=note edit=attrs.edit delete=attrs.delete}}
+    {{/each}}
+  </tbody>
+{{/if}}

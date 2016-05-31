@@ -12,7 +12,7 @@
     {{/paper-button}}
   {{/paper-card-title}}
   {{#paper-card-content}}
-    {{notes-list char=char notes=char.notes
+    {{date-sorted-notes-list char=char notes=char.notes
         delete=attrs.deleteNote
         edit=attrs.editNote
         class="table table-striped"}}

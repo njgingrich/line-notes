@@ -2,14 +2,17 @@
   <p class="md-display-2 text-center">
     {{model.name}}
     {{#bs-button type="danger" class="btn-sm" action="deleteShow" value=show}}X{{/bs-button}}
-    {{#bs-button type="success" class="btn-sm" action="openAddCharModal"}}+{{/bs-button}}
   </p>
 </div>
 
 <div class="row">
-  <div class="col-md-2">
+  <div class="col-md-3">
     {{#paper-content class="md-whiteframe-z1 md-margin"}}
       {{#paper-list}}
+        {{#paper-item}}
+          {{paper-input attr-size=24 value=newCharName
+            label="New" event-enter=(action "addChar")}}
+        {{/paper-item}}
         {{#each sortedChars as |char|}}
           {{#paper-item class=(concat "md-3-line"
                           (if (eq activeChar.name char.name) " active"))
@@ -39,7 +42,7 @@
       {{/paper-list}}
     {{/paper-content}}
   </div>
-  <div class="col-md-10">
+  <div class="col-md-9">
     {{#if activeChar}}
       {{char-detail char=activeChar
           isEditing=isEditing
@@ -51,15 +54,3 @@
     {{/if}}
   </div>
 </div>
-
-
-{{#if openModal}}
-  {{#bs-modal title="Add New Character" body=false footer=false closeAction="resetModal"}}
-    {{#bs-modal-body}}
-      {{#bs-form action=(action "addChar" model name) model=this}}
-        {{bs-form-element controlType="text" label="Character Name" property="name" autofocus=true}}
-      {{/bs-form}}
-    {{/bs-modal-body}}
-    {{bs-modal-footer closeTitle="Cancel" submitTitle="Add"}}
-  {{/bs-modal}}
-{{/if}}

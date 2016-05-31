@@ -3,21 +3,14 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   show: Ember.computed.alias('model'),
   notify: Ember.inject.service('notify'),
-  openModal: false,
   activeChar: null,
+  newCharName: '',
   sortedChars: Ember.computed('model.characters', function() {
     let sorted = this.get('model.characters');
     return sorted.sortBy('name');
   }),
 
   actions: {
-    openAddCharModal() {
-      this.set('openModal', true);
-    },
-    resetModal() {
-      this.set('name', '');
-      this.set('openModal', false);
-    },
     selectChar(char) {
       this.set('activeChar', char);
     },
@@ -53,7 +46,9 @@ export default Ember.Controller.extend({
         });
       });
     },
-    addChar(show, name) {
+    addChar() {
+      let name = this.get('newCharName');
+      let show = this.get('show');
       console.log("adding char " + name + " to show " + show);
       let char1 = this.store.createRecord('character', {
         name: name
@@ -63,9 +58,8 @@ export default Ember.Controller.extend({
       show.save();
       this.get('notify').success('Added new character!');
 
-      // reset the modal
-      this.set('name', '');
-      this.set('openModal', false);
+      // reset the input
+      this.set('newCharName', '');
     },
     deleteChar(char) {
       let show = this.get('show');

@@ -1,7 +1,7 @@
 <td class="col-sm-1">
   {{#if isEditing}}
     <div layout layout-sm="column">
-      {{paper-input attr-size=3 value=note.page}}
+      {{paper-input attr-size=2 value=note.page}}
     </div>
   {{else}}
     {{note.page}}
@@ -10,7 +10,7 @@
 <td class="col-sm-7">
   {{#if isEditing}}
     <div layout layout-sm="column">
-      {{paper-input attr-size=50 value=note.line}}
+      {{paper-input attr-size=36 value=note.line}}
     </div>
   {{else}}
     {{{richTextLine}}}

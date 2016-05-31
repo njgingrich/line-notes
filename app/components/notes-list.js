@@ -8,17 +8,14 @@ export default Ember.Component.extend({
   columns: Ember.computed(function() {
     return[{
       label: 'Page',
-      valuePath: 'page',
       width: '40px',
       sortable: true
     }, {
       label: 'Line',
-      valuePath: 'line',
       width: '400px',
       sortable: false
     }, {
       label: 'Error',
-      valuePath: 'error',
       width: '200px',
       sortable: true
     }, {
@@ -34,9 +31,8 @@ export default Ember.Component.extend({
 
   init() {
     this._super(...arguments);
-    this.set('table', new Table(this.get('columns'), this.get('notes')));
-    console.log("notes: ");
     console.log(this.get('notes'));
+    this.set('table', new Table(this.get('columns'), this.get('notes')));
   },
 
   fetchRows() {

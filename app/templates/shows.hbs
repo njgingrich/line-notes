@@ -1,6 +1,8 @@
 {{#paper-toolbar}}
   <div class="md-toolbar-tools">
-    {{#paper-button action=(transition-to 'shows')}}Home{{/paper-button}}
+    {{#link-to 'shows'}}
+      {{paper-button label='Home'}}
+    {{/link-to}}
     {{#each model as |show|}}
       {{#link-to 'shows.show-detail' show.id}}
         {{paper-button label=show.name}}

@@ -31,6 +31,7 @@ export default Ember.Controller.extend({
     },
     editNote(note) {
       console.log('editing note ' + note);
+      console.log('error: ' + note.get('error'));
       note.save();
     },
     deleteNote(char, note) {

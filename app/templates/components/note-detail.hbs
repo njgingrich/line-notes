@@ -20,7 +20,8 @@
 </td>
 <td class="col-sm-2">
   {{#if isEditing}}
-    {{#paper-select placeholder="Error" model=note.error}}
+    {{#paper-select value=note.error
+                    onChange=(action (mut note.error))}}
       {{#each errorTypes.errors as |err index|}}
         {{#paper-option value=index}}
           {{capitalize err}}
@@ -33,7 +34,7 @@
 
 </td>
 <td class="col-sm-1">
-  {{paper-switch checked=isEditing onChange="editNote" type="primary"}}
+  {{paper-switch value=isEditing onChange=(action "editNote")}}
 </td>
 <td class="col-sm-1">
   {{#paper-button warn=true raised=true mini=true

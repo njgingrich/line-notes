@@ -5,7 +5,10 @@
         {{#paper-item class="md-2-line"}}
           {{paper-input attr-size=30 value=newCharName
                         onChange=(action (mut newCharName))
-                        label="New" onKeyDown=(action "addChar")}}
+                        label="New"}}
+          {{#paper-button onClick=(action "addChar") mini=true icon-button=true}}
+            {{paper-icon "add"}}
+          {{/paper-button}}
         {{/paper-item}}
         {{#each sortedChars as |char|}}
           {{#paper-item class="md-2-line"
@@ -23,11 +26,11 @@
                   {{paper-icon "more-vert" class="md-menu-origin"}}
               {{/paper-button}}
             {{else}}
-              {{#paper-menu-item action="editChar" param=char}}
+              {{#paper-menu-item onClick=(action "editChar" char)}}
                 {{paper-icon "edit" class="md-menu-align-target"}}
                 <span>Edit</span>
               {{/paper-menu-item}}
-              {{#paper-menu-item action="deleteChar" param=char}}
+              {{#paper-menu-item onClick=(action "deleteChar" char)}}
                 {{paper-icon "delete" class="md-menu-align-target"}}
                 <span>Delete</span>
               {{/paper-menu-item}}

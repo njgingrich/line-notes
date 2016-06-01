@@ -2,10 +2,12 @@
   {{#paper-card-title}}
     {{#paper-card-title-text}}
       {{#if isEditing}}
-        {{paper-input label="Name" size=20
+        {{paper-input label="Name" attr-size=30
                       value=char.name
-                      onChange=(action (mut char.name))
-                      onKeyDown=(action editChar)}}
+                      onChange=(action (mut char.name))}}
+        {{#paper-button mini=true icon-button=true onClick=(action editChar)}}
+          {{paper-icon "edit"}}
+        {{/paper-button}}
       {{else}}
         <strong class="md-display-1">{{char.name}}</strong>
       {{/if}}

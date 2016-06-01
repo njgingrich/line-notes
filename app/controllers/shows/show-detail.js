@@ -13,6 +13,7 @@ export default Ember.Controller.extend({
   actions: {
     selectChar(char) {
       this.set('activeChar', char);
+      window.scrollTo(0,0);
       console.log("selecting " + char);
     },
     addNote(char, page, line, note, error) {

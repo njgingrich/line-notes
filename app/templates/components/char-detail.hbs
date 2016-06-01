@@ -2,12 +2,16 @@
   {{#paper-card-title}}
     {{#paper-card-title-text}}
       {{#if isEditing}}
-        {{paper-input label="Name" size=20 value=char.name event-enter=(action editChar)}}
+        {{paper-input label="Name" size=20
+                      value=char.name
+                      onChange=(action (mut char.name))
+                      onKeyDown=(action editChar)}}
       {{else}}
         <strong class="md-display-1">{{char.name}}</strong>
       {{/if}}
     {{/paper-card-title-text}}
-    {{#paper-button icon-button=true raised=true action="toggleAddNoteModal"}}
+    {{#paper-button icon-button=true raised=true fab=true
+                    onClick=(action "toggleAddNoteModal")}}
       {{paper-icon icon="add"}}
     {{/paper-button}}
   {{/paper-card-title}}
@@ -19,7 +23,6 @@
 
   {{/paper-card-content}}
 {{/paper-card}}
-
 {{create-line-note open=openModal
                    create=attrs.create
                    close=(action "toggleAddNoteModal")}}

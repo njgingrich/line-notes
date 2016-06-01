@@ -13,6 +13,7 @@ export default Ember.Controller.extend({
   actions: {
     selectChar(char) {
       this.set('activeChar', char);
+      console.log("selecting " + char);
     },
     addNote(char, page, line, note, error) {
       let newNote = this.store.createRecord('line-note', {

@@ -2,22 +2,24 @@
   <div class="col-md-3">
     {{#paper-content class="md-whiteframe-z1 md-margin"}}
       {{#paper-list}}
-        {{#paper-item}}
-          {{paper-input attr-size=24 value=newCharName
-            label="New" event-enter=(action "addChar")}}
+        {{#paper-item class="md-2-line"}}
+          {{paper-input attr-size=30 value=newCharName
+                        onChange=(action (mut newCharName))
+                        label="New" onKeyDown=(action "addChar")}}
         {{/paper-item}}
         {{#each sortedChars as |char|}}
-          {{#paper-item class=(concat "md-3-line"
-                          (if (eq activeChar.name char.name) " active"))
+          {{#paper-item class="md-2-line"
                         param=char
-                        action="selectChar"}}
+                        onClick=(action "selectChar" char)}}
             <div class="md-list-item-text">
               <p>
                 {{char.name}}
               </p>
             </div>
             {{#paper-menu as |menu|}}
-              {{#paper-button target=menu action="toggleMenu" icon-button=true}}
+              {{#paper-button onClick=(action "toggleMenu" target=menu)
+                              icon-button=true
+                              class="md-secondary"}}
                   {{paper-icon "more-vert" class="md-menu-origin"}}
               {{/paper-button}}
             {{else}}

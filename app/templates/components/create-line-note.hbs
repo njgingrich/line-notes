@@ -3,10 +3,16 @@
     {{#bs-modal-body}}
       {{#bs-form action=(action "addNote")}}
         <div layout layout-sm="column">
-          {{paper-input type="text" attr-size=4 value=page label="Page" autofocus=true}}
-          {{paper-input type="text" attr-size=60 value=line label="Line"}}
+          {{paper-input type="text" attr-size=4 value=page
+                        onChange=(action (mut page))
+                        label="Page" autofocus=true}}
+          {{paper-input type="text" attr-size=60 value=line
+                        onChange=(action (mut line))
+                        label="Line"}}
         </div>
-        {{paper-input type="text" value=note label="Note"}}
+        {{paper-input type="text" value=note
+                      onChange=(action (mut note))
+                      label="Note"}}
 
         {{#each errorTypes.errors as |err index|}}
           {{#paper-radio value=index selected=error}}{{capitalize err}}{{/paper-radio}}

@@ -1,7 +1,8 @@
 <td class="col-sm-1">
   {{#if isEditing}}
     <div layout layout-sm="column">
-      {{paper-input attr-size=2 value=note.page}}
+      {{paper-input attr-size=2 value=note.page
+                    onChange=(action (mut page))}}
     </div>
   {{else}}
     {{note.page}}
@@ -10,7 +11,8 @@
 <td class="col-sm-7">
   {{#if isEditing}}
     <div layout layout-sm="column">
-      {{paper-input attr-size=36 value=note.line}}
+      {{paper-input attr-size=36 value=note.line
+                    onChange=(action (mut line))}}
     </div>
   {{else}}
     {{{richTextLine}}}
@@ -34,7 +36,8 @@
   {{paper-switch checked=isEditing onChange="editNote" type="primary"}}
 </td>
 <td class="col-sm-1">
-  {{#paper-button warn=true raised=true action=(action delete note) icon-button=true}}
+  {{#paper-button warn=true raised=true mini=true
+                  onChange=(action delete note) icon-button=true}}
     {{paper-icon "delete"}}
   {{/paper-button}}
 </td>

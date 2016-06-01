@@ -3,3 +3,7 @@
 a.active {
   background-color: color($foreground-light, '3');
 }
+
+.show-list-footer:hover {
+  background-color: color($foreground-dark, '3');
+}

@@ -2,10 +2,12 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   openModal: false,
+  newShowName: '',
 
   actions: {
-    openAddShowModal() {
-      this.set('openModal', true);
+    toggleAddShowModal() {
+      this.set('newShowName', '');
+      this.toggleProperty('openModal');
     },
     createShow(name) {
       console.log(name);

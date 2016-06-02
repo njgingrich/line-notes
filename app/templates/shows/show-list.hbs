@@ -4,14 +4,14 @@
                      md-gutter="12px" md-gutter-gt-sm="8px"}}
 
   {{#each model as |show|}}
+  {{#link-to 'shows.show-detail' show.id}}
     {{#paper-grid-tile class="gray" md-rowspan="3" md-colspan="2" md-colspan-sm="1"}}
       <img src="assets/images/default.png" class="img-responsive show-list-img"/>
-      {{#link-to 'shows.show-detail' show.id}}
-        {{#paper-grid-tile-footer class="show-list-footer"}}
-          <h3>{{show.name}}</h3>
-        {{/paper-grid-tile-footer}}
-      {{/link-to}}
+      {{#paper-grid-tile-footer class="show-list-footer"}}
+        <h3>{{show.name}}</h3>
+      {{/paper-grid-tile-footer}}
     {{/paper-grid-tile}}
+  {{/link-to}}
   {{/each}}
 
   {{/paper-grid-list}}

@@ -1,10 +1,6 @@
 {{#paper-card as |card|}}
   {{#card.title as |title|}}
     {{#title.text as |text|}}
-    <!--
-      {{#text.headline}}Card with block{{/text.headline}}
-      {{#text.subhead}}Extra large{{/text.subhead}}
-    -->
       {{#text.headline}}
         {{#if isEditing}}
           {{paper-input attr-size=30 value=char.name
@@ -35,7 +31,6 @@
     {{/card.actions}}
   {{/card.content}}
 {{/paper-card}}
-
 
 {{create-line-note open=openModal
                    create=attrs.create

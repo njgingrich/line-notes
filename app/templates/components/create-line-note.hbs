@@ -1,31 +1,29 @@
 {{#if open}}
-  {{#bs-modal title="Add Line Note" body=false footer=false closeAction=attrs.close}}
-    {{#bs-modal-body}}
-      {{#bs-form}}
-        <div layout layout-sm="column">
-          {{paper-input type="text" attr-size=4 value=page
-                        onChange=(action (mut page))
-                        label="Page" autofocus=true}}
-          {{paper-input type="text" attr-size=60 value=line
-                        onChange=(action (mut line))
-                        label="Line"}}
-        </div>
-        {{paper-input type="text" value=note
-                      onChange=(action (mut note))
-                      label="Note"}}
+  {{#paper-dialog onClose=(action close)}}
+    {{#paper-dialog-content}}
+      <h2 class="md-title">Add Line Note</h2>
+      <div layout="" layout-sm="column">
+        {{paper-input placeholder="Page" autofocus=true flex=15
+                    value=page onChange=(action (mut page))}}
+        {{paper-input placeholder="Note" value=note flex=85
+                      onChange=(action (mut note))}}
+      </div>
+      <div layout="" layout-sm="column">
+        {{paper-input placeholder="Line" value=line flex=100
+        onChange=(action (mut line))}}
+      </div>
 
-        {{#paper-radio-group groupValue=error onChange=(action (mut error)) as |group|}}
-          {{#each errorTypes.errors as |err index|}}
-            {{#group.paper-radio value=index}}
-              {{capitalize err}}
-            {{/group.paper-radio}}
-          {{/each}}
-        {{/paper-radio-group}}
+      {{#paper-radio-group groupValue=error onChange=(action (mut error)) as |group|}}
+        {{#each errorTypes.errors as |err index|}}
+          {{#group.paper-radio value=index}}
+            {{capitalize err}}
+          {{/group.paper-radio}}
+        {{/each}}
+      {{/paper-radio-group}}
+    {{/paper-dialog-content}}
 
-
-      {{/bs-form}}
-    {{/bs-modal-body}}
-    {{#bs-modal-footer as |footer|}}
+    {{#paper-dialog-actions class="layout-row"}}
+      <span class="flex"></span>
       {{#paper-button raised=true onClick=(action attrs.close)}}
         Cancel
       {{/paper-button}}
@@ -33,6 +31,6 @@
                   primary=true
                   disabled=(v-get this 'isInvalid')
                   onClick=(action "addNote")}}Add{{/paper-button}}
-   {{/bs-modal-footer}}
-  {{/bs-modal}}
+    {{/paper-dialog-actions}}
+  {{/paper-dialog}}
 {{/if}}

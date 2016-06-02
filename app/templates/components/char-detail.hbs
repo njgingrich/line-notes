@@ -14,10 +14,11 @@
 
   {{#card.content class="layout-row layout-align-space-between"}}
     {{#card.media}}
-      {{notes-list char=char notes=char.notes
-          delete=attrs.deleteNote
-          edit=attrs.editNote
-          class="table table-striped"}}
+      {{#paper-content}}
+        {{notes-list char=char notes=char.notes
+            delete=attrs.deleteNote
+            edit=attrs.editNote}}
+      {{/paper-content}}
     {{/card.media}}
     {{#card.actions class="layout-column notes-card-bg"}}
       {{#paper-button iconButton=true onClick=(action "toggleAddNoteModal")

@@ -9,5 +9,6 @@ a.active {
 }
 
 .show-list-img {
-  background-color: color($foreground-dark, '4');
+  max-width: 300px;
+  height: auto;
 }

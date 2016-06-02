@@ -1,3 +1,4 @@
+<!--
 {{#paper-content class="md-whiteframe-z1" layout-padding='5'}}
   {{#paper-grid-list md-cols-sm="1" md-cols-md="2" md-cols-gt-md="6"
                      md-row-height-gt-md="3:2" md-row-height="2:2"
@@ -16,3 +17,27 @@
 
   {{/paper-grid-list}}
 {{/paper-content}}
+-->
+<div class="layout-row">
+    {{#each model as |show|}}
+      {{#paper-card as |card|}}
+        {{#card.title as |title|}}
+          {{#title.text as |text|}}
+            {{#text.headline}}{{show.name}}{{/text.headline}}
+          {{/title.text}}
+        {{/card.title}}
+        {{#link-to 'shows.show-detail' show.id}}
+          {{card.image src="assets/images/default.png"
+                        alt="Show Image" title="Show Image" class="img-responsive"}}
+        {{/link-to}}
+        {{#card.actions}}
+          {{#paper-button iconButton=true onClick=(action "editShow" show)}}
+            {{paper-icon "edit"}}
+          {{/paper-button}}
+          {{#paper-button iconButton=true onClick=(action "deleteShow" show)}}
+            {{paper-icon "delete"}}
+          {{/paper-button}}
+        {{/card.actions}}
+      {{/paper-card}}
+    {{/each}}
+</div>

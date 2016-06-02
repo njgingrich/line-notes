@@ -81,20 +81,6 @@ export default Ember.Controller.extend({
       if (!this.get('isEditing')) {
         char.save();
       }
-    },
-    deleteShow(show) {
-      console.log('deleting show ' + show.get('name'));
-      // delete its characters
-      show.get('characters').forEach((character) => {
-        Ember.run.once(this, () => {
-          this.send('deleteChar', show, character);
-        });
-      });
-
-      show.deleteRecord();
-      show.save();
-      this.transitionToRoute('shows');
-      this.get('notify').alert('Show deleted!');
     }
   }
 });

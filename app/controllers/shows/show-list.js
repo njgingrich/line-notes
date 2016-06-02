@@ -6,6 +6,9 @@ export default Ember.Controller.extend({
   openModal: false,
 
   actions: {
+    fileLoaded(file) {
+      console.log(file.name, file.type, file.size);
+    },
     toggleEditShowModal(show) {
       this.toggleProperty('openModal');
       if (this.get('openModal')) {

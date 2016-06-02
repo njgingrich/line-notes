@@ -1,21 +1,8 @@
 @import 'ember-paper';
+@import 'show-list';
 
 a.active {
   background-color: color($foreground-light, '3');
-}
-
-.show-list-footer:hover {
-  background-color: color($foreground-dark, '3');
-}
-
-.show-list-img {
-  background-color: color($foreground-dark, '4');
-  width: 320px;
-  height: 320px;
-}
-
-.show-list-img:hover {
-  background-color: color($foreground-dark, '3');
 }
 
 .note-detail-editing {

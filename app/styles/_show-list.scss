@@ -1,0 +1,25 @@
+$show-list-img-dims: 320px;
+
+.show-list-footer:hover {
+  background-color: color($foreground-dark, '3');
+}
+
+.show-list-img {
+  background-color: color($foreground-dark, '4');
+  width: $show-list-img-dims;
+  height: $show-list-img-dims;
+}
+
+.show-list-img:hover {
+  background-color: color($foreground-dark, '3');
+}
+
+.file-picker {
+  padding: 20px;
+  background-color: color($foreground-dark, '4');
+}
+
+.file-picker__preview__image.single {
+  width: $show-list-img-dims;
+  height: $show-list-img-dims;
+}

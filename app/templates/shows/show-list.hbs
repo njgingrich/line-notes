@@ -26,8 +26,16 @@
   {{#paper-dialog onClose=(action "toggleEditShowModal")}}
     {{#paper-dialog-content}}
       <h2 class="md-title">Edit Show</h2>
-      {{paper-input placeholder="Show Name" autofocus=true
-                    value=editedShow.name onChange=(action (mut editedShow.name))}}
+      <div layout class="layout-column">
+        {{paper-input placeholder="Show Name" autofocus=true flex=true
+                      value=editedShow.name onChange=(action (mut editedShow.name))}}
+
+        {{#file-picker accept=".jpg,.jpeg,.gif,.png"
+                       fileLoaded="fileLoaded"
+                       readAs="readAsFile"}}
+          Drag here or click to upload a show image.
+        {{/file-picker}}
+      </div>
     {{/paper-dialog-content}}
 
     {{#paper-dialog-actions class="layout-row"}}

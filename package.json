@@ -1,7 +1,7 @@
 {
   "name": "line-notes",
-  "version": "0.0.0",
-  "description": "Small description for line-notes goes here",
+  "version": "0.1.0",
+  "description": "A program to create line notes for a theatre production.",
   "private": true,
   "directories": {
     "doc": "doc",

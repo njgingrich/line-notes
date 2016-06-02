@@ -1,7 +1,8 @@
 <td class="col-sm-1">
   {{#if isEditing}}
-    <div layout layout-sm="column">
-      {{paper-input attr-size=2 value=note.page
+    <div layout>
+      {{paper-input flex=true value=note.page hideAllMessages=true
+                    class="note-detail-editing"
                     onChange=(action (mut page))}}
     </div>
   {{else}}
@@ -10,8 +11,9 @@
 </td>
 <td class="col-sm-7">
   {{#if isEditing}}
-    <div layout layout-sm="column">
-      {{paper-input attr-size=36 value=note.line
+    <div layout>
+      {{paper-input flex=true value=note.line hideAllMessages=true
+                    class="note-detail-editing"
                     onChange=(action (mut line))}}
     </div>
   {{else}}
@@ -20,7 +22,7 @@
 </td>
 <td class="col-sm-2">
   {{#if isEditing}}
-    {{#paper-select value=note.error
+    {{#paper-select value=note.error class="note-detail-editing"
                     onChange=(action (mut note.error))}}
       {{#each errorTypes.errors as |err index|}}
         {{#paper-option value=index}}

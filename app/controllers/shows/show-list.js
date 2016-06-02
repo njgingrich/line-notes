@@ -1,9 +1,17 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-notify: Ember.inject.service('notify'),
+  notify: Ember.inject.service('notify'),
+  editedShow: undefined,
+  openModal: false,
 
   actions: {
+    toggleEditShowModal(show) {
+      this.toggleProperty('openModal');
+      if (this.get('openModal')) {
+        this.set('editedShow', show);
+      }
+    },
     deleteShow(show) {
       console.log('deleting show ' + show.get('name'));
       // delete its characters
@@ -18,7 +26,8 @@ notify: Ember.inject.service('notify'),
       this.get('notify').alert('Show deleted!');
     },
     editShow(show) {
-
+      show.save();
+      this.set('openModal', false);
     }
   }
 });

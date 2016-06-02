@@ -11,7 +11,7 @@
                       alt="Show Image" title="Show Image" class="show-list-img"}}
       {{/link-to}}
       {{#card.actions}}
-        {{#paper-button iconButton=true onClick=(action "editShow" show)}}
+        {{#paper-button iconButton=true onClick=(action "toggleEditShowModal" show)}}
           {{paper-icon "edit"}}
         {{/paper-button}}
         {{#paper-button iconButton=true onClick=(action "deleteShow" show)}}
@@ -21,3 +21,25 @@
     {{/paper-card}}
   {{/each}}
 </div>
+
+{{#if openModal}}
+  {{#paper-dialog onClose=(action "toggleEditShowModal")}}
+    {{#paper-dialog-content}}
+      <h2 class="md-title">Edit Show</h2>
+      {{paper-input placeholder="Show Name" autofocus=true
+                    value=editedShow.name onChange=(action (mut editedShow.name))}}
+    {{/paper-dialog-content}}
+
+    {{#paper-dialog-actions class="layout-row"}}
+      <span class="flex"></span>
+      {{#paper-button primary=true
+                      onClick=(action "toggleEditShowModal")}}
+        Cancel
+      {{/paper-button}}
+      {{#paper-button primary=true
+                      onClick=(action "editShow" editedShow)}}
+        Edit
+      {{/paper-button}}
+    {{/paper-dialog-actions}}
+  {{/paper-dialog}}
+{{/if}}

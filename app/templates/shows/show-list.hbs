@@ -7,8 +7,8 @@
         {{/title.text}}
       {{/card.title}}
       {{#link-to 'shows.show-detail' show.id}}
-        {{card.image src="assets/images/default.png"
-                      alt="Show Image" title="Show Image" class="show-list-img"}}
+        {{card.image src=(img-src show.name)
+                     alt="Show Image" title="Show Image" class="show-list-img"}}
       {{/link-to}}
       {{#card.actions}}
         {{#paper-button iconButton=true onClick=(action "toggleEditShowModal" show)}}
@@ -33,7 +33,7 @@
     {{#paper-dialog-actions class="layout-row"}}
       <span class="flex"></span>
       {{#paper-button primary=true
-                      onClick=(action "toggleEditShowModal")}}
+                      onClick=(action "toggleEditShowModal" show)}}
         Cancel
       {{/paper-button}}
       {{#paper-button primary=true

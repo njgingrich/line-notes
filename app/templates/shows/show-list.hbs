@@ -5,13 +5,7 @@
 
   {{#each model as |show|}}
     {{#paper-grid-tile class="gray" md-rowspan="3" md-colspan="2" md-colspan-sm="1"}}
-      <ul>
-        {{#each show.characters as |char|}}
-          <li>
-            {{char.name}}
-          </li>
-        {{/each}}
-      </ul>
+      <img src="assets/images/default.png" class="img-responsive show-list-img"/>
       {{#link-to 'shows.show-detail' show.id}}
         {{#paper-grid-tile-footer class="show-list-footer"}}
           <h3>{{show.name}}</h3>

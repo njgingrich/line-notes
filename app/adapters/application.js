@@ -1,5 +1,8 @@
-import LSAdapter from 'ember-localstorage-adapter';
+import Ember from 'ember';
+import FirebaseAdapter from 'emberfire/adapters/firebase';
 
-export default LSAdapter.extend({
-  namespace: 'line-notes'
+const { inject } = Ember;
+
+export default FirebaseAdapter.extend({
+  firebase: inject.service(),
 });

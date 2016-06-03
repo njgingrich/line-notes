@@ -28,7 +28,8 @@
       <h2 class="md-title">Edit Show</h2>
       <div layout class="layout-column">
         {{paper-input placeholder="Show Name" autofocus=true flex=true
-                      value=editedShow.name onChange=(action (mut editedShow.name))}}
+                      value=editedShow.name onKeyDown=(action "updateModalButton")
+                      onChange=(action (mut editedShow.name))}}
 
         {{#file-picker accept=".jpg,.jpeg,.gif,.png"
                        fileLoaded="fileLoaded"
@@ -40,13 +41,13 @@
 
     {{#paper-dialog-actions class="layout-row"}}
       <span class="flex"></span>
-      {{#paper-button primary=true
+      {{#paper-button raised=true
                       onClick=(action "toggleEditShowModal" show)}}
         Cancel
       {{/paper-button}}
-      {{#paper-button primary=true
+      {{#paper-button primary=true raised=true
                       onClick=(action "editShow" editedShow)}}
-        Edit
+        {{confirmText}}
       {{/paper-button}}
     {{/paper-dialog-actions}}
   {{/paper-dialog}}

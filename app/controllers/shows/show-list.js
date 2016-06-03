@@ -4,10 +4,12 @@ export default Ember.Controller.extend({
   notify: Ember.inject.service('notify'),
   editedShow: undefined,
   openModal: false,
+  confirmText: 'Edit',
 
   actions: {
     fileLoaded(file) {
       console.log(file.name, file.type, file.size);
+      this.send('updateModalButton');
     },
     toggleEditShowModal(show) {
       this.toggleProperty('openModal');
@@ -31,6 +33,9 @@ export default Ember.Controller.extend({
     editShow(show) {
       show.save();
       this.set('openModal', false);
+    },
+    updateModalButton() {
+      this.set('confirmText', 'Save');
     }
   }
 });

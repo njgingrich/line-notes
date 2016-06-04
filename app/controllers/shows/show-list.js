@@ -4,6 +4,7 @@ export default Ember.Controller.extend({
   notify: Ember.inject.service('notify'),
   editedShow: undefined,
   openModal: false,
+  openAddModal: false,
   confirmText: 'Edit',
 
   actions: {
@@ -16,6 +17,18 @@ export default Ember.Controller.extend({
       if (this.get('openModal')) {
         this.set('editedShow', show);
       }
+    },
+    toggleAddShowModal() {
+      this.set('newShowName', '');
+      this.toggleProperty('openAddModal');
+    },
+    createShow(name) {
+      console.log(name);
+      let show1 = this.store.createRecord('show', {
+        name: name
+      });
+      show1.save();
+      this.set('openAddModal', false);
     },
     deleteShow(show) {
       console.log('deleting show ' + show.get('name'));

@@ -5,18 +5,6 @@ export default Ember.Controller.extend({
   newShowName: '',
 
   actions: {
-    toggleAddShowModal() {
-      this.set('newShowName', '');
-      this.toggleProperty('openModal');
-    },
-    createShow(name) {
-      console.log(name);
-      let show1 = this.store.createRecord('show', {
-        name: name
-      });
-      show1.save();
-      this.set('openModal', false);
-    },
     addChar(show, name) {
       let char1 = this.store.createRecord('character', {
         name: name

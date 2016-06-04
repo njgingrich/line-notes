@@ -8,31 +8,6 @@
         {{paper-button label=show.name}}
       {{/link-to}}
     {{/each}}
-    {{#paper-button onClick=(action "toggleAddShowModal")}}
-      {{paper-icon "add"}}
-    {{/paper-button}}
   </div>
 {{/paper-toolbar}}
 {{outlet}}
-
-{{#if openModal}}
-  {{#paper-dialog onClose=(action "toggleAddShowModal")}}
-    {{#paper-dialog-content}}
-      <h2 class="md-title">Create New Show</h2>
-      {{paper-input placeholder="Show Name" autofocus=true
-                    value=newShowName onChange=(action (mut newShowName))}}
-    {{/paper-dialog-content}}
-
-    {{#paper-dialog-actions class="layout-row"}}
-      <span class="flex"></span>
-      {{#paper-button primary=true
-                      onClick=(action "toggleAddShowModal")}}
-        Cancel
-      {{/paper-button}}
-      {{#paper-button primary=true
-                      onClick=(action "createShow" newShowName)}}
-        Add
-      {{/paper-button}}
-    {{/paper-dialog-actions}}
-  {{/paper-dialog}}
-{{/if}}

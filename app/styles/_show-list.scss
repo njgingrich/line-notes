@@ -4,6 +4,11 @@ $show-list-img-dims: 320px;
   background-color: color($foreground-dark, '3');
 }
 
+.show-list-add {
+  width: 200px;
+  height: 200px;
+}
+
 .show-list-img {
   background-color: color($foreground-dark, '4');
   width: $show-list-img-dims;

@@ -14,7 +14,6 @@ export default Ember.Controller.extend({
     selectChar(char) {
       this.set('activeChar', char);
       window.scrollTo(0,0);
-      console.log("selecting " + char);
     },
     addNote(char, page, line, note, error) {
       let newNote = this.store.createRecord('line-note', {
@@ -25,18 +24,17 @@ export default Ember.Controller.extend({
         date: new Date()
       });
       newNote.set('character', char);
-      console.log('adding note ' + newNote);
+      Ember.Logger.info('adding note ' + newNote);
       newNote.save();
       char.save();
       this.get('notify').success('Added new note!');
     },
     editNote(note) {
-      console.log('editing note ' + note);
-      console.log('error: ' + note.get('error'));
+      Ember.Logger.info('editing note ' + note);
       note.save();
     },
     deleteNote(char, note) {
-      console.log('deleting ' + note.get('id') + ' from character ' + char.get('name'));
+      Ember.Logger.info('deleting ' + note.get('id') + ' from character ' + char.get('name'));
       note.deleteRecord();
       note.save();
       char.save();
@@ -52,7 +50,7 @@ export default Ember.Controller.extend({
     addChar() {
       let name = this.get('newCharName');
       let show = this.get('show');
-      console.log("adding char " + name + " to show " + show);
+      Ember.Logger.info("adding char " + name + " to show " + show);
       let char1 = this.store.createRecord('character', {
         name: name
       });
@@ -66,7 +64,7 @@ export default Ember.Controller.extend({
     },
     deleteChar(char) {
       let show = this.get('show');
-      console.log('deleting char ' + char.get('name') + ' from show ' + show.get('name'));
+      Ember.Logger.info('deleting char ' + char.get('name') + ' from show ' + show.get('name'));
       // first delete their notes
       this.send('deleteAllNotes', char);
       char.deleteRecord();

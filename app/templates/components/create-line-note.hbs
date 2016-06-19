@@ -3,14 +3,14 @@
     {{#paper-dialog-content}}
       <h2 class="md-title">Add Line Note</h2>
       <div layout="" layout-sm="column">
-        {{paper-input placeholder="Page" autofocus=true flex=15
+        {{paper-input placeholder="Line" autofocus=true value=line flex=100
+        onChange=(action (mut line))}}
+      </div>
+      <div layout="" layout-sm="column">
+        {{paper-input placeholder="Page" flex=15
                     value=page onChange=(action (mut page))}}
         {{paper-input placeholder="Note" value=note flex=85
                       onChange=(action (mut note))}}
-      </div>
-      <div layout="" layout-sm="column">
-        {{paper-input placeholder="Line" value=line flex=100
-        onChange=(action (mut line))}}
       </div>
 
       {{#paper-radio-group groupValue=error onChange=(action (mut error)) as |group|}}

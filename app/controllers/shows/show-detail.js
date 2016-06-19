@@ -72,6 +72,7 @@ export default Ember.Controller.extend({
       // update the show
       show.save();
       this.get('notify').alert('Character deleted!');
+      this.set('activeChar', null);
     },
     editChar(char) {
       this.set('activeChar', char);

@@ -19,22 +19,6 @@
                 {{char.name}}
               </p>
             </div>
-            {{#paper-menu as |menu|}}
-              {{#paper-button onClick=(action "toggleMenu" target=menu)
-                              icon-button=true
-                              class="md-secondary"}}
-                  {{paper-icon "more-vert" class="md-menu-origin"}}
-              {{/paper-button}}
-            {{else}}
-              {{#paper-menu-item onClick=(action "editChar" char)}}
-                {{paper-icon "edit" class="md-menu-align-target"}}
-                <span>Edit</span>
-              {{/paper-menu-item}}
-              {{#paper-menu-item onClick=(action "deleteChar" char)}}
-                {{paper-icon "delete" class="md-menu-align-target"}}
-                <span>Delete</span>
-              {{/paper-menu-item}}
-            {{/paper-menu}}
           {{/paper-item}}
         {{/each}}
       {{/paper-list}}
@@ -45,7 +29,7 @@
       {{char-detail char=activeChar
           isEditing=isEditing
           create=(action "addNote" activeChar)
-          deleteChar=(action "deleteChar" model activeChar)
+          deleteChar=(action "deleteChar" activeChar)
           deleteNote=(action "deleteNote" activeChar)
           editChar=(action "editChar" activeChar)
           editNote=(action "editNote")}}

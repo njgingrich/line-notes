@@ -3,7 +3,7 @@
     {{#title.text as |text|}}
       {{#text.headline}}
         {{#if isEditing}}
-          {{paper-input attr-size=30 value=char.name
+          {{paper-input attr-size=30 value=char.name class="char-detail-editing"
                         onChange=(action (mut char.name))}}
         {{else}}
           {{char.name}}
@@ -26,11 +26,11 @@
         {{paper-icon icon="add"}}
       {{/paper-button}}
       {{#paper-button iconButton=true onClick=(action editChar)
-                      raised=true warn=isEditing}}
+                      raised=true primary=isEditing}}
         {{paper-icon "edit"}}
       {{/paper-button}}
       {{#paper-button iconButton=true onClick=(action deleteChar)
-                      raised=true warn=isEditing}}
+                      raised=true warn=true}}
         {{paper-icon "delete"}}
       {{/paper-button}}
     {{/card.actions}}

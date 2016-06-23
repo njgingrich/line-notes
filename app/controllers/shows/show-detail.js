@@ -5,10 +5,8 @@ export default Ember.Controller.extend({
   notify: Ember.inject.service('notify'),
   activeChar: null,
   newCharName: '',
-  sortedChars: Ember.computed('model.characters', function() {
-    let sorted = this.get('model.characters');
-    return sorted.sortBy('name');
-  }),
+  sortAttr: ['name'],
+  sortedChars: Ember.computed.sort('model.characters', 'sortAttr'),
 
   actions: {
     selectChar(char) {

@@ -1,5 +1,5 @@
-<div class="row">
-  <div class="col-md-3">
+<div class="layout-row flex">
+  <div class="flex-28">
     {{#paper-content class="md-whiteframe-z1 md-margin"}}
       {{#paper-list}}
         {{#paper-item class="md-2-line"}}
@@ -24,7 +24,7 @@
       {{/paper-list}}
     {{/paper-content}}
   </div>
-  <div class="col-md-9">
+  <div class="flex">
     {{#if activeChar}}
       {{char-detail char=activeChar
           isEditing=isEditing

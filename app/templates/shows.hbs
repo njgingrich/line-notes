@@ -1,7 +1,21 @@
 {{#paper-sidenav-container class="inner-sidenav"}}
-  {{#user-panel}}
-    <h4>Nathan Gingrich</h4>
-  {{/user-panel}}
+  {{#paper-sidenav class="md-whiteframe-z2" name="left"
+                   lockedOpen="xl" open=leftSideBarOpen
+                   onToggle=(action (mut leftSideBarOpen))}}
+    {{#paper-toolbar as |toolbar|}}
+      {{#paper-toolbar-tools}}
+        <h2>User Profile</h2>
+        <span class="flex"></span>
+        {{#paper-button iconButton=true}}
+          {{paper-icon "navigate-before"}}
+        {{/paper-button}}
+      {{/paper-toolbar-tools}}
+
+    {{/paper-toolbar}}
+
+    {{#paper-content padding=true}}
+    {{/paper-content}}
+  {{/paper-sidenav}}
 
   {{#paper-card-content class="flex"}}
     <div class="layout-fill layout-align-start-center layout-column">

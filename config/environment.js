@@ -5,7 +5,12 @@ module.exports = function(environment) {
     modulePrefix: 'line-notes',
     environment: environment,
     contentSecurityPolicy: { 'connect-src': "'self' https://auth.firebase.com wss://*.firebaseio.com" },
-    firebase: 'https://line-notes.firebaseio.com/',
+    firebase: {
+      apiKey: process.env.API_KEY,
+      authDomain: process.env.AUTH_DOMAIN,
+      databaseURL: process.env.DB_URL,
+      storageBucket: process.env.BUCKET
+    },
     baseURL: '/',
     locationType: 'auto',
     EmberENV: {

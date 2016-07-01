@@ -6,6 +6,9 @@ module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
     'ember-bootstrap': {
       'importBootstrapTheme': true
+    },
+    dotEnv: {
+      clientAllowedKeys: ['API_KEY', 'AUTH_DOMAIN', 'DB_URL', 'BUCKET']
     }
   });
 

@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   notify: Ember.inject.service('notify'),
+  showActions: Ember.inject.service('show-actions'),
   editedShow: undefined,
   openModal: false,
   openAddModal: false,
@@ -24,27 +25,16 @@ export default Ember.Controller.extend({
     },
     createShow(name) {
       console.log(name);
-      let show1 = this.store.createRecord('show', {
-        name: name
-      });
-      show1.save();
+      this.get('showActions').createShow(name);
       this.set('openAddModal', false);
     },
     deleteShow(show) {
       console.log('deleting show ' + show.get('name'));
-      // delete its characters
-      show.get('characters').forEach((character) => {
-        Ember.run.once(this, () => {
-          this.send('deleteChar', show, character);
-        });
-      });
-
-      show.deleteRecord();
-      show.save();
+      this.get('showActions').deleteShow(show);
       this.get('notify').alert('Show deleted!');
     },
     editShow(show) {
-      show.save();
+      this.get('showActions').editShow(show);
       this.set('openModal', false);
     },
     updateModalButton() {

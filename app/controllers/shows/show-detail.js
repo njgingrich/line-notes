@@ -38,7 +38,8 @@ export default Ember.Controller.extend({
       this.set('newCharName', '');
     },
     deleteChar(char) {
-      this.get('showActions').deleteChar(char);
+      let show = this.get('show');
+      this.get('showActions').deleteChar(char, show);
       this.get('notify').alert('Character deleted!');
       this.set('activeChar', null);
     },

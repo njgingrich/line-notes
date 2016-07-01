@@ -15,15 +15,18 @@ export default Ember.Service.extend({
     show.get('characters').pushObject(char1);
     show.save();
   },
-  deleteChar(char) {
-    let show = this.get('show');
+  deleteChar(char, show) {
     Ember.Logger.info('deleting char ' + char.get('name') + ' from show ' + show.get('name'));
     // first delete their notes
-    this.send('deleteAllNotes', char);
-    char.deleteRecord();
-    char.save();
-    // update the show
-    show.save();
+    this.deleteAllNotes(char).then(() => {
+      char.destroyRecord().then(() => {
+        // update the show
+        show.save();
+      });
+    }, err => {
+      Ember.logger.warn('Error deleting char');
+    });
+
   },
   editChar(char) {
     Ember.logger.info('Editing char ' + char);
@@ -51,11 +54,8 @@ export default Ember.Service.extend({
     char.save();
   },
   deleteAllNotes(char) {
-    char.get('notes').forEach((note) => {
-      Ember.run.once(this, () => {
-        this.send('deleteNote', char, note);
-      });
-    });
+    let promise = Ember.RSVP.all(char.get('notes').invoke('destroyRecord'));
+    return promise;
   },
   editNote(note) {
     Ember.Logger.info('editing note ' + note);

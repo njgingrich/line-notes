@@ -15,12 +15,17 @@ export default Ember.Controller.extend({
       show.save();
     },
     signIn() {
-      this.get('session').open('firebase', { provider: 'google'}).then(function(data) {
-        console.log(data.currentUser);
-      });
+      this.get('session').open('firebase', { provider: 'google'}).then(() => {
+        this.transitionToRoute('shows.show-list');
+      })
     },
     signOut() {
-      this.get('session').close();
+      this.get('session').close().then(() => {
+        this.transitionToRoute('shows.show-list');
+      })
+    },
+    openSettings() {
+      console.log('TODO');
     }
   }
 });

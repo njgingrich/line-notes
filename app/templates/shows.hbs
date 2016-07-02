@@ -1,10 +1,5 @@
 {{#paper-toolbar}}
-  <div class="md-toolbar-tools">
-    {{#paper-sidenav-toggle name="left" class="hide-gt-xl" as |toggleAction|}}
-      {{#paper-button iconButton=true onClick=(action toggleAction)}}
-        {{paper-icon "menu"}}
-      {{/paper-button}}
-    {{/paper-sidenav-toggle}}
+  {{#paper-toolbar-tools}}
     {{#link-to 'shows.show-list'}}
       {{paper-button label='Home'}}
     {{/link-to}}
@@ -13,37 +8,33 @@
         {{paper-button label=show.name}}
       {{/link-to}}
     {{/each}}
-  </div>
-{{/paper-toolbar}}
-{{#paper-sidenav-container class="inner-sidenav"}}
-  {{#paper-sidenav
-    class="md-whiteframe-z2 toolbar-padding"
-    name="left"
-    lockedOpen="gt-xl"
-    open=openSideBar
-    onToggle=(action (mut openSideBar))
-  }}
-    {{#paper-toolbar as |toolbar|}}
-      {{#paper-toolbar-tools}}
-        <h2>User Details</h2>
-        <span class="flex"></span>
-        {{#paper-button iconButton=true}}
-          {{paper-icon "keyboard-arrow-left"}}
-        {{/paper-button}}
-      {{/paper-toolbar-tools}}
-    {{/paper-toolbar}}
-    {{#paper-content padding=true}}
-      Not logged in.
-      {{#paper-button raised=true onClick=(action 'signIn')}}
-        Log In
+    <span class="flex"></span>
+    {{#if session.isAuthenticated}}
+      <h3>{{session.currentUser.displayName}}</h3>
+    {{/if}}
+    {{#paper-menu width=4 position="target-right target" as |menu|}}
+      {{#paper-button onClick=(action "toggleMenu" target=menu) iconButton=true}}
+        {{paper-icon "more_vert" class="md-menu-origin"}}
       {{/paper-button}}
-    {{/paper-content}}
-  {{/paper-sidenav}}
+      {{else}}
+      {{#if session.isAuthenticated}}
+        {{#paper-menu-item onClick=(action 'openSettings')}}
+          {{paper-icon 'settings' class="md-menu-align-target"}}
+          <span>Settings</span>
+        {{/paper-menu-item}}
+        {{#paper-menu-item onClick=(action 'signOut')}}
+          {{paper-icon 'exit-to-app' class="md-menu-align-target"}}
+          <span>Log Out</span>
+        {{/paper-menu-item}}
+      {{else}}
+      {{#paper-menu-item onClick=(action 'signIn')}}
+        {{paper-icon 'done' class="md-menu-align-target"}}
+        <span>Log In</span>
+      {{/paper-menu-item}}
+      {{/if}}
 
-  {{#paper-card-content class="flex"}}
-    <div class="layout-fill">
-      {{outlet}}
+    {{/paper-menu}}
 
-    </div>
-  {{/paper-card-content}}
-{{/paper-sidenav-container}}
+  {{/paper-toolbar-tools}}
+{{/paper-toolbar}}
+{{outlet}}

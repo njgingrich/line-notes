@@ -3,6 +3,7 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   openModal: false,
   newShowName: '',
+  openSideBar: false,
 
   actions: {
     addChar(show, name) {
@@ -12,6 +13,14 @@ export default Ember.Controller.extend({
       char1.save();
       show.get('characters').pushObject(char1);
       show.save();
+    },
+    signIn() {
+      this.get('session').open('firebase', { provider: 'google'}).then(function(data) {
+        console.log(data.currentUser);
+      });
+    },
+    signOut() {
+      this.get('session').close();
     }
   }
 });

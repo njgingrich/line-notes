@@ -34,6 +34,9 @@
     {{/paper-toolbar}}
     {{#paper-content padding=true}}
       Not logged in.
+      {{#paper-button raised=true onClick=(action 'signIn')}}
+        Log In
+      {{/paper-button}}
     {{/paper-content}}
   {{/paper-sidenav}}
 

@@ -11,7 +11,9 @@ module.exports = function(environment) {
       databaseURL: process.env.DB_URL,
       storageBucket: process.env.BUCKET
     },
-    sessionServiceName: 'session',
+    torii: {
+      sessionServiceName: 'session'
+    },
     baseURL: '/',
     locationType: 'auto',
     EmberENV: {

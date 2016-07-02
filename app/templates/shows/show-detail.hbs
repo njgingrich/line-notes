@@ -7,7 +7,8 @@
             {{paper-input attr-size=30 value=newCharName
                           onChange=(action (mut newCharName))
                           label="New"}}
-            {{#paper-button onClick=(action "addChar") mini=true icon-button=true}}
+            {{#paper-button onClick=(action "addChar") iconButton=true
+                            raised=true primary=true}}
               {{paper-icon "add"}}
             {{/paper-button}}
           {{/paper-item}}

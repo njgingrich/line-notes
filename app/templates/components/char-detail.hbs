@@ -20,9 +20,9 @@
             edit=attrs.editNote}}
       {{/paper-content}}
     {{/card.media}}
-    {{#card.actions class="layout-column notes-card-bg"}}
+    {{#card.actions class="layout-column layout-end notes-card-bg"}}
       {{#paper-button iconButton=true onClick=(action "toggleAddNoteModal")
-                      raised=true}}
+                      raised=true primary=true}}
         {{paper-icon icon="add"}}
       {{/paper-button}}
       {{#paper-button iconButton=true onClick=(action editChar)
@@ -30,7 +30,7 @@
         {{paper-icon "edit"}}
       {{/paper-button}}
       {{#paper-button iconButton=true onClick=(action deleteChar)
-                      raised=true warn=isEditing}}
+                      raised=true warn=true}}
         {{paper-icon "delete"}}
       {{/paper-button}}
     {{/card.actions}}

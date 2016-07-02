@@ -15,7 +15,8 @@ export default Ember.Controller.extend({
       show.save();
     },
     signIn() {
-      this.get('session').open('firebase', { provider: 'google'}).then(() => {
+      this.get('session').open('firebase', { provider: 'google'}).then((user) => {
+        console.log(user);
         this.transitionToRoute('shows.show-list');
       });
     },

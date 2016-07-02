@@ -1,5 +1,10 @@
 {{#paper-toolbar}}
   <div class="md-toolbar-tools">
+    {{#paper-sidenav-toggle name="left" class="hide-gt-xl" as |toggleAction|}}
+      {{#paper-button iconButton=true onClick=(action toggleAction)}}
+        {{paper-icon "menu"}}
+      {{/paper-button}}
+    {{/paper-sidenav-toggle}}
     {{#link-to 'shows.show-list'}}
       {{paper-button label='Home'}}
     {{/link-to}}
@@ -10,4 +15,32 @@
     {{/each}}
   </div>
 {{/paper-toolbar}}
-{{outlet}}
+{{#paper-sidenav-container class="inner-sidenav"}}
+  {{#paper-sidenav
+    class="md-whiteframe-z2 toolbar-padding"
+    name="left"
+    lockedOpen="gt-xl"
+    open=openSideBar
+    onToggle=(action (mut openSideBar))
+  }}
+    {{#paper-toolbar as |toolbar|}}
+      {{#paper-toolbar-tools}}
+        <h2>User Details</h2>
+        <span class="flex"></span>
+        {{#paper-button iconButton=true}}
+          {{paper-icon "keyboard-arrow-left"}}
+        {{/paper-button}}
+      {{/paper-toolbar-tools}}
+    {{/paper-toolbar}}
+    {{#paper-content padding=true}}
+      Not logged in.
+    {{/paper-content}}
+  {{/paper-sidenav}}
+
+  {{#paper-card-content class="flex"}}
+    <div class="layout-fill">
+      {{outlet}}
+
+    </div>
+  {{/paper-card-content}}
+{{/paper-sidenav-container}}

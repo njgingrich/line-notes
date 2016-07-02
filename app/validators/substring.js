@@ -6,7 +6,7 @@ export default BaseValidator.extend({
       return true;
     }
     if (model.line) {
-      let line = new String(model.line);
+      let line = String(model.line);
       if (line.includes(value)) {
         return true;
       }

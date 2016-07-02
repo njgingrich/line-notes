@@ -46,7 +46,7 @@ export default Ember.Service.extend({
         show.save();
       });
     }, err => {
-      Ember.logger.warn('Error deleting char');
+      Ember.logger.warn('Error deleting char: ' + err);
     });
 
   },

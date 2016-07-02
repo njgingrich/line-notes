@@ -23,12 +23,12 @@ const Validations = buildValidations({
 
 export default Ember.Component.extend(Validations, {
   init() {
-    let page = '';
-    let line = '';
-    let note = '';
-    let error = -1;
     this._super(...arguments);
   },
+  page: '',
+  line: '',
+  note: '',
+  error: -1,
   errorTypes: Ember.inject.service(),
   open: false,
 

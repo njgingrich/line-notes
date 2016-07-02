@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  showActions: Ember.inject.service('show-actions'),
   openModal: false,
   newShowName: '',
   openSideBar: false,
@@ -17,6 +18,8 @@ export default Ember.Controller.extend({
     signIn() {
       this.get('session').open('firebase', { provider: 'google'}).then((user) => {
         console.log(user);
+        this.get('showActions').createUserIfNotExists(user.currentUser.uid,
+                                                      user.currentUser.displayName);
         this.transitionToRoute('shows.show-list');
       });
     },

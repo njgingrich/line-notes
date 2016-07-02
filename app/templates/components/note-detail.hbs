@@ -7,6 +7,9 @@
     </div>
   {{else}}
     {{note.page}}
+    {{#tooltip-on-element}}
+      {{moment-calendar note.date}}
+    {{/tooltip-on-element}}
   {{/if}}
 </td>
 <td class="col-sm-7">

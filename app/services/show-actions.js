@@ -82,5 +82,34 @@ export default Ember.Service.extend({
   editNote(note) {
     Ember.Logger.info('editing note ' + note);
     note.save();
-  }
+  },
+
+  /* User actions */
+  createUser(uid, displayName) {
+    let newUser = this.get('store').createRecord('user', {
+      name: displayName,
+      uid: uid
+    });
+    newUser.save();
+  },
+  createUserIfNotExists(uid, displayName) {
+    this.get('store').findRecord('user', uid).then((user) => {
+      console.log('user already exists: ' + user);
+    }, (err) => {
+      console.log('creating new user:' + err);
+      this.createUser(uid, displayName);
+    });
+  },
+  addAssignedUser(show, user) {
+    user.get('shows').pushObject(show).then(() => {
+      user.save();
+    });
+    show.get('assignedUsers').pushObject(user).then(() => {
+      show.save();
+    });
+  },
+  removeAssignedUser(show, user) {
+    show.get('assignedUsers').removeObject(user);
+    show.save();
+  },
 });

@@ -42,6 +42,29 @@
                        readAs="readAsDataURL"}}
           Drag here or click to upload a show image.
         {{/file-picker}}
+
+        <h4>Assigned Users:
+          {{#paper-button class="md-secondary" primary=true iconButton=true
+                          onClick=(action "addAssignedUser")}}
+            {{paper-icon "group-add"}}
+          {{/paper-button}}
+        </h4>
+        {{#paper-list}}
+          {{#paper-item}}
+            <p>Test User 1</p>
+            {{#paper-button class="md-secondary" iconButton=true
+                            onClick=(action "removeAssignedUser")}}
+              {{paper-icon "delete"}}
+            {{/paper-button}}
+          {{/paper-item}}
+          {{#paper-item}}
+            <p>Test User 2</p>
+            {{#paper-button class="md-secondary" iconButton=true
+                            onClick=(action "removeAssignedUser")}}
+              {{paper-icon "delete"}}
+            {{/paper-button}}
+          {{/paper-item}}
+        {{/paper-list}}
       </div>
     {{/paper-dialog-content}}
 

@@ -39,6 +39,12 @@ export default Ember.Controller.extend({
     },
     updateModalButton() {
       this.set('confirmText', 'Save');
+    },
+    addAssignedUser() {
+      console.log('TODO');
+    },
+    removeAssignedUser() {
+      console.log('TODO');
     }
   }
 });

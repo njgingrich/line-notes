@@ -1,38 +1,45 @@
-<div class="layout-row flex">
-  <div class="flex-28">
-    {{#paper-content class="md-whiteframe-z1 md-margin"}}
-      {{#paper-list}}
-        {{#paper-item class="md-2-line"}}
-          {{paper-input attr-size=30 value=newCharName
-                        onChange=(action (mut newCharName))
-                        label="New"}}
-          {{#paper-button onClick=(action "addChar") mini=true icon-button=true}}
-            {{paper-icon "add"}}
-          {{/paper-button}}
-        {{/paper-item}}
-        {{#each sortedChars as |char|}}
-          {{#paper-item class="md-2-line"
-                        param=char
-                        onClick=(action "selectChar" char)}}
-            <div class="md-list-item-text">
-              <p>
-                {{char.name}}
-              </p>
-            </div>
+<div class="layout-row layout-align-center">
+  {{#if session.isAuthenticated}}
+    <div class="flex-28">
+      {{#paper-content class="md-whiteframe-z1 md-margin"}}
+        {{#paper-list}}
+          {{#paper-item class="md-2-line"}}
+            {{paper-input attr-size=30 value=newCharName
+                          onChange=(action (mut newCharName))
+                          label="New"}}
+            {{#paper-button onClick=(action "addChar") mini=true icon-button=true}}
+              {{paper-icon "add"}}
+            {{/paper-button}}
           {{/paper-item}}
-        {{/each}}
-      {{/paper-list}}
-    {{/paper-content}}
-  </div>
-  <div class="flex">
-    {{#if activeChar}}
-      {{char-detail char=activeChar
-          isEditing=isEditing
-          create=(action "addNote" activeChar)
-          deleteChar=(action "deleteChar" activeChar)
-          deleteNote=(action "deleteNote" activeChar)
-          editChar=(action "editChar" activeChar)
-          editNote=(action "editNote")}}
-    {{/if}}
-  </div>
+          {{#each sortedChars as |char|}}
+            {{#paper-item class="md-2-line"
+                          param=char
+                          onClick=(action "selectChar" char)}}
+              <div class="md-list-item-text">
+                <p>
+                  {{char.name}}
+                </p>
+              </div>
+            {{/paper-item}}
+          {{/each}}
+        {{/paper-list}}
+      {{/paper-content}}
+    </div>
+    <div class="flex">
+      {{#if activeChar}}
+        {{char-detail char=activeChar
+            isEditing=isEditing
+            create=(action "addNote" activeChar)
+            deleteChar=(action "deleteChar" activeChar)
+            deleteNote=(action "deleteNote" activeChar)
+            editChar=(action "editChar" activeChar)
+            editNote=(action "editNote")}}
+      {{/if}}
+    </div>
+  {{else}}
+    <div class="md-margin">
+      {{paper-icon 'error' size=128}}
+      <p>You aren't logged in.</p>
+    </div>
+  {{/if}}
 </div>

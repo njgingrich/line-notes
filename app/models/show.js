@@ -4,5 +4,6 @@ import { hasMany } from 'ember-data/relationships';
 
 export default Model.extend({
   name: attr('string'),
-  characters: hasMany('character')
+  characters: hasMany('character'),
+  //TODO assignedUsers: 
 });

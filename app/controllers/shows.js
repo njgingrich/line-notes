@@ -19,7 +19,8 @@ export default Ember.Controller.extend({
       this.get('session').open('firebase', { provider: 'google'}).then((user) => {
         console.log(user);
         this.get('showActions').createUserIfNotExists(user.currentUser.uid,
-                                                      user.currentUser.displayName);
+                                                      user.currentUser.displayName,
+                                                      user.currentUser.email);
         this.transitionToRoute('shows.show-list');
       });
     },

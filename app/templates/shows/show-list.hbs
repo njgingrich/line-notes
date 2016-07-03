@@ -44,6 +44,20 @@
         {{/file-picker}}
 
         <h4>Assigned Users:
+          {{#if addingAssignedUser}}
+            {{#paper-select getItems=onUserLoad
+              itemLabelCallback=userLabelCallback
+              placeholder="Assign to a user" value=selectedUser
+              onChange=(action (mut selectedUser)) as |items|}}
+
+              {{#each items as |user|}}
+                {{#paper-option value=user}}
+                  {{user.name}}
+                {{/paper-option}}
+              {{/each}}
+            {{/paper-select}}
+          {{/if}}
+
           {{#paper-button class="md-secondary" primary=true iconButton=true
                           onClick=(action "addAssignedUser")}}
             {{paper-icon "group-add"}}

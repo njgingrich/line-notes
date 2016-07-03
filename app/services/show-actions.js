@@ -85,38 +85,20 @@ export default Ember.Service.extend({
   },
 
   /* User actions */
-  createUser(uid, displayName, email) {
+  createUser(uid, displayName) {
     let newUser = this.get('store').createRecord('user', {
       name: displayName,
-      uid: uid,
-      email: email
+      uid: uid
     });
     newUser.save();
   },
-  createUserIfNotExists(uid, displayName, email) {
-    console.log(uid);
-    this.get('store').findAll('user').then((users) => {
-      let create = true;
-      users.forEach((user) => {
-        if (uid = user.uid) {
-          console.log('User already in database.');
-          create = false;
-          // TODO: fix this, it's doesn't scale ( O(n) )
-          // findRecord('user', uid) wasn't working
-          return;
-        }
-      });
-      if (create) {
-        console.log('new user, creating');
-        this.createUser(uid, displayName, email);
-      }
-    });
-    /*this.get('store').findRecord('user', uid).then((user) => {
+  createUserIfNotExists(uid, displayName) {
+    this.get('store').findRecord('user', uid).then((user) => {
       console.log('user already exists: ' + user);
     }, (err) => {
       console.log('creating new user:' + err);
       this.createUser(uid, displayName);
-    });*/
+    });
   },
   addAssignedUser(show, user) {
     user.get('shows').pushObject(show).then(() => {
@@ -130,20 +112,4 @@ export default Ember.Service.extend({
     show.get('assignedUsers').removeObject(user);
     show.save();
   },
-  getAllUsernames() {
-    return this.get('store').findAll('user').then((users) => {
-      let usernames = Ember.A();
-      users.forEach((user) => {
-        console.log(user.get('name'));
-        console.log(user.get('email'));
-        if (user.get('name') === null) {
-          usernames.pushObject(user.get('email'));
-        } else {
-          usernames.pushObject(user.get('name'));
-        }
-      });
-      console.log(usernames);
-      return usernames;
-    });
-  }
 });

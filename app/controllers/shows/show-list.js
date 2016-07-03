@@ -6,7 +6,6 @@ export default Ember.Controller.extend({
   editedShow: undefined,
   openModal: false,
   openAddModal: false,
-  addingAssignedUser: false,
   confirmText: 'Edit',
 
   actions: {
@@ -42,9 +41,8 @@ export default Ember.Controller.extend({
       this.set('confirmText', 'Save');
     },
     addAssignedUser(show) {
-      this.toggleProperty('addingAssignedUser');
-      let names = this.get('showActions').getAllUsernames();
-      console.log(names);
+      console.log('TODO');
+      //this.get('showActions').addAssignedUser()
     },
     removeAssignedUser() {
       console.log('TODO');

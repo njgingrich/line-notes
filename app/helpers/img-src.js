@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export function imgSrc(params/*, hash*/) {
-  /*let path = "assets/images/default.png";
+  let path = "assets/images/default.png";
 
   function getImageUrl(url) {
     return new Ember.RSVP.Promise(function(resolve, reject) {
@@ -23,8 +23,7 @@ export function imgSrc(params/*, hash*/) {
     console.log('failed: ' + error);
     path = error;
   });
-  return path;*/
-  return "assets/images/default.png";
+  return path;
 }
 
 export default Ember.Helper.helper(imgSrc);

@@ -14,11 +14,8 @@ export default Ember.Controller.extend({
       console.log(file.name, file.type, file.data, file.size);
       this.send('updateModalButton');
     },
-    toggleEditShowModal(show) {
-      this.toggleProperty('openModal');
-      if (this.get('openModal')) {
-        this.set('editedShow', show);
-      }
+    showModal(name, model) {
+      this.sendAction('showModal', name, model);
     },
     toggleAddShowModal() {
       this.set('newShowName', '');

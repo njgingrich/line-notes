@@ -11,7 +11,10 @@
                      alt="Show Image" title="Show Image" class="show-list-img"}}
       {{/link-to}}
       {{#card.actions}}
-        {{#paper-button iconButton=true onClick=(action "toggleEditShowModal" show)}}
+        {{#paper-button
+          iconButton=true
+          onClick=(route-action "showModal" "components.show-edit" show)
+        }}
           {{paper-icon "edit"}}
         {{/paper-button}}
         {{#paper-button iconButton=true onClick=(action "deleteShow" show)}}

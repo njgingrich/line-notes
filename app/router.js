@@ -10,6 +10,7 @@ Router.map(function() {
     this.route('show-list', {path: '/list'});
     this.route('show-detail', {path: '/:name'});
   });
+  //this.route('show-edit');
 });
 
 export default Router;

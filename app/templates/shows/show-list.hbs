@@ -13,7 +13,7 @@
       {{#card.actions}}
         {{#paper-button
           iconButton=true
-          onClick=(route-action "showModal" "components.show-edit" show)
+          onClick=(action "openModal" "edit" show)
         }}
           {{paper-icon "edit"}}
         {{/paper-button}}
@@ -31,68 +31,11 @@
   {{/paper-button}}
 </div>
 
-{{#if openModal}}
-  {{#paper-dialog onClose=(action "toggleEditShowModal")}}
-    {{#paper-dialog-content}}
-      <h2 class="md-title">Edit Show</h2>
-      <div layout class="layout-column">
-        {{paper-input placeholder="Show Name" autofocus=true flex=true
-                      value=editedShow.name onKeyDown=(action "updateModalButton")
-                      onChange=(action (mut editedShow.name))}}
-
-        {{#file-picker accept=".jpg,.jpeg,.gif,.png"
-                       fileLoaded="fileLoaded"
-                       readAs="readAsDataURL"}}
-          Drag here or click to upload a show image.
-        {{/file-picker}}
-
-        <h4>Assigned Users:
-          {{#if addingAssignedUser}}
-            {{#paper-select getItems=onUserLoad
-              itemLabelCallback=userLabelCallback
-              placeholder="Assign to a user" value=selectedUser
-              onChange=(action (mut selectedUser)) as |items|}}
-
-              {{#each items as |user|}}
-                {{#paper-option value=user}}
-                  {{user.name}}
-                {{/paper-option}}
-              {{/each}}
-            {{/paper-select}}
-          {{/if}}
-
-          {{#paper-button class="md-secondary" primary=true iconButton=true
-                          onClick=(action "addAssignedUser")}}
-            {{paper-icon "group-add"}}
-          {{/paper-button}}
-        </h4>
-        {{#paper-list}}
-          {{#each show.assignedUsers as |user|}}
-            {{#paper-item}}
-              <p>Test User 1</p>
-              {{#paper-button class="md-secondary" iconButton=true
-                              onClick=(action "removeAssignedUser")}}
-                {{paper-icon "delete"}}
-              {{/paper-button}}
-            {{/paper-item}}
-          {{/each}}
-        {{/paper-list}}
-      </div>
-    {{/paper-dialog-content}}
-
-    {{#paper-dialog-actions class="layout-row"}}
-      <span class="flex"></span>
-      {{#paper-button raised=true
-                      onClick=(action "toggleEditShowModal" show)}}
-        Cancel
-      {{/paper-button}}
-      {{#paper-button primary=true raised=true
-                      onClick=(action "editShow" editedShow)}}
-        {{confirmText}}
-      {{/paper-button}}
-    {{/paper-dialog-actions}}
-  {{/paper-dialog}}
-{{/if}}
+{{show-edit
+  showing=openModal
+  edit=(action "editShow")
+  show=editedShow
+}}
 
 {{#if openAddModal}}
   {{#paper-dialog onClose=(action "toggleAddShowModal")}}

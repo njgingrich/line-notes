@@ -10,17 +10,6 @@ export default Ember.Controller.extend({
   confirmText: 'Edit',
 
   actions: {
-    fileLoaded(file) {
-      console.log(file.name, file.type, file.data, file.size);
-      this.send('updateModalButton');
-    },
-    showModal(name, model) {
-      this.sendAction('showModal', name, model);
-    },
-    toggleAddShowModal() {
-      this.set('newShowName', '');
-      this.toggleProperty('openAddModal');
-    },
     createShow(name) {
       console.log(name);
       this.get('showActions').createShow(name);
@@ -35,16 +24,22 @@ export default Ember.Controller.extend({
       this.get('showActions').editShow(show);
       this.set('openModal', false);
     },
-    updateModalButton() {
-      this.set('confirmText', 'Save');
+    openModal(type, show) {
+      if (type === "edit") {
+        this.send('toggleEditShowModal', show)
+      } else {
+        this.send('toggleAddShowModal');
+      }
     },
-    addAssignedUser(show) {
-      this.toggleProperty('addingAssignedUser');
-      let names = this.get('showActions').getAllUsernames();
-      console.log(names);
+    toggleAddShowModal() {
+      this.set('newShowName', '');
+      this.toggleProperty('openAddModal');
     },
-    removeAssignedUser() {
-      console.log('TODO');
-    }
+    toggleEditShowModal(show) {
+      this.toggleProperty('openModal');
+      if (this.get('openModal')) {
+        this.set('editedShow', show);
+      }
+    },
   }
 });

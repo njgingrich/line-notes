@@ -1,12 +1,20 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+  showActions: Ember.inject.service('show-actions'),
   show: null,
+  loadUsernames: () => {
+    console.log(this.get('showActions'));
+    return this.get('showActions').getAllUsers();
+  },
+  userLabelCallback(user) {
+    return user.get('name');
+  },
 
   actions: {
-    addAssignedUser(show) {
+    addAssignedUser() {
       this.toggleProperty('addingAssignedUser');
-      let names = this.get('showActions').getAllUsernames();
+      let names = this.get('showActions').getAllUsers();
       console.log(names);
     },
     fileLoaded(file) {

@@ -26,7 +26,7 @@ export default Ember.Controller.extend({
     },
     openModal(type, show) {
       if (type === "edit") {
-        this.send('toggleEditShowModal', show)
+        this.send('toggleEditShowModal', show);
       } else {
         this.send('toggleAddShowModal');
       }

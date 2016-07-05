@@ -86,6 +86,9 @@ export default Ember.Service.extend({
 
   /* User actions */
   createUser(uid, displayName, email) {
+    if (displayName === undefined) {
+      displayName = email;
+    }
     let newUser = this.get('store').createRecord('user', {
       name: displayName,
       uid: uid,
@@ -95,7 +98,7 @@ export default Ember.Service.extend({
   },
   createUserIfNotExists(uid, displayName, email) {
     console.log(uid);
-    this.get('store').findAll('user').then((users) => {
+    this.get('store').findAll('user', {reload: true}).then((users) => {
       let create = true;
       users.forEach((user) => {
         if (uid = user.uid) {
@@ -129,6 +132,9 @@ export default Ember.Service.extend({
   removeAssignedUser(show, user) {
     show.get('assignedUsers').removeObject(user);
     show.save();
+  },
+  getAllUsers() {
+    return this.get('store').findAll('user');
   },
   getAllUsernames() {
     return this.get('store').findAll('user').then((users) => {

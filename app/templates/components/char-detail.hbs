@@ -1,41 +1,13 @@
-{{#paper-card as |card|}}
-  {{#card.title as |title|}}
-    {{#title.text as |text|}}
-      {{#text.headline}}
-        {{#if isEditing}}
-          {{paper-input attr-size=30 value=char.name
-                        onChange=(action (mut char.name))}}
-        {{else}}
-          {{char.name}}
-        {{/if}}
-      {{/text.headline}}
-    {{/title.text}}
-  {{/card.title}}
+  {{#if isEditing}}
+    {{input attr-size=30 value=char.name
+                  enter=(action (mut char.name))}}
+  {{else}}
+    {{char.name}}
+  {{/if}}
 
-  {{#card.content class="layout-row layout-align-space-between"}}
-    {{#card.media}}
-      {{#paper-content}}
-        {{notes-list char=char notes=char.notes
-            delete=attrs.deleteNote
-            edit=attrs.editNote}}
-      {{/paper-content}}
-    {{/card.media}}
-    {{#card.actions class="layout-column layout-end notes-card-bg"}}
-      {{#paper-button iconButton=true onClick=(action "toggleAddNoteModal")
-                      raised=true primary=true}}
-        {{paper-icon icon="add"}}
-      {{/paper-button}}
-      {{#paper-button iconButton=true onClick=(action editChar)
-                      raised=true warn=isEditing}}
-        {{paper-icon "edit"}}
-      {{/paper-button}}
-      {{#paper-button iconButton=true onClick=(action deleteChar)
-                      raised=true warn=true}}
-        {{paper-icon "delete"}}
-      {{/paper-button}}
-    {{/card.actions}}
-  {{/card.content}}
-{{/paper-card}}
+{{notes-list char=char notes=char.notes
+    delete=attrs.deleteNote
+    edit=attrs.editNote}}
 
 {{create-line-note open=openModal
                    create=attrs.create

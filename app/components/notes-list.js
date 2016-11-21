@@ -11,5 +11,6 @@ export default Ember.Component.extend({
   },
   sortedNotes: null,
   noNotes: Ember.computed.empty('sortedNotes'),
+  classNames: ["ui", "celled", "table"],
   tagName: 'table'
 });

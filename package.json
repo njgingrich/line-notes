@@ -19,7 +19,8 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "ember-paper": "git://github.com/miguelcobain/ember-paper.git#1bea72bafb81e86fb776ace25e46d18c2a2be4f4"
+    "ember-paper": "git://github.com/miguelcobain/ember-paper.git#1bea72bafb81e86fb776ace25e46d18c2a2be4f4",
+    "semantic-ui": "^2.2.6"
   },
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.2",
@@ -57,6 +58,7 @@
     "ember-truth-helpers": "1.2.0",
     "emberfire": "2.0.0",
     "loader.js": "^4.0.1",
+    "semantic-ui-ember": "2.0.0",
     "torii": "0.8.0"
   }
 }

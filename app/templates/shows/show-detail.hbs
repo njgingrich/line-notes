@@ -1,45 +1,33 @@
-<div class="layout-row layout-align-center">
+<div class="ui container">
   {{#if session.isAuthenticated}}
-    <div class="flex-28">
-      {{#paper-content class="md-whiteframe-z1 md-margin"}}
-        {{#paper-list}}
-          {{#paper-item class="md-2-line"}}
-            {{paper-input attr-size=30 value=newCharName
-                          onChange=(action (mut newCharName))
-                          label="New"}}
-            {{#paper-button onClick=(action "addChar") iconButton=true
-                            raised=true primary=true}}
-              {{paper-icon "add"}}
-            {{/paper-button}}
-          {{/paper-item}}
+    <div class="ui grid">
+      <div class="four wide column">
+        <div class="ui vertical fluid tabular menu">
           {{#each sortedChars as |char|}}
-            {{#paper-item class="md-2-line"
-                          param=char
-                          onClick=(action "selectChar" char)}}
-              <div class="md-list-item-text">
-                <p>
-                  {{char.name}}
-                </p>
+            <div class="item">
+              <div class="content">
+                <a class="header" {{action "selectChar" char}}>{{char.name}}</a>
               </div>
-            {{/paper-item}}
+            </div>
           {{/each}}
-        {{/paper-list}}
-      {{/paper-content}}
-    </div>
-    <div class="flex">
-      {{#if activeChar}}
-        {{char-detail char=activeChar
-            isEditing=isEditing
-            create=(action "addNote" activeChar)
-            deleteChar=(action "deleteChar" activeChar)
-            deleteNote=(action "deleteNote" activeChar)
-            editChar=(action "editChar" activeChar)
-            editNote=(action "editNote")}}
-      {{/if}}
+        </div>
+      </div>
+      <div class="twelve wide stretched column">
+        <div class="ui segment">
+          {{#if activeChar}}
+            {{char-detail char=activeChar
+                isEditing=isEditing
+                create=(action "addNote" activeChar)
+                deleteChar=(action "deleteChar" activeChar)
+                deleteNote=(action "deleteNote" activeChar)
+                editChar=(action "editChar" activeChar)
+                editNote=(action "editNote")}}
+          {{/if}}
+        </div>
+      </div>
     </div>
   {{else}}
-    <div class="md-margin">
-      {{paper-icon 'error' size=128}}
+    <div>
       <p>You aren't logged in.</p>
     </div>
   {{/if}}

@@ -1,4 +1,4 @@
-<td class="col-sm-1">
+<td class="collapsing">
   {{#if isEditing}}
     <div layout>
       {{paper-input flex=true value=note.page hideAllMessages=true
@@ -12,7 +12,7 @@
     {{/tooltip-on-element}}
   {{/if}}
 </td>
-<td class="col-sm-7">
+<td>
   {{#if isEditing}}
     <div layout>
       {{paper-input flex=true value=note.line hideAllMessages=true
@@ -23,7 +23,7 @@
     {{{richTextLine}}}
   {{/if}}
 </td>
-<td class="col-sm-2">
+<td class="collapsing">
   {{#if isEditing}}
     {{#paper-select value=note.error class="note-detail-editing"
                     onChange=(action (mut note.error))}}
@@ -38,12 +38,8 @@
   {{/if}}
 
 </td>
-<td class="col-sm-1">
-  {{paper-switch value=isEditing onChange=(action "editNote")}}
-</td>
-<td class="col-sm-1">
-  {{#paper-button warn=true raised=true mini=true
-                  onClick=(action delete note) icon-button=true}}
-    {{paper-icon "delete"}}
-  {{/paper-button}}
+<td class="collapsing">
+  <div class="ui fitted slider checkbox">
+    {{input type="checkbox" click="editNote"}} <label></label>
+  </div>
 </td>

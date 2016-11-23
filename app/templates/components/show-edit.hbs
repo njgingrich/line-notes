@@ -17,7 +17,7 @@
 
     <h4>Assigned Users:
       {{#if addingAssignedUser}}
-        {{#paper-select getItems=onUserLoad
+        {{#paper-select getItems=loadUsernames
           itemLabelCallback=userLabelCallback
           placeholder="Assign to a user" value=selectedUser
           onChange=(action (mut selectedUser)) as |items|}}

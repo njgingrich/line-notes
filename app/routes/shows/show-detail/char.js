@@ -5,11 +5,10 @@ export default Ember.Route.extend({
     if (!this.get('session.isAuthenticated')) {
       Ember.run.later(() => {
         this.transitionTo('shows.show-list');
-      }, 3000);
+      }, 2000);
     }
   },
   model(params) {
-    console.log('param: ' + params.char);
     return this.store.findRecord('character', params.char);
   }
 });

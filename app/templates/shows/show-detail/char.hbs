@@ -1,0 +1,15 @@
+{{#if isEditing}}
+  {{input attr-size=30 value=char.name
+                enter=(action (mut char.name))}}
+{{else}}
+  {{char.name}}
+{{/if}}
+
+{{notes-list char=char notes=char.notes
+  delete=attrs.deleteNote
+  edit=attrs.editNote}}
+
+<!--
+{{create-line-note open=openModal
+                 create=attrs.create
+                 close=(action "toggleAddNoteModal")}}-->

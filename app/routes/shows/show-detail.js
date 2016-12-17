@@ -8,6 +8,7 @@ export default Ember.Route.extend({
       }, 3000);
     }
   },
+
   model(params) {
     return this.store.findRecord('show', params.name);
   },
@@ -16,6 +17,6 @@ export default Ember.Route.extend({
     this._super(controller, model);
     let chars = model.get('characters');
     let charArray = chars.sortBy('name');
-    controller.set('activeChar', charArray[0]);
+    //controller.set('activeChar', charArray[0]);
   }
 });

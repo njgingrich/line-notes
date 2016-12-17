@@ -4,7 +4,6 @@ export default Ember.Controller.extend({
   show: Ember.computed.alias('model'),
   notify: Ember.inject.service('notify'),
   showActions: Ember.inject.service('show-actions'),
-  activeChar: null,
   newCharName: '',
   sortAttr: ['name'],
   sortedChars: Ember.computed.sort('model.characters', 'sortAttr'),
@@ -41,10 +40,8 @@ export default Ember.Controller.extend({
       let show = this.get('show');
       this.get('showActions').deleteChar(char, show);
       this.get('notify').alert('Character deleted!');
-      this.set('activeChar', null);
     },
     editChar(char) {
-      this.set('activeChar', char);
       this.toggleProperty('isEditing');
       if (!this.get('isEditing')) {
         this.get('showActions').editChar(char);

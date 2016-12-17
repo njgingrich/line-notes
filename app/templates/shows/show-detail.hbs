@@ -3,10 +3,13 @@
     <div class="ui grid">
       <div class="four wide column">
         <div class="ui vertical fluid tabular menu">
-          {{#each sortedChars as |char|}}
+          {{#each sortedChars as |char index|}}
             <div class="item">
               <div class="content">
-                <a class="header" {{action "selectChar" char}}>{{char.name}}</a>
+                {{#link-to 'shows.show-detail.char' char.id class="header"}}
+                  {{char.name}}
+                {{/link-to}}
+                <!--a class="header" {{action "selectChar" char}}>{{char.name}}</a-->
               </div>
             </div>
           {{/each}}
@@ -14,15 +17,13 @@
       </div>
       <div class="twelve wide stretched column">
         <div class="ui segment">
-          {{#if activeChar}}
-            {{char-detail char=activeChar
-                isEditing=isEditing
-                create=(action "addNote" activeChar)
-                deleteChar=(action "deleteChar" activeChar)
-                deleteNote=(action "deleteNote" activeChar)
-                editChar=(action "editChar" activeChar)
-                editNote=(action "editNote")}}
-          {{/if}}
+          {{outlet}}<!-- char=activeChar
+              isEditing=isEditing
+              create=(action "addNote" activeChar)
+              deleteChar=(action "deleteChar" activeChar)
+              deleteNote=(action "deleteNote" activeChar)
+              editChar=(action "editChar" activeChar)
+              editNote=(action "editNote")}}-->
         </div>
       </div>
     </div>

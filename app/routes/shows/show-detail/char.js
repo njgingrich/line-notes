@@ -8,17 +8,27 @@ export default Ember.Route.extend({
       }, 2000);
     }
   },
+
   model(params) {
     return this.store.query('character', {
-      orderBy: 'name',
-      equalTo: params.name
+      orderBy: 'friendlyName',
+      equalTo: params.friendlyName
     }).then(function(data) {
-      return data.get('firstObject');
+      return new Promise(resolve => {
+        resolve(data.get('firstObject'));
+      });
     });
   },
+
   serialize(model) {
-    return {
-      char: model.get('name')
-    };
+    if (model.get('name') == undefined) {
+      return {
+        char: ''
+      }
+    } else {
+      return {
+        char: model.get('friendlyName')
+      };
+    }
   }
 });

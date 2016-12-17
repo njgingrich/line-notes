@@ -6,7 +6,7 @@
           {{#each sortedChars as |char index|}}
             <div class="item">
               <div class="content">
-                {{#link-to 'shows.show-detail.char' char.id class="header"}}
+                {{#link-to 'shows.show-detail.char' char class="header"}}
                   {{char.name}}
                 {{/link-to}}
                 <!--a class="header" {{action "selectChar" char}}>{{char.name}}</a-->

@@ -9,6 +9,16 @@ export default Ember.Route.extend({
     }
   },
   model(params) {
-    return this.store.findRecord('character', params.char);
+    return this.store.query('character', {
+      orderBy: 'name',
+      equalTo: params.name
+    }).then(function(data) {
+      return data.get('firstObject');
+    });
+  },
+  serialize(model) {
+    return {
+      char: model.get('name')
+    };
   }
 });

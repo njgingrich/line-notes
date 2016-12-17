@@ -10,7 +10,18 @@ export default Ember.Route.extend({
   },
 
   model(params) {
-    return this.store.findRecord('show', params.name);
+    return this.store.query('show', {
+      orderBy: 'name',
+      equalTo: params.name
+    }).then(function(data) {
+      return data.get('firstObject');
+    });
+  },
+
+  serialize(model) {
+    return {
+      name: model.get('name')
+    };
   },
 
   setupController(controller, model) {

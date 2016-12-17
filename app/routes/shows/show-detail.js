@@ -10,13 +10,12 @@ export default Ember.Route.extend({
   },
 
   model(params) {
+    console.log('clicked on ' + params.name);
     return this.store.query('show', {
       orderBy: 'friendlyName',
-      equalTo: params.friendlyName
+      equalTo: params.name
     }).then(data => {
-      return new Promise(resolve => {
-        resolve(data.get('firstObject'));
-      });
+      return data.get('firstObject');
     });
   },
 
@@ -26,18 +25,8 @@ export default Ember.Route.extend({
     };
   },
 
-  /*afterModel(model, transition) {
+  afterModel(model, transition) {
     console.log('model: ' + model);
     this.transitionTo('shows.show-detail.char', model.get('characters').get('firstObject'));
-  }*/
-
-  /*setupController(controller, model) {
-    this._super(controller, model);
-    console.log('chars: ' + model.get('characters'));
-    let chars = model.get('characters').then(function(chars) {
-      console.log('newer chars: ' + chars);
-      let charArray = chars.sortBy('name');
-    })
-    //controller.set('activeChar', charArray[0]);
-  }*/
+  }
 });

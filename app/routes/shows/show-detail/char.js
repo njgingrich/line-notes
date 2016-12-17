@@ -12,7 +12,7 @@ export default Ember.Route.extend({
   model(params) {
     return this.store.query('character', {
       orderBy: 'friendlyName',
-      equalTo: params.friendlyName
+      equalTo: params.char
     }).then(function(data) {
       return new Promise(resolve => {
         resolve(data.get('firstObject'));

@@ -7,8 +7,5 @@ export default Model.extend({
   name: attr('string'),
   characters: hasMany('character'),
   assignedUsers: hasMany('user'),
-
-  friendlyName: Ember.computed('name', function() {
-    return this.get('name').dasherize();
-  })
+  slug: attr('string')
 });

@@ -7,8 +7,6 @@ export default Model.extend({
   name: attr('string'),
   show: belongsTo('show'),
   notes: hasMany('line-note'),
+  slug: attr('string')
 
-  friendlyName: Ember.computed('name', function() {
-    return this.get('name').dasherize();
-  })
 });

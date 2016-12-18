@@ -10,23 +10,33 @@ export default Ember.Route.extend({
   },
 
   model(params) {
-    console.log('clicked on ' + params.name);
     return this.store.query('show', {
-      orderBy: 'friendlyName',
-      equalTo: params.name
+      orderBy: 'slug',
+      equalTo: params.show_slug
     }).then(data => {
       return data.get('firstObject');
     });
   },
 
-  serialize(model) {
+  serialize(show) {
+    console.log('show: ' + show);
     return {
-      name: model.get('friendlyName')
+      show_slug: show.get('slug')
     };
   },
 
   afterModel(model, transition) {
-    console.log('model: ' + model);
-    this.transitionTo('shows.show-detail.char', model.get('characters').get('firstObject'));
+    console.log('model: ' + model + ' of id ' + model.get('id'));
+    let show = this.get('store').peekRecord('show', model.get('id'));
+    show.get('characters').then(chars => {
+      console.log('chars: ' + chars);
+      let first = chars.get('firstObject');
+      this.transitionTo('shows.show-detail.char', first);
+    });
+    /*model.get('characters').then(chars => {
+      chars.get('firstObject').then(c => {
+        this.transitionTo('shows.show-detail.char', c);
+      })
+    })*/
   }
 });

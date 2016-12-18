@@ -11,24 +11,16 @@ export default Ember.Route.extend({
 
   model(params) {
     return this.store.query('character', {
-      orderBy: 'friendlyName',
-      equalTo: params.char
-    }).then(function(data) {
-      return new Promise(resolve => {
-        resolve(data.get('firstObject'));
-      });
+      orderBy: 'slug',
+      equalTo: params.char_slug
+    }).then((data) => {
+        return data.get('firstObject');
     });
   },
 
-  serialize(model) {
-    if (model.get('name') == undefined) {
-      return {
-        char: ''
-      }
-    } else {
-      return {
-        char: model.get('friendlyName')
-      };
-    }
+  serialize(char) {
+    return {
+      char_slug: char.get('slug')
+    };
   }
 });

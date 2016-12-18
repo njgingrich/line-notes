@@ -6,7 +6,7 @@
           {{#text.headline}}{{show.name}}{{/text.headline}}
         {{/title.text}}
       {{/card.title}}
-      {{#link-to 'shows.show-detail' show.friendlyName}}
+      {{#link-to 'shows.show-detail' show.slug}}
         {{card.image src=(img-src show.name)
                      alt="Show Image" title="Show Image" class="show-list-img"}}
       {{/link-to}}

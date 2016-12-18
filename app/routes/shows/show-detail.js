@@ -25,18 +25,11 @@ export default Ember.Route.extend({
     };
   },
 
-  afterModel(model, transition) {
-    console.log('model: ' + model + ' of id ' + model.get('id'));
+  afterModel(model) {
     let show = this.get('store').peekRecord('show', model.get('id'));
     show.get('characters').then(chars => {
-      console.log('chars: ' + chars);
       let first = chars.get('firstObject');
       this.transitionTo('shows.show-detail.char', first);
     });
-    /*model.get('characters').then(chars => {
-      chars.get('firstObject').then(c => {
-        this.transitionTo('shows.show-detail.char', c);
-      })
-    })*/
   }
 });

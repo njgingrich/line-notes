@@ -1,5 +1,6 @@
-<!--
-{{#ui-modal name="create-note" class="create-note" onApprove=(action approve) onDeny=(action deny)}}
+{{#modal-dialog close=(action close)
+                targetAttachment="center"
+                translucentOverlay=true}}
   <i class="close icon"></i>
   <div class="header">
     Add Line Note
@@ -7,17 +8,17 @@
   <div class="content">
     <label>Line</label>
     <div class="ui fluid input">
-      <input type="text" placeholder="Line">
+      {{input type="text" value=line}}
     </div>
 
     <label>Page</label>
-    <div class="ui input">
-      <input width=3 type="text" placeholder="Line">
+    <div class="ui fluid input">
+      {{input type="text" value=page}}
     </div>
 
     <label>Note</label>
     <div class="ui fluid input">
-      <input type="text" placeholder="Line">
+      {{input type="text" value=note}}
     </div>
 
     {{#ui-dropdown class="selection" selected="Bob" onChange=(action (mut error))}}
@@ -33,18 +34,11 @@
     {{/ui-dropdown}}
   </div>
   <div class="actions">
-    <div class="ui deny button">
+    <div class="ui deny button" {{action (action close)}}>
       Cancel
     </div>
-    <div class="ui positive right button">
+    <div class="ui positive right button" {{action "addNote"}}>
       Add
     </div>
   </div>
-{{/ui-modal}}
--->
-
-{{#modal-dialog close=(action close)
-                targetAttachment="center"
-                translucentOverlay=true}}
-  Oh hai there!
 {{/modal-dialog}}

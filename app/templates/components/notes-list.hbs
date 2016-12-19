@@ -34,7 +34,6 @@
 </tfoot>
 
 {{#if isShowing}}
-
-  {{create-line-note close=(action toggle)}}
-
+  {{create-line-note close=(action toggle)
+                     create=(action addNote)}}
 {{/if}}

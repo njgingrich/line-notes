@@ -2,33 +2,17 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   char: Ember.computed.alias('model'),
+  showActions: Ember.inject.service(),
+  notify: Ember.inject.service(),
   isShowingCreateModal: false,
 
   actions: {
     toggleModal() {
       this.toggleProperty('isShowingCreateModal');
     },
-
-    openModal(name) {
-      console.log('opening modal ' + name);
-      $('.ui.' + name + '.modal').modal('setting', {
-                                   observeChanges: true,
-                                 })
-                                 .modal('show')
-                                 .modal('refresh')
-                                 .modal('refresh');
-    },
-    approveModal(element, component) {
-      alert('approve ' + component.get('name'));
-      return false;
-    },
-    denyModal(element, component) {
-      alert('deny ' + component.get('name'));
-      return true;
-    },
-
     addNote(char, page, line, note, error) {
       this.get('showActions').addNote(char, page, line, note, error);
+      this.send('toggleModal');
       this.get('notify').success('Added new note!');
     },
     editNote(note) {

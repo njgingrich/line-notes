@@ -24,6 +24,10 @@ const Validations = buildValidations({
 export default Ember.Component.extend(Validations, {
   init() {
     this._super(...arguments);
+    this.set('page', '');
+    this.set('line', '');
+    this.set('note', '');
+    this.set('error', -1);
   },
   page: '',
   line: '',
@@ -34,13 +38,9 @@ export default Ember.Component.extend(Validations, {
 
   actions: {
     addNote() {
-      this.attrs.create(this.get('page'), this.get('line'),
-                        this.get('note'), this.get('error'));
-      this.set('page', '');
-      this.set('line', '');
-      this.set('note', '');
-      this.set('error', -1);
-      this.attrs.close();
+      let action = this.get('create');
+      return action(this.get('page'), this.get('line'),
+                    this.get('note'), this.get('error'));
     }
   }
 });

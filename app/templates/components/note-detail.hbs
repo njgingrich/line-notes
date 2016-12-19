@@ -1,9 +1,7 @@
 <td class="collapsing">
   {{#if isEditing}}
-    <div layout>
-      {{paper-input flex=true value=note.page hideAllMessages=true
-                    class="note-detail-editing"
-                    onChange=(action (mut page))}}
+    <div class="ui fluid input">
+      {{input value=note.page size="1"}}
     </div>
   {{else}}
     {{note.page}}
@@ -14,10 +12,8 @@
 </td>
 <td>
   {{#if isEditing}}
-    <div layout>
-      {{paper-input flex=true value=note.line hideAllMessages=true
-                    class="note-detail-editing"
-                    onChange=(action (mut line))}}
+    <div class="ui fluid input">
+      {{input value=note.line}}
     </div>
   {{else}}
     {{{richTextLine}}}
@@ -25,21 +21,23 @@
 </td>
 <td class="collapsing">
   {{#if isEditing}}
-    {{#paper-select value=note.error class="note-detail-editing"
-                    onChange=(action (mut note.error))}}
-      {{#each errorTypes.errors as |err index|}}
-        {{#paper-option value=index}}
-          {{capitalize err}}
-        {{/paper-option}}
-      {{/each}}
-    {{/paper-select}}
+    {{#ui-dropdown class="fluid selection" selected="Bob" onChange=(action (mut error))}}
+      <div class="default text">Error</div>
+      <i class="dropdown icon"></i>
+      <div class="menu">
+        {{#each errorTypes.errors as |err index|}}
+          <div class="item" data-value={{index}}>
+            {{capitalize err}}
+          </div>
+        {{/each}}
+      </div>
+    {{/ui-dropdown}}
   {{else}}
     {{error-str note.error}}
   {{/if}}
 
 </td>
-<td class="collapsing">
-  <div class="ui fitted slider checkbox">
-    {{input type="checkbox" click="editNote"}} <label></label>
-  </div>
+<td class="right aligned collapsing">
+  {{ui-checkbox class="toggle"
+                onChange=(action "editNote")}}
 </td>

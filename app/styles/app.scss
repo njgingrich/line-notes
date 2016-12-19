@@ -7,3 +7,8 @@
 .ember-modal-dialog {
   border-radius: 0;
 }
+
+// fix for dropdown appearing behind td
+td.collapsing {
+	overflow: visible;
+}

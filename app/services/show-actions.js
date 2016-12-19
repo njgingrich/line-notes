@@ -54,6 +54,7 @@ export default Ember.Service.extend({
   },
   editChar(char) {
     Ember.Logger.info('Editing char ' + char);
+    char.set('slug', char.get('name').dasherize());
     char.save();
   },
 

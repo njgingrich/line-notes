@@ -1,36 +1,50 @@
-{{#if open}}
-  {{#paper-dialog onClose=(action close)}}
-    {{#paper-dialog-content}}
-      <h2 class="md-title">Add Line Note</h2>
-      <div layout="" layout-sm="column">
-        {{paper-input placeholder="Line" autofocus=true value=line flex=100
-        onChange=(action (mut line))}}
-      </div>
-      <div layout="" layout-sm="column">
-        {{paper-input placeholder="Page" flex=15
-                    value=page onChange=(action (mut page))}}
-        {{paper-input placeholder="Note" value=note flex=85
-                      onChange=(action (mut note))}}
-      </div>
+<!--
+{{#ui-modal name="create-note" class="create-note" onApprove=(action approve) onDeny=(action deny)}}
+  <i class="close icon"></i>
+  <div class="header">
+    Add Line Note
+  </div>
+  <div class="content">
+    <label>Line</label>
+    <div class="ui fluid input">
+      <input type="text" placeholder="Line">
+    </div>
 
-      {{#paper-radio-group groupValue=error onChange=(action (mut error)) as |group|}}
+    <label>Page</label>
+    <div class="ui input">
+      <input width=3 type="text" placeholder="Line">
+    </div>
+
+    <label>Note</label>
+    <div class="ui fluid input">
+      <input type="text" placeholder="Line">
+    </div>
+
+    {{#ui-dropdown class="selection" selected="Bob" onChange=(action (mut error))}}
+      <div class="default text">Error</div>
+      <i class="dropdown icon"></i>
+      <div class="menu">
         {{#each errorTypes.errors as |err index|}}
-          {{#group.paper-radio value=index}}
+          <div class="item" data-value={{index}}>
             {{capitalize err}}
-          {{/group.paper-radio}}
+          </div>
         {{/each}}
-      {{/paper-radio-group}}
-    {{/paper-dialog-content}}
+      </div>
+    {{/ui-dropdown}}
+  </div>
+  <div class="actions">
+    <div class="ui deny button">
+      Cancel
+    </div>
+    <div class="ui positive right button">
+      Add
+    </div>
+  </div>
+{{/ui-modal}}
+-->
 
-    {{#paper-dialog-actions class="layout-row"}}
-      <span class="flex"></span>
-      {{#paper-button raised=true onClick=(action attrs.close)}}
-        Cancel
-      {{/paper-button}}
-      {{#paper-button raised=true
-                  primary=true
-                  disabled=(v-get this 'isInvalid')
-                  onClick=(action "addNote")}}Add{{/paper-button}}
-    {{/paper-dialog-actions}}
-  {{/paper-dialog}}
-{{/if}}
+{{#modal-dialog close=(action close)
+                targetAttachment="center"
+                translucentOverlay=true}}
+  Oh hai there!
+{{/modal-dialog}}

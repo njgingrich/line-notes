@@ -5,10 +5,9 @@
   {{char.name}}
 {{/if}}
 
-{{notes-list char=char notes=char.notes
-  delete=attrs.deleteNote
-  edit=attrs.editNote}}
-
-{{create-line-note open=openModal
-                 create=attrs.create
-                 close=(action "toggleAddNoteModal")}}
+{{notes-list char=char
+             notes=char.notes
+             isShowing=isShowingCreateModal
+             toggle=(action "toggleModal")
+             approve=(action "approveModal")
+             deny=(action "denyModal")}}

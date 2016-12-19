@@ -13,22 +13,28 @@
 {{else}}
   <tbody>
     {{#each sortedNotes as |note|}}
-      {{note-detail note=note edit=attrs.edit delete=attrs.delete}}
+      {{note-detail note=note}}
     {{/each}}
   </tbody>
 {{/if}}
 <tfoot class="full-width">
   <tr>
     <th colspan="4">
-      <button class="ui small primary button" {{action "toggleAddNoteModal"}}>
+      <button class="ui small primary button" {{action (action toggle)}}>
         <i class="user icon"></i> Add Note
       </button>
-      <button class="ui small button" {{action "editChar"}}>
+      <button class="ui small button">
         Edit Character
       </button>
-      <button class="ui small button" {{action "deleteChar"}}>
+      <button class="ui small button">
         Delete Character
       </button>
     </th>
   </tr>
 </tfoot>
+
+{{#if isShowing}}
+
+  {{create-line-note close=(action toggle)}}
+
+{{/if}}

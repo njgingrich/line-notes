@@ -1,40 +1,41 @@
-{{#paper-toolbar}}
-  {{#paper-toolbar-tools}}
-    {{#link-to 'shows.show-list'}}
-      {{paper-button label='Home'}}
+<div class="ui top fixed menu">
+  {{#link-to 'shows.show-list'}}
+    <div class="item">
+      <i class="big home icon"></i>
+    </div>
+  {{/link-to}}
+
+  {{#each model as |show|}}
+    {{#link-to 'shows.show-detail' show.slug class="item"}}
+      {{show.name}}
     {{/link-to}}
-    {{#each model as |show|}}
-      {{#link-to 'shows.show-detail' show.slug}}
-        {{paper-button label=show.name}}
-      {{/link-to}}
-    {{/each}}
-    <span class="flex"></span>
+  {{/each}}
+
+  <div class="right menu">
     {{#if session.isAuthenticated}}
-      <h3>{{session.currentUser.displayName}}</h3>
+      <div class="header item">
+        {{session.currentUser.displayName}}
+      </div>
     {{/if}}
-    {{#paper-menu width=4 position="target-right target" as |menu|}}
-      {{#paper-button onClick=(action "toggleMenu" target=menu) iconButton=true}}
-        {{paper-icon "more_vert" class="md-menu-origin"}}
-      {{/paper-button}}
-      {{else}}
-      {{#if session.isAuthenticated}}
-        {{#paper-menu-item onClick=(action 'openSettings')}}
-          {{paper-icon 'settings' class="md-menu-align-target"}}
-          <span>Settings</span>
-        {{/paper-menu-item}}
-        {{#paper-menu-item onClick=(action 'signOut')}}
-          {{paper-icon 'exit-to-app' class="md-menu-align-target"}}
-          <span>Log Out</span>
-        {{/paper-menu-item}}
-      {{else}}
-      {{#paper-menu-item onClick=(action 'signIn')}}
-        {{paper-icon 'done' class="md-menu-align-target"}}
-        <span>Log In</span>
-      {{/paper-menu-item}}
-      {{/if}}
+    {{#ui-dropdown class="item"}}
+      <div class="default text">Settings</div>
+      <i class="dropdown icon"></i>
+      <div class="menu">
+        {{#if session.isAuthenticated}}
+          <div class="item" {{action (action 'openSettings')}}>
+            Settings
+          </div>
+          <div class="item" {{action (action 'signOut')}}>
+            Log Out
+          </div>
+        {{else}}
+          <div class="item" {{action (action 'signIn')}}>
+            Log In
+          </div>
+        {{/if}}
+      </div>
+    {{/ui-dropdown}}
+  </div>
 
-    {{/paper-menu}}
-
-  {{/paper-toolbar-tools}}
-{{/paper-toolbar}}
+</div>
 {{outlet}}

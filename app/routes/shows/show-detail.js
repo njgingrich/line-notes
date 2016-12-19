@@ -26,10 +26,16 @@ export default Ember.Route.extend({
   },
 
   afterModel(model) {
-    let show = this.get('store').peekRecord('show', model.get('id'));
-    show.get('characters').then(chars => {
-      let first = chars.get('firstObject');
-      this.transitionTo('shows.show-detail.char', first);
-    });
+    if (model == undefined) { // invalid slug, redirect to base
+      Ember.Logger.info("Attempted to reach unknown url")
+      this.transitionTo('shows.show-list');
+    } else {
+      let show = this.get('store').peekRecord('show', model.get('id'));
+      show.get('characters').then(chars => {
+        let sorted = chars.sortBy('name');
+        let first = sorted.get('firstObject');
+        this.transitionTo('shows.show-detail.char', first);
+      });
+    }
   }
 });

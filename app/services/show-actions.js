@@ -18,6 +18,7 @@ export default Ember.Service.extend({
     });
   },
   editShow(show) {
+    show.set('slug', show.get('name').dasherize());
     show.save();
   },
 

@@ -18,6 +18,13 @@ export default Ember.Route.extend({
     });
   },
 
+  afterModel(model) {
+    if (model == undefined) { // invalid slug, redirect to base
+      Ember.Logger.info("Attempted to reach unknown url")
+      this.transitionTo('shows.show-list');
+    }
+  },
+
   serialize(char) {
     return {
       char_slug: char.get('slug')

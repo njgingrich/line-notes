@@ -5,6 +5,7 @@ export default Ember.Controller.extend({
   showActions: Ember.inject.service(),
   notify: Ember.inject.service(),
   isShowingCreateModal: false,
+  isEditing: false,
 
   actions: {
     toggleModal() {
@@ -24,14 +25,6 @@ export default Ember.Controller.extend({
     },
     deleteAllNotes(char) {
       this.get('showActions').deleteAllNotes(char);
-    },
-    addChar() {
-      let name = this.get('newCharName');
-      let show = this.get('show');
-      this.get('showActions').addChar(name, show);
-      this.get('notify').success('Added new character!');
-      // reset the input
-      this.set('newCharName', '');
     },
     deleteChar(char) {
       let show = this.get('show');

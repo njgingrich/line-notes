@@ -1,12 +1,32 @@
-{{#if isEditing}}
-  {{input attr-size=30 value=char.name
-                enter=(action (mut char.name))}}
-{{else}}
-  {{char.name}}
-{{/if}}
-
-{{notes-list char=char
-             notes=char.notes
-             isShowing=isShowingCreateModal
-             toggle=(action "toggleModal")
-             addNote=(action "addNote" char)}}
+<div class="ui fluid card">
+  <div class="content">
+    {{#if isEditing}}
+      {{input attr-size=30 value=char.name
+                    enter=(action (mut char.name))}}
+    {{else}}
+      <div class="center aligned header">
+        {{char.name}}
+      </div>
+    {{/if}}
+  </div>
+  <div class="content">
+    {{notes-list char=char
+                 notes=char.notes
+                 isShowing=isShowingCreateModal
+                 toggle=(action "toggleModal")
+                 addNote=(action "addNote" char)}}
+  </div>
+  <div class="extra content">
+    <div class="right floated">
+      <button class="ui small primary button" {{action "toggleModal"}}>
+        <i class="user icon"></i> Add Note
+      </button>
+      <button class="ui small button" {{action "editChar" char}}>
+        Edit Character
+      </button>
+      <button class="ui small button">
+        Delete Character
+      </button>
+    </div>
+  </div>
+</div>

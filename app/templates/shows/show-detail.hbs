@@ -3,6 +3,9 @@
     <div class="ui grid">
       <div class="four wide column">
         <div class="ui vertical fluid tabular menu">
+          <a class="item" {{action "toggleModal"}}>
+            <i class="plus icon"></i> Add
+          </a>
           {{#each sortedChars as |char index|}}
             {{#link-to 'shows.show-detail.char' char class="item"}}
               {{char.name}}
@@ -11,15 +14,7 @@
         </div>
       </div>
       <div class="twelve wide stretched column">
-        <div class="ui segment">
-          {{outlet}}<!-- char=activeChar
-              isEditing=isEditing
-              create=(action "addNote" activeChar)
-              deleteChar=(action "deleteChar" activeChar)
-              deleteNote=(action "deleteNote" activeChar)
-              editChar=(action "editChar" activeChar)
-              editNote=(action "editNote")}}-->
-        </div>
+        {{outlet}}
       </div>
     </div>
   {{else}}
@@ -28,3 +23,8 @@
     </div>
   {{/if}}
 </div>
+
+{{#if isShowingAddModal}}
+  {{create-char close=(action "toggleModal")
+                add=(action "addChar")}}
+{{/if}}

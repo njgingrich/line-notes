@@ -6,7 +6,8 @@ export default Ember.Service.extend({
   /* Whole show actions */
   createShow(name) {
     let show1 = this.store.createRecord('show', {
-      name: name
+      name: name,
+      slug: name.dasherize()
     });
     show1.save();
   },
@@ -24,7 +25,8 @@ export default Ember.Service.extend({
   addChar(name, show) {
     Ember.Logger.info("adding char " + name + " to show " + show);
     let char1 = this.get('store').createRecord('character', {
-      name: name
+      name: name,
+      slug: name.dasherize()
     });
     char1.save();
     show.get('characters').pushObject(char1);
@@ -51,7 +53,7 @@ export default Ember.Service.extend({
 
   },
   editChar(char) {
-    Ember.logger.info('Editing char ' + char);
+    Ember.Logger.info('Editing char ' + char);
     char.save();
   },
 

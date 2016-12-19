@@ -2,7 +2,7 @@
   <div class="content">
     {{#if isEditing}}
       {{input attr-size=30 value=char.name
-                    enter=(action (mut char.name))}}
+                    enter=(action "editChar" char)}}
     {{else}}
       <div class="center aligned header">
         {{char.name}}

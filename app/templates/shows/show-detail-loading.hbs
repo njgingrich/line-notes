@@ -1,0 +1,13 @@
+
+{{#if session.isAuthenticated}}
+  <div class="u`i segment">
+    <div class="ui active inverted dimmer">
+      <div class="ui text loader">Loading</div>
+    </div>
+    <p></p>
+  </div>
+{{else}}
+  <div>
+    <p>You aren't logged in.</p>
+  </div>
+{{/if}}

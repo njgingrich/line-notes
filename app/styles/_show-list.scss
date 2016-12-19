@@ -1,5 +1,9 @@
 $show-list-img-dims: 320px;
 
+.img-responsive {
+  max-width: 100%;
+}
+
 .show-list-footer:hover {
   background-color: color($foreground-dark, '3');
 }

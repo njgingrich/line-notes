@@ -1,0 +1,22 @@
+{{#modal-dialog close=(action close)
+                targetAttachment="center"
+                translucentOverlay=true}}
+  <i class="close icon" {{action (action close)}}></i>
+  <div class="header">
+    Add Character
+  </div>
+  <div class="content">
+    <h3 class="ui modal-header header">Name</h3>
+    <div class="ui fluid input modal-input">
+      {{input type="text" autofocus="true" value=name}}
+    </div>
+  </div>
+  <div class="actions">
+    <div class="ui deny button" {{action (action close)}}>
+      Cancel
+    </div>
+    <div class="ui positive right button" {{action (action add name)}}>
+      Add
+    </div>
+  </div>
+{{/modal-dialog}}

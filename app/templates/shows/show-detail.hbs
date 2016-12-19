@@ -1,28 +1,26 @@
-<div class="ui container menu-pad">
-  {{#if session.isAuthenticated}}
-    <div class="ui grid">
-      <div class="four wide column">
-        <div class="ui fluid secondary vertical pointing menu">
-          <a class="item" {{action "toggleModal"}}>
-            <i class="plus icon"></i> Add
-          </a>
-          {{#each sortedChars as |char index|}}
-            {{#link-to 'shows.show-detail.char' char class="item"}}
-              {{char.name}}
-            {{/link-to}}
-          {{/each}}
-        </div>
-      </div>
-      <div class="twelve wide stretched column">
-        {{outlet}}
+{{#if session.isAuthenticated}}
+  <div class="ui grid">
+    <div class="four wide column">
+      <div class="ui fluid secondary vertical pointing menu">
+        <a class="item" {{action "toggleModal"}}>
+          <i class="plus icon"></i> Add
+        </a>
+        {{#each sortedChars as |char index|}}
+          {{#link-to 'shows.show-detail.char' char class="item"}}
+            {{char.name}}
+          {{/link-to}}
+        {{/each}}
       </div>
     </div>
-  {{else}}
-    <div>
-      <p>You aren't logged in.</p>
+    <div class="twelve wide stretched column">
+      {{outlet}}
     </div>
-  {{/if}}
-</div>
+  </div>
+{{else}}
+  <div>
+    <p>You aren't logged in.</p>
+  </div>
+{{/if}}
 
 {{#if isShowingAddModal}}
   {{create-char close=(action "toggleModal")

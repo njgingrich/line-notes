@@ -1,60 +1,22 @@
-<div class="layout-row layout-padding layout-wrap layout-align-space-around">
+<div class="ui centered raised link cards menu-pad">
   {{#each model as |show|}}
-    {{#paper-card as |card|}}
-      {{#card.title as |title|}}
-        {{#title.text as |text|}}
-          {{#text.headline}}{{show.name}}{{/text.headline}}
-        {{/title.text}}
-      {{/card.title}}
-      {{#link-to 'shows.show-detail' show.slug}}
-        {{card.image src=(img-src show.name)
-                     alt="Show Image" title="Show Image" class="show-list-img"}}
-      {{/link-to}}
-      {{#card.actions}}
-        {{#paper-button
-          iconButton=true
-          onClick=(action "openModal" "edit" show)
-        }}
-          {{paper-icon "edit"}}
-        {{/paper-button}}
-        {{#paper-button iconButton=true onClick=(action "deleteShow" show)}}
-          {{paper-icon "delete"}}
-        {{/paper-button}}
-      {{/card.actions}}
-    {{/paper-card}}
+    {{#link-to 'shows.show-detail' show.slug class="card" tagName="div"}}
+      <div class="image">
+        <img src={{img-src show.name}} class="img-responsive"
+             alt="Show Image" title="Show Image">
+      </div>
+      <div class="content">
+        <div class="center aligned header">
+          {{show.name}}
+        </div>
+      </div>
+      <div class="extra content">
+        <div class="right floated">
+          <button class="ui labeled icon button">
+            <i class="setting icon"></i> Edit
+          </button>
+        </div>
+      </div>
+    {{/link-to}}
   {{/each}}
 </div>
-<div class="layout-row layout-align-center">
-  {{#paper-button raised=true fab=true
-                  onClick=(action "toggleAddShowModal")}}
-    {{paper-icon "add"}}
-  {{/paper-button}}
-</div>
-
-{{show-edit
-  showing=openModal
-  edit=(action "editShow")
-  show=editedShow
-}}
-
-{{#if openAddModal}}
-  {{#paper-dialog onClose=(action "toggleAddShowModal")}}
-    {{#paper-dialog-content}}
-      <h2 class="md-title">Create New Show</h2>
-      {{paper-input placeholder="Show Name" autofocus=true
-                    value=newShowName onChange=(action (mut newShowName))}}
-    {{/paper-dialog-content}}
-
-    {{#paper-dialog-actions class="layout-row"}}
-      <span class="flex"></span>
-      {{#paper-button raised=true
-                      onClick=(action "toggleAddShowModal")}}
-        Cancel
-      {{/paper-button}}
-      {{#paper-button primary=true raised=true
-                      onClick=(action "createShow" newShowName)}}
-        Add
-      {{/paper-button}}
-    {{/paper-dialog-actions}}
-  {{/paper-dialog}}
-{{/if}}

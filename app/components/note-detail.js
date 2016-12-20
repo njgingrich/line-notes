@@ -24,8 +24,7 @@ export default Ember.Component.extend({
     editNote() {
       this.toggleProperty('isEditing');
       if (!this.get('isEditing')) {
-        console.log('error: ' + this.get('note.error'));
-        this.attrs.edit(this.get('note'));
+        this.get('edit')(this.get('note'));
       }
 
     }

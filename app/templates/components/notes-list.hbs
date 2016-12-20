@@ -15,7 +15,8 @@
 {{else}}
   <tbody>
     {{#each sortedNotes as |note|}}
-      {{note-detail note=note}}
+      {{note-detail note=note
+                    edit=(action edit)}}
     {{/each}}
   </tbody>
 {{/if}}

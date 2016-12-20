@@ -21,7 +21,7 @@ const Validations = buildValidations({
   ]
 });
 
-export default Ember.Component.extend(Validations, {
+export default Ember.Controller.extend({
   init() {
     this._super(...arguments);
     this.set('page', '');
@@ -34,13 +34,15 @@ export default Ember.Component.extend(Validations, {
   note: '',
   error: -1,
   errorTypes: Ember.inject.service(),
+  showActions: Ember.inject.service(),
   open: false,
 
   actions: {
-    addNote() {
-      let action = this.get('create');
-      return action(this.get('page'), this.get('line'),
-                    this.get('note'), this.get('error'));
-    }
+    addNote(model) {
+      this.get('showActions').addNote(model, this.get('page'),
+                                      this.get('line'), this.get('note'),
+                                      this.get('error'));
+      this.send('closeModal');
+    },
   }
 });

@@ -4,18 +4,9 @@ export default Ember.Controller.extend({
   char: Ember.computed.alias('model'),
   showActions: Ember.inject.service(),
   notify: Ember.inject.service(),
-  isShowingCreateModal: false,
   isEditing: false,
 
   actions: {
-    toggleModal() {
-      this.toggleProperty('isShowingCreateModal');
-    },
-    addNote(char, page, line, note, error) {
-      this.get('showActions').addNote(char, page, line, note, error);
-      this.send('toggleModal');
-      this.get('notify').success('Added new note!');
-    },
     editNote(note) {
       this.get('showActions').editNote(note);
     },

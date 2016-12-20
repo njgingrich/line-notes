@@ -11,14 +11,11 @@
   </div>
   <div class="content">
     {{notes-list char=char
-                 notes=char.notes
-                 isShowing=isShowingCreateModal
-                 toggle=(action "toggleModal")
-                 addNote=(action "addNote" char)}}
+                 notes=char.notes}}
   </div>
   <div class="extra content">
     <div class="right floated">
-      <button class="ui small primary button" {{action "toggleModal"}}>
+      <button class="ui small primary button" {{action "openModal" "components/modal-line-note" char}}>
         <i class="user icon"></i> Add Note
       </button>
       <button class="ui small button" {{action "editChar" char}}>

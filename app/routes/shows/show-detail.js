@@ -10,19 +10,15 @@ export default Ember.Route.extend({
   },
 
   model(params) {
-    console.log('using slug ' + params.show_slug);
     return this.store.query('show', {
       orderBy: 'slug',
       equalTo: params.show_slug
     }).then(data => {
-      console.log('data: ' + data);
-      console.log('data first: ' + data.get('firstObject'));
       return data.get('firstObject');
     });
   },
 
   serialize(show) {
-    console.log('show: ' + show);
     return {
       show_slug: show.get('slug')
     };

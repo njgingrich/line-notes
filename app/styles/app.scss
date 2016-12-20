@@ -1,8 +1,8 @@
 @import 'ember-paper';
-@import 'show-list';
-@import 'modal';
 @import "ember-modal-dialog/ember-modal-structure";
 @import "ember-modal-dialog/ember-modal-appearance";
+@import 'show-list';
+@import 'modal';
 
 .ember-modal-dialog {
   border-radius: 0;

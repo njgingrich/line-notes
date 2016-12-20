@@ -1,6 +1,6 @@
 <div class="ui centered raised link cards menu-pad">
   {{#each model as |show|}}
-    {{#link-to 'shows.show-detail' show.slug class="card" tagName="div"}}
+    {{#link-to 'shows.show-detail' show.slug class="ui card" tagName="div"}}
       <div class="image">
         <img src={{img-src show.name}} class="img-responsive"
              alt="Show Image" title="Show Image">

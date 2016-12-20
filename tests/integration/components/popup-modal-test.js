@@ -1,7 +1,7 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('create-show', 'Integration | Component | create show', {
+moduleForComponent('popup-modal', 'Integration | Component | popup modal', {
   integration: true
 });
 
@@ -9,15 +9,15 @@ test('it renders', function(assert) {
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });
 
-  this.render(hbs`{{create-show}}`);
+  this.render(hbs`{{popup-modal}}`);
 
   assert.equal(this.$().text().trim(), '');
 
   // Template block usage:
   this.render(hbs`
-    {{#create-show}}
+    {{#popup-modal}}
       template block text
-    {{/create-show}}
+    {{/popup-modal}}
   `);
 
   assert.equal(this.$().text().trim(), 'template block text');

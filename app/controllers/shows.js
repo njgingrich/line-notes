@@ -28,9 +28,6 @@ export default Ember.Controller.extend({
       this.get('session').close().then(() => {
         this.transitionToRoute('shows.show-list');
       });
-    },
-    openSettings() {
-      console.log('TODO');
     }
   }
 });

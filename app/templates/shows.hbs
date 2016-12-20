@@ -22,7 +22,7 @@
       <i class="dropdown icon"></i>
       <div class="menu">
         {{#if session.isAuthenticated}}
-          <div class="item" {{action (action 'openSettings')}}>
+          <div class="item" {{action "openModal" "components/modal-settings"}}>
             Settings
           </div>
           <div class="item" {{action (action 'signOut')}}>

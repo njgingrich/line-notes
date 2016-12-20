@@ -1,0 +1,12 @@
+{{#modal-dialog close=(route-action "closeModal")
+                targetAttachment="center"
+                clickOutsideToClose=true
+                translucentOverlay=true}}
+    <div class="content">
+      <div class="center">
+        <div class="ui centered card">
+          {{yield}}
+        </div>
+      </div>
+    </div>
+{{/modal-dialog}}

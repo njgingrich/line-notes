@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-export default Ember.Component.extend({
+export default Ember.Controller.extend({
   showActions: Ember.inject.service('show-actions'),
   show: null,
   loadUsernames: Ember.computed('showActions', function() {
@@ -11,6 +11,10 @@ export default Ember.Component.extend({
   },
 
   actions: {
+    editShow(show) {
+      this.get('showActions').editShow(show);
+      this.send('closeModal');
+    },
     addAssignedUser() {
       this.toggleProperty('addingAssignedUser');/*
       this.get('showActions').getAllUsers().then((users) => {

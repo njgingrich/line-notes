@@ -1,13 +1,11 @@
-{{#popup-modal
-  showing=showing
-  title="Edit Show"
-  onClose=(action 'onClose' show)
-  clickOutsideToClose=true
-}}
-  <div class="layout-column ">
-    {{paper-input placeholder="Show Name" autofocus=true flex=true
-                  value=show.name onKeyDown=(action "updateModalButton")
-                  onChange=(action (mut show.name))}}
+{{#button-modal title="Add Character"
+                yes=(action "editShow" model)}}
+
+  <div class="content">
+    <label>Name</label>
+    <div class="ui fluid input">
+      {{input autofocus=true value=model.name}}
+    </div>
 
     {{#file-picker accept=".jpg,.jpeg,.gif,.png"
                    fileLoaded="fileLoaded"
@@ -46,5 +44,7 @@
         {{/paper-item}}
       {{/each}}
     {{/paper-list}}
+
   </div>
-{{/popup-modal}}
+
+{{/button-modal}}

@@ -1,10 +1,10 @@
-<div class="ui centered raised link cards menu-pad">
+<div class="ui centered raised cards menu-pad">
   {{#each model as |show|}}
-    {{#link-to 'shows.show-detail' show.slug class="ui card" tagName="div"}}
-      <div class="image">
+    <div class="ui card">
+      {{#link-to 'shows.show-detail' show.slug class="image" tagName="div"}}
         <img src={{img-src show.name}} class="ui fluid image"
              alt="Show Image" title="Show Image">
-      </div>
+      {{/link-to}}
       <div class="content">
         <div class="center aligned header">
           {{show.name}}
@@ -12,11 +12,12 @@
       </div>
       <div class="extra content">
         <div class="right floated">
-          <button class="ui labeled icon button">
+          <button class="ui labeled icon button"
+                  {{action "openModal" "modals/show-edit" show}}>
             <i class="setting icon"></i> Edit
           </button>
         </div>
       </div>
-    {{/link-to}}
+    </div>
   {{/each}}
 </div>

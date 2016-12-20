@@ -2,7 +2,7 @@
   {{#each model as |show|}}
     {{#link-to 'shows.show-detail' show.slug class="ui card" tagName="div"}}
       <div class="image">
-        <img src={{img-src show.name}} class="img-responsive"
+        <img src={{img-src show.name}} class="ui fluid image"
              alt="Show Image" title="Show Image">
       </div>
       <div class="content">

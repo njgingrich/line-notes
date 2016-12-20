@@ -3,12 +3,11 @@ import Ember from 'ember';
 export default Ember.Route.extend({
   actions: {
     openModal(name, model) {
-      let c = name.replace('components/', '');
-      Ember.Logger.info('Rendering modal ' + name + 'with controller ' + c);
+      Ember.Logger.info('Rendering modal ' + name + ' with controller ' + name);
       this.render(name, {
         into: 'application',
         outlet: 'modal',
-        controller: c,
+        controller: name,
         model: model
       });
     },

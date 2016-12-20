@@ -2,7 +2,7 @@
   <div class="ui grid">
     <div class="four wide column">
       <div class="ui fluid secondary vertical pointing menu">
-        <a class="item" {{action "toggleModal"}}>
+        <a class="item" {{action "openModal" "modals/create-char" show}}>
           <i class="plus icon"></i> Add
         </a>
         {{#each sortedChars as |char index|}}

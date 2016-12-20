@@ -10,10 +10,13 @@ export default Ember.Route.extend({
   },
 
   model(params) {
+    console.log('using slug ' + params.show_slug);
     return this.store.query('show', {
       orderBy: 'slug',
       equalTo: params.show_slug
     }).then(data => {
+      console.log('data: ' + data);
+      console.log('data first: ' + data.get('firstObject'));
       return data.get('firstObject');
     });
   },
@@ -27,7 +30,7 @@ export default Ember.Route.extend({
 
   afterModel(model) {
     if (model == undefined) { // invalid slug, redirect to base
-      Ember.Logger.info("Attempted to reach unknown url")
+      Ember.Logger.info("Attempted to reach unknown url, redirecting")
       this.transitionTo('shows.show-list');
     } else {
       let show = this.get('store').peekRecord('show', model.get('id'));

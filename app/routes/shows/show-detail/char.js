@@ -13,14 +13,14 @@ export default Ember.Route.extend({
     return this.store.query('character', {
       orderBy: 'slug',
       equalTo: params.char_slug
-    }).then((data) => {
-        return data.get('firstObject');
+    }).then(data => {
+      return data.get('firstObject');
     });
   },
 
   afterModel(model) {
     if (model == undefined) { // invalid slug, redirect to base
-      Ember.Logger.info("Attempted to reach unknown url")
+      Ember.Logger.info("Attempted to reach unknown url, redirecting to root")
       this.transitionTo('shows.show-list');
     }
   },

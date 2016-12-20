@@ -41,7 +41,7 @@ export default Ember.Service.extend({
     return promise;
   },
   deleteChar(char, show) {
-    Ember.Logger.info('deleting char ' + char.get('name') + ' from show ' + show.get('name'));
+    Ember.Logger.info('deleting char ' + char.get('name') + ' from show ' + show);
     // first delete their notes
     this.deleteAllNotes(char).then(() => {
       char.destroyRecord().then(() => {

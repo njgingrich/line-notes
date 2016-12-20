@@ -27,9 +27,11 @@ export default Ember.Controller.extend({
       this.get('showActions').deleteAllNotes(char);
     },
     deleteChar(char) {
-      let show = this.get('show');
-      this.get('showActions').deleteChar(char, show);
-      this.get('notify').alert('Character deleted!');
+      char.get('show').then((show) => {
+        this.get('showActions').deleteChar(char, show);
+        this.get('notify').alert('Character deleted!');
+        this.transitionToRoute('shows.show-detail', show.get('slug'));
+      });
     },
     editChar(char) {
       this.toggleProperty('isEditing');

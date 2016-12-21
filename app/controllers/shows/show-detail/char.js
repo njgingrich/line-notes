@@ -20,6 +20,7 @@ export default Ember.Controller.extend({
     deleteChar(char) {
       char.get('show').then((show) => {
         this.get('showActions').deleteChar(char, show);
+        this.send('closeModal');
         this.get('notify').alert('Character deleted!');
         this.transitionToRoute('shows.show-detail', show.get('slug'));
       });

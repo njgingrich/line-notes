@@ -1,8 +1,10 @@
 <div class="ui fluid card">
   <div class="content">
     {{#if isEditing}}
+    <div class="ui fluid input">
       {{input attr-size=30 value=char.name
                     enter=(action "editChar" char)}}
+    </div>
     {{else}}
       <div class="center aligned header">
         {{char.name}}
@@ -20,10 +22,12 @@
         <i class="user icon"></i> Add Note
       </button>
       <button class="ui small button" {{action "editChar" char}}>
-        Edit Character
+        Edit
       </button>
-      <button class="ui small button" {{action "deleteChar" char}}>
-        Delete Character
+      <button class="ui red small button" {{action "openModal"
+                                                   "modals/confirm-delete"
+                                                   (action "deleteChar" char)}}>
+        Delete
       </button>
     </div>
   </div>

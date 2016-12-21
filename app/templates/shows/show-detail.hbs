@@ -21,8 +21,3 @@
     <p>You aren't logged in.</p>
   </div>
 {{/if}}
-
-{{#if isShowingAddModal}}
-  {{create-char close=(action "toggleModal")
-                add=(action "addChar")}}
-{{/if}}

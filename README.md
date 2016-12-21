@@ -1,7 +1,20 @@
 # Line-notes
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+Line Notes (name in progress) is an application to let a stage manager or assistant stage manager easily create line notes for a theatre production.
+
+## Background
+
+Line notes are for an actor - a list of their mistakes is tallied with some description and sent to them after a rehearsal, allowing them to review anything they missed so they can have it fixed for the next rehearsal.
+
+In the past, I have had to use Microsoft Word templates or Google Docs templates to create line notes, exporting them as PDFs every night after a rehearsal to send to each actor.
+
+This application currently allows a user to create a show, actors, and notes for those actors. In future, it will have PDF exporting with automatic email delivery, and better user + data administration. Currently, the data exists in a realtime database through Firebase to allow concurrent edits of the notes.
+
+## Screenshots
+
+An overview of what a show looks like
+![overview of show](https://github.com/njgingrich/line-notes/tree/master/public/assets/images/screenshots/show-detail.jpg)
+
 
 ## Prerequisites
 
@@ -25,29 +38,7 @@ You will need the following things properly installed on your computer.
 * `ember server`
 * Visit your app at [http://localhost:4200](http://localhost:4200).
 
-### Code Generators
-
-Make use of the many generators for code, try `ember help generate` for more details
-
-### Running Tests
-
-* `ember test`
-* `ember test --server`
-
 ### Building
 
 * `ember build` (development)
 * `ember build --environment production` (production)
-
-### Deploying
-
-Specify what it takes to deploy your app.
-
-## Further Reading / Useful Links
-
-* [ember.js](http://emberjs.com/)
-* [ember-cli](http://ember-cli.com/)
-* Development Browser Extensions
-  * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
-  * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
-

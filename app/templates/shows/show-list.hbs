@@ -17,7 +17,9 @@
             <i class="setting icon"></i> Edit
           </button>
           <button class="ui labeled icon button"
-                  {{action "deleteShow" show}}>
+                  {{action "openModal"
+                           "modals/confirm-delete"
+                           (action "deleteShow" show)}}>
             <i class="trash icon"></i> Delete
           </button>
         </div>

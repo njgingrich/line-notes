@@ -1,0 +1,27 @@
+{{#popup-modal}}
+  <div class="content">
+    <div class="header">
+      <h3 class="ui left floated header">
+          {{title}}
+      </h3>
+      <h3 class="ui right floated header">
+        <i class="large close icon" {{action (route-action "closeModal")}}></i>
+      </h3>
+    </div>
+  </div>
+
+  <div class="content">
+    {{yield}}
+  </div>
+
+  <div class="extra content">
+    <div class="ui fluid buttons">
+      <div class="ui button" {{action (route-action "closeModal")}}>
+        Cancel
+      </div>
+      <div class="ui green button" {{action "yes"}}>
+        Confirm
+      </div>
+    </div>
+  </div>
+{{/popup-modal}}

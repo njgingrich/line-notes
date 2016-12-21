@@ -7,7 +7,6 @@ export default Ember.Route.extend({
       this.render(name, {
         into: 'application',
         outlet: 'modal',
-        controller: name,
         model: model
       });
     },

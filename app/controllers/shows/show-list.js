@@ -9,6 +9,7 @@ export default Ember.Controller.extend({
     deleteShow(show) {
       console.log('deleting show ' + show.get('name'));
       this.get('showActions').deleteShow(show);
+      this.send('closeModal');
       this.get('notify').alert('Show deleted!');
     }
   }

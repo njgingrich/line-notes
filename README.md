@@ -13,8 +13,17 @@ This application currently allows a user to create a show, actors, and notes for
 ## Screenshots
 
 An overview of what a show looks like
-![overview of show](https://github.com/njgingrich/line-notes/tree/master/public/assets/images/screenshots/show-detail.jpg)
+![overview](https://github.com/njgingrich/line-notes/raw/master/public/assets/images/screenshots/show-detail.jpg)
 
+## To Do list
+
+- [ ] Add PDF exporting of an actor's notes
+- [ ] Add relationships between an actor and a character
+- [ ] Add automatic email delivery of notes
+- [ ] Allow specific users access to a show
+- [ ] Add an admin panel to administrate users
+- [ ] Add support for theming
+- [ ] Allow different user display options
 
 ## Prerequisites
 
@@ -36,7 +45,7 @@ You will need the following things properly installed on your computer.
 ## Running / Development
 
 * `ember server`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
+* Visit at [http://localhost:4200](http://localhost:4200).
 
 ### Building
 

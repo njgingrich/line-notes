@@ -5,7 +5,7 @@ export default Ember.Service.extend({
 
   /* Whole show actions */
   createShow(name) {
-    let show1 = this.store.createRecord('show', {
+    let show1 = this.get('store').createRecord('show', {
       name: name,
       slug: name.dasherize()
     });

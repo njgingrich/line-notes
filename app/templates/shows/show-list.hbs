@@ -1,4 +1,4 @@
-<div class="ui centered raised cards menu-pad">
+<div class="ui centered raised link cards menu-pad">
   {{#each model as |show|}}
     <div class="ui card">
       {{#link-to 'shows.show-detail' show.slug class="image" tagName="div"}}
@@ -16,8 +16,20 @@
                   {{action "openModal" "modals/show-edit" show}}>
             <i class="setting icon"></i> Edit
           </button>
+          <button class="ui labeled icon button"
+                  {{action "deleteShow" show}}>
+            <i class="trash icon"></i> Delete
+          </button>
         </div>
       </div>
     </div>
   {{/each}}
+</div>
+<div class="ui divider"></div>
+<div class="ui center aligned container">
+  <h3 class="ui header">Add another show</h3>
+  <button class="ui circular centered icon button"
+          {{action "openModal" "modals/create-show"}}>
+    <i class="large plus icon"></i>
+  </button>
 </div>

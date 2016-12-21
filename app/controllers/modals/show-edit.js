@@ -2,41 +2,43 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   showActions: Ember.inject.service('show-actions'),
-  show: null,
-  loadUsernames: Ember.computed('showActions', function() {
-    return this.get('showActions').getAllUsernames();
-  }),
-  userLabelCallback(user) {
-    return user.get('name');
+  isShowingUserSearch: false,
+  fields: ['title'],
+  apiSettings: {
+    onResponse: function(response) {
+      let newResults = Ember.A();
+      response.results.forEach((r) => {
+        console.log(r);
+        newResults.pushObject(Ember.Object.create({title: r.name}));
+      })
+      console.log('returning ' + newResults);
+      newResults.forEach(d => {
+        console.log(d);
+      })
+      return newResults;
+    }
   },
+  usernames: Ember.A(),
+  userList: [
+    {title: 'Nathan'},
+    {title: 'Nils'},
+    {title: 'Aaron'}
+  ],
 
   actions: {
+    addAssignedUser(name) {
+      this.get('usernames').pushObject(name);
+      console.log('usernames: ' + this.get('usernames'));
+    },
     editShow(show) {
       this.get('showActions').editShow(show);
       this.send('closeModal');
     },
-    addAssignedUser() {
-      this.toggleProperty('addingAssignedUser');/*
-      this.get('showActions').getAllUsers().then((users) => {
-        console.log(users);
-        users.forEach((user) => {
-          console.log(user.get('name'));
-        });
-      });*/
+    openUserSearch() {
+      this.toggleProperty('isShowingUserSearch');
     },
     fileLoaded(file) {
       console.log(file.name, file.type, file.data, file.size);
-      this.send('updateModalButton');
-    },
-    onClose(show) {
-      this.set('addingAssignedUser', false);
-      this.attrs.edit(show);
-    },
-    removeAssignedUser() {
-      console.log('TODO');
-    },
-    updateModalButton() {
-      this.set('confirmText', 'Save');
     }
   }
 });

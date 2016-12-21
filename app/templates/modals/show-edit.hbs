@@ -1,4 +1,4 @@
-{{#button-modal title="Add Character"
+{{#button-modal title="Edit Show"
                 yes=(action "editShow" model)}}
 
   <div class="content">
@@ -13,38 +13,34 @@
       Drag here or click to upload a show image.
     {{/file-picker}}
 
-    <h4>Assigned Users:
-      {{#if addingAssignedUser}}
-        {{#paper-select getItems=loadUsernames
-          itemLabelCallback=userLabelCallback
-          placeholder="Assign to a user" value=selectedUser
-          onChange=(action (mut selectedUser)) as |items|}}
+    <h4>Assigned Users:</h4>
+    <button class="ui circular icon button" {{action "openUserSearch"}}>
+      <i class="large add user icon"></i>
+    </button>
 
-          {{#each items as |user|}}
-            {{#paper-option value=user}}
-              {{user.name}}
-            {{/paper-option}}
-          {{/each}}
-        {{/paper-select}}
-      {{/if}}
 
-      {{#paper-button class="md-secondary" primary=true iconButton=true
-                      onClick=(action "addAssignedUser")}}
-        {{paper-icon "group-add"}}
-      {{/paper-button}}
-    </h4>
-    {{#paper-list}}
-      {{#each show.assignedUsers as |user|}}
-        {{#paper-item}}
-          <p>Test User 1</p>
-          {{#paper-button class="md-secondary" iconButton=true
-                          onClick=(action "removeAssignedUser")}}
-            {{paper-icon "delete"}}
-          {{/paper-button}}
-        {{/paper-item}}
+    {{#if isShowingUserSearch}}
+      query: {{query}}
+      selected: {{selected.title}}
+      {{#ui-search source=userList
+                   searchFields=fields
+                   onSearchQuery=(action (mut query))
+                   onSelect=(action "addAssignedUser")}}
+        <div class="ui icon input">
+          {{input class="prompt" placeholder="Type a name..."}}
+          <i class="search icon"></i>
+        </div>
+        <div class="results"></div>
+      {{/ui-search}}
+    {{/if}}
+
+    <div class="ui list">
+      {{#each usernames as |user|}}
+        <div class="item">
+          {{user.title}}
+        </div>
       {{/each}}
-    {{/paper-list}}
-
+    </div>
   </div>
 
 {{/button-modal}}

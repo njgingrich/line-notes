@@ -33,7 +33,11 @@ export default Ember.Route.extend({
       show.get('characters').then(chars => {
         let sorted = chars.sortBy('name');
         let first = sorted.get('firstObject');
-        this.transitionTo('shows.show-detail.char', first);
+        if (first == undefined) {
+          this.transitionTo('shows.show-detail', show.get('slug'));
+        } else {
+          this.transitionTo('shows.show-detail.char', first);
+        }
       });
     }
   }

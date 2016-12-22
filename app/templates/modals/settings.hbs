@@ -1,14 +1,5 @@
-{{#popup-modal}}
-  <div class="content">
-    <div class="center aligned header">
-      Settings
-    </div>
-  </div>
-  <div class="extra content">
-    <div class="right floated">
-      <button class="ui labeled icon button">
-        <i class="remove icon"></i> Close
-      </button>
-    </div>
-  </div>
-{{/popup-modal}}
+{{#button-modal title="Settings"
+                yes=(action "updateSettings")}}
+
+
+{{/button-modal}}

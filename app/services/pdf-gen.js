@@ -62,13 +62,16 @@ export default Ember.Service.extend({
           row[i] = '';
         }
       }
-      console.log(row);
       lines.push(row);
     });
+    // save off base to reset after generation
+    let body = JSON.parse(JSON.stringify(this.get('doc')));
+
     lines.forEach(line => {
       this.get('doc').content[1].table.body.push(line);
     })
     pdfMake.createPdf(this.get('doc')).open();
+    this.set('doc', body);
   }
 
 });

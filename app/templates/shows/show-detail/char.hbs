@@ -2,11 +2,11 @@
   <div class="content">
     {{#if isEditing}}
     <div class="ui fluid input">
-      {{input attr-size=30 value=char.name
+      {{input attr-size=30 value=char.name autofocus=true
                     enter=(action "editChar" char)}}
     </div>
     {{else}}
-      <div class="center aligned header">
+      <div class="center aligned header char__header">
         {{char.name}}
       </div>
     {{/if}}
@@ -17,20 +17,26 @@
                  edit=(action "editNote")}}
   </div>
   <div class="extra content">
-    <div class="right floated">
-      <button class="ui small primary button" {{action "openModal" "modals/create-line-note" char}}>
+    <div class="left floated">
+      <button class="ui left floated small green button"
+              {{action "openModal" "modals/create-line-note" char}}>
         <i class="user icon"></i> Add Note
       </button>
-      <button class="ui small icon button" {{action "printNotes" char}}>
-        <i class="print icon"></i>
+    </div>
+    <div class="right floated ui icon buttons">
+      <button class="ui button"
+              {{action "printNotes" char}}>
+        <i class="print icon"></i> Print
       </button>
-      <button class="ui small button" {{action "editChar" char}}>
-        Edit
+      <button class="ui {{if isEditing 'yellow'}} button"
+              {{action "editChar" char}}>
+        <i class="edit icon"></i> Edit
       </button>
-      <button class="ui red small button" {{action "openModal"
-                                                   "modals/confirm-delete"
-                                                   (action "deleteChar" char)}}>
-        Delete
+      <button class="ui red small button"
+              {{action "openModal"
+                       "modals/confirm-delete"
+                       (action "deleteChar" char)}}>
+        <i class="trash icon"></i> Delete
       </button>
     </div>
   </div>

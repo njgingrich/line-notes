@@ -1,16 +1,14 @@
-/*import BaseValidator from 'ember-cp-validations/validators/base';
-
-export default BaseValidator.extend({
-  validate(value, options, model, attribute) {
-    if (value === undefined || value === '') {
+export default function validateSubstring({longString} = {}) {
+  return (key, value) => {
+    if (value === undefined || value == '') {
       return true;
-    }
-    if (model.line) {
-      let line = String(model.line);
-      if (line.includes(value)) {
+    } else if (longString) {
+      if (longString.includes(value)) {
         return true;
       }
     }
-    return false;
+    return 'Note is not a substring of line';
+    // validation logic
+    // return `true` if valid || error message string if invalid
   }
-});*/
+}

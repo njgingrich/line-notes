@@ -1,30 +1,33 @@
 {{#button-modal title="Add Line Note"
                 yes=(action "addNote" model)}}
 
+<button class="ui button" {{action "validstuff"}}>
+  validations: {{get changeset 'isValid'}}
+</button>
   <form class="ui form">
     <div class="field">
       <label>Line</label>
       <div class="ui input">
-        {{input type="text" value=line size=60}}
+        {{input type="text" value=changeset.line size=60}}
       </div>
     </div>
     <div class="fields">
       <div class="two wide field">
         <label>Page</label>
         <div class="ui input">
-          {{input type="text" value=page}}
+          {{input type="text" value=changeset.page}}
         </div>
       </div>
       <div class="fourteen wide field">
         <label>Note</label>
         <div class="ui fluid input">
-          {{input type="text" value=note}}
+          {{input type="text" value=changeset.note}}
         </div>
       </div>
     </div>
     <div class="field">
       <label>Error</label>
-      {{#ui-dropdown class="selection" onChange=(action (mut error))}}
+      {{#ui-dropdown class="selection" onChange=(action (mut changeset.error))}}
         <div class="default text">Error</div>
         <i class="dropdown icon"></i>
         <div class="menu">

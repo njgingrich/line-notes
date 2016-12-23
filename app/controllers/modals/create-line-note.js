@@ -1,27 +1,6 @@
 import Ember from 'ember';
-import { validator, buildValidations } from 'ember-cp-validations';
 
-const Validations = buildValidations({
-  page: [
-    validator('presence', true),
-    validator('number', {
-      allowString: true,
-      integer: true,
-      gt: 0 })
-  ],
-  line: validator('presence', true),
-  note: validator('substring'),
-  error: [
-    validator('presence', true),
-    validator('number', {
-      allowString: true,
-      integer: true,
-      gte: 0,
-      lte: 6 })
-  ]
-});
-
-export default Ember.Controller.extend(Validations, {
+export default Ember.Controller.extend({
   init() {
     this._super(...arguments);
     this.set('page', '');
@@ -46,7 +25,6 @@ export default Ember.Controller.extend(Validations, {
     },
     validstuff() {
       console.log(model);
-      console.log(this.get('model').get('validations'));
     }
   }
 });

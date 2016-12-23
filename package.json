@@ -19,13 +19,11 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "ember-paper": "git://github.com/miguelcobain/ember-paper.git#1bea72bafb81e86fb776ace25e46d18c2a2be4f4",
     "semantic-ui": "^2.2.6"
   },
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.2",
     "ember-ajax": "0.7.1",
-    "ember-bootstrap": "0.7.1",
     "ember-cli": "2.5.0",
     "ember-cli-app-version": "^1.0.0",
     "ember-cli-babel": "^5.1.6",
@@ -42,7 +40,6 @@
     "ember-cli-sass": "5.6.0",
     "ember-cli-sri": "^2.1.0",
     "ember-cli-uglify": "^1.2.0",
-    "ember-cp-validations": "2.8.0",
     "ember-data": "^2.5.0",
     "ember-export-application-global": "^1.0.5",
     "ember-load-initializers": "^0.5.1",

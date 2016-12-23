@@ -21,7 +21,7 @@ const Validations = buildValidations({
   ]
 });
 
-export default Ember.Controller.extend({
+export default Ember.Controller.extend(Validations, {
   init() {
     this._super(...arguments);
     this.set('page', '');
@@ -44,5 +44,9 @@ export default Ember.Controller.extend({
                                       this.get('error'));
       this.send('closeModal');
     },
+    validstuff() {
+      console.log(model);
+      console.log(this.get('model').get('validations'));
+    }
   }
 });

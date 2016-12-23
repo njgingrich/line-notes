@@ -21,7 +21,8 @@
       <div class="ui deny button" {{action (route-action "closeModal")}}>
         Cancel
       </div>
-      <div class="ui positive right button" {{action "yes"}}>
+      <div class="ui positive right button {{if disabled 'disabled'}}"
+           {{action "yes"}}>
         Add
       </div>
     </div>

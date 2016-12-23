@@ -6,42 +6,7 @@ export default Ember.Controller.extend({
   notify: Ember.inject.service(),
   pdfGen: Ember.inject.service(),
   isEditing: false,
-  //docDefinition: { content: 'This is an sample PDF printed with pdfMake' },
-  pdfContent: Ember.computed('char.notes.@each.line', function() {
-    let data = {};
-    let lines = {
-      table: {
-        widths: [30, '*', 50, 50, 50, 50, 50, 50]
-			}};
-    let tableBody = [
-      ['Pg', 'Line', 'Dropped', 'Added', 'Switched', 'Wrong Word', 'Called Line', 'Check Complete Line']
-    ];
-    let tableRows = [ '7',
-      { text: 'nothing interesting here', italics: true, color: 'gray' },
-      { text: 'nothing interesting here', italics: true, color: 'gray' },
-      { text: 'nothing interesting here', italics: true, color: 'gray' },
-      { text: 'nothing interesting here', italics: true, color: 'gray' },
-      { text: 'nothing interesting here', italics: true, color: 'gray' },
-      { text: 'nothing interesting here', italics: true, color: 'gray' },
-      { text: 'nothing interesting here', italics: true, color: 'gray' }];
-
-    this.get('char').get('notes').then(notes => {
-      let rows = [];
-      notes.forEach(note => {
-        console.log('line: ' + note.get('line'));
-        rows.push(note.get('line'));
-      });
-
-      console.log('rows: ' + rows);
-    });
-
-    tableBody.push(tableRows);
-    lines.table.body = tableBody;
-    data.content = lines;
-    data.pageOrientation = 'landscape';
-    console.log(data);
-    return data;
-  }),
+  newNote: this.get('store').createRecord('note');
 
   actions: {
     editNote(note) {

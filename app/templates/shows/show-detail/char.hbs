@@ -19,7 +19,10 @@
   <div class="extra content">
     <div class="left floated">
       <button class="ui left floated small green button"
-              {{action "openModal" "modals/create-line-note" char}}>
+              {{action "openModal"
+                       "modals/create-line-note"
+                       (hash char=char
+                             note=newNote)}}>
         <i class="user icon"></i> Add Note
       </button>
     </div>

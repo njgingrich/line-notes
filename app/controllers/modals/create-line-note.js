@@ -3,28 +3,23 @@ import NoteValidations from '../../validators/line-note';
 import Changeset from 'ember-changeset';
 
 export default Ember.Controller.extend({
-  init() {
-    this._super(...arguments);
-    this.set('data', {
-      page: '',
-      line: '',
-      note: '',
-      error: -1
-    }),
-    this.set('changeset', new Changeset(this.get('data')));
-  },
-  NoteValidations,
   errorTypes: Ember.inject.service(),
   showActions: Ember.inject.service(),
-  open: false,
+  char: Ember.computed.alias('model.char'),
+  note: Ember.computed.alias('model.note'),
 
   actions: {
-    addNote(char) {
-      this.get('showActions').addNote(char,
-                                      this.get('changeset.page'),
-                                      this.get('changeset.line'),
-                                      this.get('changeset.note'),
-                                      this.get('changeset.error'));
+    addNote() {
+      console.log('model: ' + this.get('model'));
+      Object.keys(this.get('model')).forEach(k => {
+        console.log('key: ' + k);
+        console.log('val: ' + this.get('model.' + k));
+      })
+      this.get('showActions').addNote(this.get('char'),
+                                      this.get('note.page'),
+                                      this.get('note.line'),
+                                      this.get('note.note'),
+                                      this.get('note.error'));
       this.send('closeModal');
     },
     validstuff() {

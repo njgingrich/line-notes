@@ -41,3 +41,9 @@
   {{ui-checkbox class="toggle"
                 onChange=(action "editNote")}}
 </td>
+<td class="right aligned collapsing">
+  <button class="ui circular red icon button"
+          {{action (action delete note)}}>
+    <i class="trash icon"></i>
+  </button>
+</td>

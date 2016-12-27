@@ -15,8 +15,8 @@ export default Ember.Controller.extend({
     editNote(note) {
       this.get('showActions').editNote(note);
     },
-    deleteNote(char, note) {
-      this.get('showActions').deleteNote(char, note);
+    deleteNote(note) {
+      this.get('showActions').deleteNote(this.get('char'), note);
       this.get('notify').alert('Note deleted!');
     },
     deleteAllNotes(char) {

@@ -10,7 +10,7 @@ export default Ember.Controller.extend({
   actions: {
     addNote(note) {
       console.log('note passed from modal: ' + note);
-      this.get('showActions').addOneNote(this.get('char'), note);
+      this.get('showActions').addNoteModel(this.get('char'), note);
     },
     editNote(note) {
       this.get('showActions').editNote(note);

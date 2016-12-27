@@ -21,8 +21,7 @@
       <button class="ui left floated small green button"
               {{action "openModal"
                        "modals/create-line-note"
-                       (hash char=char
-                             note=newNote)}}>
+                       (action "addNote")}}>
         <i class="user icon"></i> Add Note
       </button>
     </div>

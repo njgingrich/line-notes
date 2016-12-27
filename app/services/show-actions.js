@@ -73,6 +73,13 @@ export default Ember.Service.extend({
     newNote.save();
     char.save();
   },
+  addOneNote(char, note) {
+    note.set('character', char);
+    note.set('date', new Date());
+    Ember.Logger.info('adding note ' + note);
+    note.save();
+    char.save();
+  },
   deleteNote(char, note) {
     Ember.Logger.info('deleting ' + note.get('id') + ' from character ' + char.get('name'));
     note.deleteRecord();

@@ -6,9 +6,12 @@ export default Ember.Controller.extend({
   notify: Ember.inject.service(),
   pdfGen: Ember.inject.service(),
   isEditing: false,
-  newNote: this.get('store').createRecord('note');
 
   actions: {
+    addNote(note) {
+      console.log('note passed from modal: ' + note);
+      this.get('showActions').addOneNote(this.get('char'), note);
+    },
     editNote(note) {
       this.get('showActions').editNote(note);
     },

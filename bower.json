@@ -8,7 +8,7 @@
     "hammer.js": "^2.0.8",
     "matchMedia": "0.2.0",
     "firebase": "^3.0.0",
-    "semantic-ui": "^2.2.6",
+    "semantic-ui": "^2.2.7",
     "pdfmake": "^0.1.20"
   }
 }

@@ -28,6 +28,9 @@ export default Ember.Service.extend({
       }
     ],
     styles: {
+      boldText: {
+        bold: true
+      },
       centered: {
         alignment: 'center'
       },
@@ -54,7 +57,20 @@ export default Ember.Service.extend({
     sortedNotes.forEach(note => {
       let row = new Array(8);
       row[0] = note.get('page').toString();
-      row[1] = note.get('line');
+
+      if (note.get('line').indexOf(note.get('note')) == -1) {
+        row[1] = note.get('line');  
+      } else {
+        let noteIx = note.get('line').indexOf(note.get('note'));
+        let before = note.get('line').substring(0, noteIx);
+        let after = note.get('line').substring(noteIx + note.get('note').length);
+        row[1] = {text: [
+          before,
+          {text: note.get('note'), style: 'boldText'},
+          after
+        ]};
+      }
+      
       for (let i = 2; i < 8; i++) {
         if (i == note.get('error')+2) {
           row[i] = {text: 'X', style: 'centered'};

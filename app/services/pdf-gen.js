@@ -69,7 +69,7 @@ export default Ember.Service.extend({
 
     lines.forEach(line => {
       this.get('doc').content[1].table.body.push(line);
-    })
+    });
     pdfMake.createPdf(this.get('doc')).open();
     this.set('doc', body);
   }

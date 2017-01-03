@@ -1,4 +1,4 @@
-import Ember from 'ember';4
+import Ember from 'ember';
 
 export default Ember.Controller.extend({
   show: Ember.computed.alias('model'),
@@ -9,7 +9,7 @@ export default Ember.Controller.extend({
   isShowingAddModal: false,
 
   actions: {
-    selectChar(char) {
+    selectChar() {
       window.scrollTo(0,0);
     },
     toggleModal() {

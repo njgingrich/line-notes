@@ -10,11 +10,11 @@ export default Ember.Controller.extend({
       response.results.forEach((r) => {
         console.log(r);
         newResults.pushObject(Ember.Object.create({title: r.name}));
-      })
+      });
       console.log('returning ' + newResults);
       newResults.forEach(d => {
         console.log(d);
-      })
+      });
       return newResults;
     }
   },

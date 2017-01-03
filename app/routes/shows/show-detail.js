@@ -26,7 +26,7 @@ export default Ember.Route.extend({
 
   afterModel(model) {
     if (model == undefined) { // invalid slug, redirect to base
-      Ember.Logger.info("Attempted to reach unknown url, redirecting")
+      Ember.Logger.info("Attempted to reach unknown url, redirecting");
       this.transitionTo('shows.show-list');
     } else {
       let show = this.get('store').peekRecord('show', model.get('id'));

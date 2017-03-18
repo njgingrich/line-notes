@@ -1,10 +1,8 @@
 import Ember from 'ember';
-import NoteValidations from '../../validators/line-note';
-import Changeset from 'ember-changeset';
 
 export default Ember.Controller.extend({
   init() {
-    this.set('note', this.get('store').createRecord('line-note'))
+    this.set('note', this.get('store').createRecord('line-note'));
   },
   errorTypes: Ember.inject.service(),
   showActions: Ember.inject.service(),

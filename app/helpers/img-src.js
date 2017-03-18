@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-export function imgSrc(params/*, hash*/) {
+export function imgSrc(/*params, hash*/) {
   /*let path = "assets/images/default.png";
 
   function getImageUrl(url) {

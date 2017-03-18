@@ -2,8 +2,9 @@
   <tr>
     <th class="two wide">Page</th>
     <th class="nine wide">Line</th>
-    <th class="four wide">Error</th>
+    <th class="three wide">Error</th>
     <th class="one wide">Edit</th>
+    <th class="one wide">Delete</th>
   </tr>
 </thead>
 {{#if noNotes}}
@@ -16,7 +17,8 @@
   <tbody>
     {{#each sortedNotes as |note|}}
       {{note-detail note=note
-                    edit=(action edit)}}
+                    edit=(action edit)
+                    delete=(action delete)}}
     {{/each}}
   </tbody>
 {{/if}}

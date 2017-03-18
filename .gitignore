@@ -9,6 +9,8 @@
 /bower_components
 
 # misc
+jsconfig.json
+/typings/*
 /.sass-cache
 /connect.lock
 /coverage/*

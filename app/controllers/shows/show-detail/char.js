@@ -10,13 +10,13 @@ export default Ember.Controller.extend({
   actions: {
     addNote(note) {
       console.log('note passed from modal: ' + note);
-      this.get('showActions').addOneNote(this.get('char'), note);
+      this.get('showActions').addNoteModel(this.get('char'), note);
     },
     editNote(note) {
       this.get('showActions').editNote(note);
     },
-    deleteNote(char, note) {
-      this.get('showActions').deleteNote(char, note);
+    deleteNote(note) {
+      this.get('showActions').deleteNote(this.get('char'), note);
       this.get('notify').alert('Note deleted!');
     },
     deleteAllNotes(char) {
@@ -25,7 +25,6 @@ export default Ember.Controller.extend({
     deleteChar(char) {
       char.get('show').then((show) => {
         this.get('showActions').deleteChar(char, show);
-        this.send('closeModal');
         this.get('notify').alert('Character deleted!');
         this.transitionToRoute('shows.show-detail', show.get('slug'));
       });

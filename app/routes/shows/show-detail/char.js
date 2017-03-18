@@ -20,7 +20,7 @@ export default Ember.Route.extend({
 
   afterModel(model) {
     if (model == undefined) { // invalid slug, redirect to base
-      Ember.Logger.info("Attempted to reach unknown url, redirecting to root")
+      Ember.Logger.info("Attempted to reach unknown url, redirecting to root");
       this.transitionTo('shows.show-list');
     }
   },

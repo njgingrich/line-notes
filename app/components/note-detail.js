@@ -2,8 +2,8 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   tagName: 'tr',
-  classNameBindings: ['colorTable'],
   isEditing: false,
+  classNameBindings: ['isEditing:colored'],
   richTextLine: Ember.computed('note.line', 'note.note', function() {
     let boldText = `<b>${this.get('note.note')}</b>`;
     if (this.get('note.line')) {

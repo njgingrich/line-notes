@@ -73,7 +73,7 @@ export default Ember.Service.extend({
     newNote.save();
     char.save();
   },
-  addOneNote(char, note) {
+  addNoteModel(char, note) {
     note.set('character', char);
     note.set('date', new Date());
     Ember.Logger.info('adding note ' + note);

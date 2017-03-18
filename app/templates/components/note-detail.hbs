@@ -41,3 +41,11 @@
   {{ui-checkbox class="toggle"
                 onChange=(action "editNote")}}
 </td>
+<td class="right aligned collapsing">
+  <button class="ui circular red icon button"
+          {{action (route-action "openModal"
+                                 "modals/confirm-delete"
+                                 (action delete note))}}>
+    <i class="trash icon"></i>
+  </button>
+</td>

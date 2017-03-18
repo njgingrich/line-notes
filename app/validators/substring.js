@@ -10,5 +10,5 @@ export default function validateSubstring({longString} = {}) {
     return 'Note is not a substring of line';
     // validation logic
     // return `true` if valid || error message string if invalid
-  }
+  };
 }
